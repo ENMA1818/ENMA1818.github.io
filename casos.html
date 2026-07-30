@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casos de uso — Enmanuel Tolosa</title>
+<meta name="description" content="Cómo pienso y resuelvo problemas de producto: contexto, opciones, decisión, ejecución y resultados.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0F1113;
+    --bg-panel: #171A1E;
+    --bg-elevated: #1D2126;
+    --text: #F5F2EA;
+    --text-muted: #9BA2AC;
+    --gold: #D4A72C;
+    --gold-soft: rgba(212,167,44,0.14);
+    --teal: #4F8F82;
+    --teal-soft: rgba(79,143,130,0.14);
+    --line: rgba(245,242,234,0.09);
+    --line-strong: rgba(245,242,234,0.20);
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:var(--body); line-height:1.65; font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .wrap{ max-width:960px; margin:0 auto; padding:0 32px; }
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:30;
+    background:rgba(15,17,19,0.82); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px; max-width:1120px; margin:0 auto;
+  }
+  .nav-brand{
+    font-family:var(--mono); font-size:14px; letter-spacing:0.08em;
+    text-decoration:none; color:var(--text);
+  }
+  .nav-brand span{ color:var(--gold); }
+  .nav-back{
+    font-family:var(--mono); font-size:13px; color:var(--text-muted);
+    text-decoration:none; transition:color .2s ease;
+  }
+  .nav-back:hover{ color:var(--gold); }
+
+  /* HERO */
+  .hero{ padding:88px 0 56px; border-bottom:1px solid var(--line); }
+  .eyebrow{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--teal); margin-bottom:18px;
+  }
+  h1{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(32px,4.5vw,48px); line-height:1.1;
+    letter-spacing:-0.02em; margin:0 0 20px; max-width:20ch;
+  }
+  h1 em{ font-style:normal; color:var(--gold); }
+  .hero-sub{ color:var(--text-muted); font-size:17px; max-width:58ch; margin:0; }
+
+  /* ÍNDICE DE CASOS */
+  .index-section{ padding:56px 0; border-bottom:1px solid var(--line); }
+  .index-label{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--gold); margin:0 0 24px;
+  }
+  .case-index{ display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line); }
+  .index-item{
+    display:grid; grid-template-columns:auto 1fr auto; gap:20px; align-items:center;
+    background:var(--bg-panel); padding:22px 26px;
+    text-decoration:none; transition:background .25s ease;
+  }
+  .index-item:hover{ background:var(--bg-elevated); }
+  .index-num{ font-family:var(--mono); font-size:13px; color:var(--teal); }
+  .index-title{ font-family:var(--display); font-size:17px; font-weight:600; }
+  .index-meta{
+    display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;
+  }
+  .index-meta span{
+    font-family:var(--mono); font-size:11px; color:var(--text-muted);
+    border:1px solid var(--line-strong); padding:3px 8px;
+  }
+  .index-arrow{ color:var(--text-muted); font-family:var(--mono); transition:color .2s, transform .2s; }
+  .index-item:hover .index-arrow{ color:var(--gold); transform:translateX(4px); }
+  @media (max-width:640px){
+    .index-item{ grid-template-columns:1fr; gap:8px; }
+    .index-arrow{ display:none; }
+  }
+
+  /* CASO */
+  .case-article{ padding:72px 0; border-bottom:1px solid var(--line); }
+  .case-header{ margin-bottom:44px; }
+  .case-kicker{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--gold); margin:0 0 14px;
+  }
+  .case-title{
+    font-family:var(--display); font-size:clamp(24px,3.4vw,34px);
+    font-weight:700; line-height:1.18; letter-spacing:-0.01em; margin:0 0 18px;
+  }
+  .case-chips{ display:flex; gap:8px; flex-wrap:wrap; }
+  .case-chips span{
+    font-family:var(--mono); font-size:11.5px; padding:5px 11px;
+    border:1px solid var(--line-strong); color:var(--text-muted);
+  }
+  .case-chips span.chip-real{
+    color:var(--teal); border-color:rgba(79,143,130,0.4); background:var(--teal-soft);
+  }
+
+  .phase{ margin-bottom:36px; }
+  .phase-label{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--teal);
+    display:flex; align-items:center; gap:12px; margin-bottom:12px;
+  }
+  .phase-label::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .phase p{ margin:0 0 12px; color:var(--text-muted); font-size:16px; max-width:70ch; }
+  .phase p strong{ color:var(--text); font-weight:600; }
+
+  /* Opciones con trade-offs */
+  .options{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:6px; }
+  @media (max-width:760px){ .options{ grid-template-columns:1fr; } }
+  .option{
+    background:var(--bg-panel); padding:22px; display:flex; flex-direction:column; gap:10px;
+    position:relative;
+  }
+  .option.chosen{ background:var(--bg-elevated); }
+  .option.chosen::before{
+    content:"ELEGIDA"; position:absolute; top:14px; right:14px;
+    font-family:var(--mono); font-size:10px; letter-spacing:0.08em;
+    color:var(--gold); border:1px solid var(--gold-soft); background:var(--gold-soft);
+    padding:3px 8px;
+  }
+  .option-name{ font-family:var(--mono); font-size:12px; color:var(--gold); }
+  .option h4{ font-family:var(--display); font-size:15.5px; font-weight:600; margin:0; padding-right:64px; }
+  .option p{ font-size:13.5px; color:var(--text-muted); margin:0; }
+  .option .tradeoff{ font-size:12.5px; }
+  .option .tradeoff b{
+    font-family:var(--mono); font-size:10.5px; text-transform:uppercase;
+    letter-spacing:0.06em; color:var(--teal); display:block; margin-bottom:3px; font-weight:500;
+  }
+
+  /* Métricas resultado */
+  .metrics-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
+  .metrics-row em{
+    font-style:normal; font-family:var(--mono); font-size:12.5px; color:var(--gold);
+    border:1px solid var(--gold-soft); background:var(--gold-soft); padding:6px 12px;
+  }
+
+  /* CTA final */
+  .cta-final{ padding:72px 0 88px; }
+  .cta-final h2{
+    font-family:var(--display); font-size:clamp(24px,3.4vw,36px);
+    font-weight:700; letter-spacing:-0.01em; margin:0 0 16px; max-width:22ch; line-height:1.15;
+  }
+  .cta-final p{ color:var(--text-muted); margin:0 0 28px; max-width:56ch; }
+  .btn{
+    font-family:var(--mono); font-size:13.5px; letter-spacing:0.03em;
+    padding:13px 22px; border-radius:2px; text-decoration:none;
+    display:inline-block; transition:all .2s ease;
+    background:var(--gold); color:#0F1113; font-weight:600;
+  }
+  .btn:hover{ background:#E7BE3D; transform:translateY(-1px); }
+
+  footer{ border-top:1px solid var(--line); padding:28px 0; }
+  .footer-row{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    color:var(--text-muted); font-family:var(--mono); font-size:12px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="nav-brand">TOLOSA<span>.</span>PM</a>
+    <a href="index.html" class="nav-back">← Volver al inicio</a>
+  </nav>
+</header>
+
+<div class="wrap hero">
+  <p class="eyebrow">Casos de uso</p>
+  <h1>Así pienso y resuelvo <em>problemas de producto.</em></h1>
+  <p class="hero-sub">Cada caso sigue el mismo camino: contexto de negocio, problema real, opciones con sus trade-offs, la decisión y su porqué, ejecución y resultados. Algunos vienen de mi experiencia directa; otros son análisis de problemas que me interesan. Todos muestran lo mismo: cómo trabajo.</p>
+</div>
+
+<div class="wrap index-section">
+  <p class="index-label">Índice</p>
+  <div class="case-index">
+    <!-- ÍNDICE: agregá un bloque <a> por cada caso nuevo, apuntando a su id -->
+    <a href="#caso-01" class="index-item">
+      <span class="index-num">01</span>
+      <span>
+        <span class="index-title">Lanzar TV digital B2B en un mercado dominado por el cable</span>
+        <span class="index-meta"><span>Telco · B2B</span><span>Lanzamiento 0→1</span><span>Experiencia real</span><span>5 min</span></span>
+      </span>
+      <span class="index-arrow">→</span>
+    </a>
+  </div>
+</div>
+
+<!-- ============================================================
+     CASO 01
+     ============================================================ -->
+<article id="caso-01" class="wrap case-article">
+  <div class="case-header reveal">
+    <p class="case-kicker">Caso 01</p>
+    <h2 class="case-title">Lanzar un producto de TV digital (IPTV/OTT) para el segmento corporativo en un mercado dominado por cable tradicional</h2>
+    <div class="case-chips">
+      <span>Telco · B2B</span>
+      <span>Lanzamiento 0→1</span>
+      <span class="chip-real">Experiencia real · Telefónica Argentina · 2018-19</span>
+    </div>
+  </div>
+
+  <div class="phase reveal">
+    <p class="phase-label">Contexto de negocio</p>
+    <p>Telefónica necesitaba completar su oferta de cuádruple play (el famoso 4P: telefonía fija, móvil, internet y TV) en Argentina. La TV era la pieza faltante, y no por el revenue directo del producto: la estrategia era <strong>rentabilizar y fidelizar la base existente</strong> — un cliente con 4 servicios contratados tiene un costo de cambio mucho más alto que uno con 2, y eso impacta directo en el churn de toda la compañía.</p>
+    <p>La infraestructura IPTV ya existía por la inversión residencial, y el segmento Empresas no tenía oferta de video integrada. La ventana era clara: cerrar el combo antes que la competencia — no para ganar con la TV, sino para blindar el negocio completo.</p>
+  </div>
+
+  <div class="phase reveal">
+    <p class="phase-label">Problema real</p>
+    <p>No era un problema técnico — era de coordinación y foco. Cuatro áreas (IT, Marketing, BI, Comercial) con prioridades propias, un roadmap ambicioso, y el riesgo clásico de los lanzamientos corporativos: que el producto salga tarde, sobredimensionado y sin canal comercial preparado para venderlo.</p>
+  </div>
+
+  <div class="phase reveal">
+    <p class="phase-label">Opciones que evalué</p>
+    <div class="options">
+      <div class="option">
+        <span class="option-name">Opción A</span>
+        <h4>Lanzamiento full-feature</h4>
+        <p>Todo el catálogo y funcionalidades desde el día uno.</p>
+        <p class="tradeoff"><b>Trade-off</b>Máximo impacto de marca, pero 24+ meses de desarrollo y riesgo altísimo de nunca salir.</p>
+      </div>
+      <div class="option chosen">
+        <span class="option-name">Opción B</span>
+        <h4>MVP por fases</h4>
+        <p>Núcleo funcional primero (plataforma web/app + catálogo esencial), iteración post-lanzamiento.</p>
+        <p class="tradeoff"><b>Trade-off</b>Menor "wow" inicial, pero time-to-market de 12 meses y aprendizaje real de clientes.</p>
+      </div>
+      <div class="option">
+        <span class="option-name">Opción C</span>
+        <h4>Marca blanca con OTT existente</h4>
+        <p>Partnership para revender un servicio de streaming ya operativo.</p>
+        <p class="tradeoff"><b>Trade-off</b>Velocidad máxima, pero cero diferenciación y margen compartido.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase reveal">
+    <p class="phase-label">Decisión y por qué</p>
+    <p>Opción B. El razonamiento: en B2B corporativo la venta la hace el canal comercial, no las features — <strong>un producto confiable y en plazo que el canal pueda vender vale más que uno perfecto que llega tarde</strong>. Además, el feedback de clientes corporativos reales iba a ordenar el roadmap post-lanzamiento mejor que cualquier supuesto interno.</p>
+  </div>
+
+  <div class="phase reveal">
+    <p class="phase-label">Ejecución</p>
+    <p>Prioricé el backlog B2B con criterio de habilitación comercial (¿esto ayuda al canal a vender?), coordiné entregas quincenales con IT y BI, y propuse automatizar onboarding y soporte post-activación para que la experiencia no dependiera de canales asistidos — reduciendo esfuerzo operativo desde el diseño, no como parche posterior.</p>
+  </div>
+
+  <div class="phase reveal">
+    <p class="phase-label">Resultado</p>
+    <div class="metrics-row">
+      <em>Lanzamiento en plazo · 12 meses</em>
+      <em>+25% tasa de conversión</em>
+      <em>+25% satisfacción del cliente corporativo</em>
+    </div>
+  </div>
+
+  <div class="phase reveal">
+    <p class="phase-label">Qué mediría hoy si lo relanzara</p>
+    <p>Churn comparado de clientes 4P vs. 2P/3P — la métrica que valida toda la estrategia de convergencia. Y a nivel producto: activación a 30 días por cuenta corporativa, adopción por seat, esfuerzo de soporte por cliente (tickets/cuenta) y revenue incremental por cliente existente vs. cliente nuevo.</p>
+  </div>
+</article>
+
+<!-- ============================================================
+     TEMPLATE PARA CASOS NUEVOS
+     Copiá desde <article> hasta </article>, pegalo debajo del último
+     caso, cambiá id="caso-XX" y el número del kicker, completá las
+     7 fases, y agregá el item correspondiente en el índice de arriba.
+     Si el caso es hipotético (de una postulación), usá un chip normal
+     "Análisis hipotético" en vez del chip verde de experiencia real.
+     ============================================================
+<article id="caso-XX" class="wrap case-article">
+  <div class="case-header reveal">
+    <p class="case-kicker">Caso XX</p>
+    <h2 class="case-title">[Título centrado en el problema, no en la empresa]</h2>
+    <div class="case-chips">
+      <span>[Industria]</span>
+      <span>[Tipo de problema]</span>
+      <span>[Análisis hipotético]</span>
+    </div>
+  </div>
+  <div class="phase reveal">
+    <p class="phase-label">Contexto de negocio</p>
+    <p>[...]</p>
+  </div>
+  <div class="phase reveal">
+    <p class="phase-label">Problema real</p>
+    <p>[...]</p>
+  </div>
+  <div class="phase reveal">
+    <p class="phase-label">Opciones que evalué</p>
+    <div class="options">
+      <div class="option">
+        <span class="option-name">Opción A</span>
+        <h4>[Nombre]</h4>
+        <p>[Descripción]</p>
+        <p class="tradeoff"><b>Trade-off</b>[...]</p>
+      </div>
+      <div class="option chosen">
+        <span class="option-name">Opción B</span>
+        <h4>[Nombre]</h4>
+        <p>[Descripción]</p>
+        <p class="tradeoff"><b>Trade-off</b>[...]</p>
+      </div>
+      <div class="option">
+        <span class="option-name">Opción C</span>
+        <h4>[Nombre]</h4>
+        <p>[Descripción]</p>
+        <p class="tradeoff"><b>Trade-off</b>[...]</p>
+      </div>
+    </div>
+  </div>
+  <div class="phase reveal">
+    <p class="phase-label">Decisión y por qué</p>
+    <p>[...]</p>
+  </div>
+  <div class="phase reveal">
+    <p class="phase-label">Ejecución</p>
+    <p>[...]</p>
+  </div>
+  <div class="phase reveal">
+    <p class="phase-label">Resultado esperado</p>
+    <div class="metrics-row">
+      <em>[Métrica 1]</em>
+      <em>[Métrica 2]</em>
+    </div>
+  </div>
+  <div class="phase reveal">
+    <p class="phase-label">Qué mediría</p>
+    <p>[...]</p>
+  </div>
+</article>
+============================================================ -->
+
+<div class="wrap cta-final">
+  <h2>¿Tenés un problema de producto parecido?</h2>
+  <p>Estos casos se actualizan seguido con nuevos problemas que analizo. Si alguno se parece al que tenés en tu equipo, hablemos.</p>
+  <a href="enmanuel-tolosa-landing.html#contacto" class="btn">Escribime</a>
+</div>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>Headquarter Buenos Aires, Argentina — remoto LATAM / USA / Europa</span>
+    <span>© 2026 Enmanuel Tolosa</span>
+  </div>
+</footer>
+
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
+  }
+</script>
+
+</body>
+</html>
