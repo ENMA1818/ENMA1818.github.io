@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Enmanuel Tolosa — Producto, Growth &amp; IA aplicada</title>
-<meta name="description" content="Ayudo a empresas a vender más y operar mejor con producto, datos e inteligencia artificial.">
+<meta name="description" content="Product Builder con visión de negocio. Transformo oportunidades en productos escalables mediante estrategia, datos e Inteligencia Artificial.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -278,6 +278,41 @@
   }
   .brand-item:hover .brand-name{ color:var(--text); }
 
+  /* ---------- FRAMEWORK BAND ---------- */
+  .framework-band{
+    border-bottom:1px solid var(--line);
+    background:var(--bg-panel);
+    padding:48px 0;
+  }
+  .framework-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+  }
+  .fw-item{
+    background:var(--bg-panel); padding:28px 24px;
+    transition:background .25s ease;
+  }
+  .fw-item:hover{ background:var(--bg-elevated); }
+  .fw-step{
+    display:flex; align-items:center; gap:8px; margin-bottom:12px;
+  }
+  .fw-num{
+    font-family:var(--mono); font-size:11px; color:var(--bg-panel);
+    background:var(--gold); width:22px; height:22px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-weight:600;
+  }
+  .fw-label{
+    font-family:var(--display); font-size:17px; font-weight:700; color:var(--text);
+  }
+  .fw-arrow{
+    color:var(--gold); font-family:var(--mono); font-size:13px; margin-left:auto;
+  }
+  .fw-desc{
+    font-family:var(--mono); font-size:12.5px; color:var(--text-muted); letter-spacing:0.02em;
+  }
+  @media (max-width:760px){ .framework-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:480px){ .framework-grid{ grid-template-columns:1fr; } }
+
   /* ---------- SECTIONS ---------- */
   section{ padding:88px 0; border-bottom:1px solid var(--line); }
   section:last-of-type{ border-bottom:none; }
@@ -522,11 +557,12 @@
     <div>
       <div class="eyebrow"><span class="dot-live"></span> Headquarter Buenos Aires, Argentina · Disponible para relocalización y remoto LATAM/USA/Europa</div>
       <h1>
-        <span class="line"><span>Ayudo a empresas a vender</span></span>
-        <span class="line"><span>más y operar mejor con</span></span>
-        <span class="line"><span><em>producto, datos e IA.</em></span></span>
+        <span class="line"><span>Transforming ideas into</span></span>
+        <span class="line"><span>products that drive</span></span>
+        <span class="line"><span><em>business growth.</em></span></span>
       </h1>
-      <p class="hero-sub">Senior Product Manager con 7+ años liderando ecosistemas digitales B2B/B2C en LATAM — banca, e-commerce y telco. Combino estrategia con ejecución hands-on, usando IA como herramienta diaria de trabajo, no como experimento aislado.</p>
+      <p class="hero-sub">Think. Build. Launch. Scale.</p>
+      <p class="hero-sub" style="margin-top:16px">Product Builder con visión de negocio. Transformo oportunidades en productos escalables, liderando el ciclo completo del producto —desde el discovery hasta el Go-to-Market y la optimización continua— para generar crecimiento e impacto medible mediante estrategia, datos e Inteligencia Artificial.</p>
       <div class="cta-row">
         <a href="#experiencia" class="btn btn-primary">Ver experiencia</a>
         <a href="#contacto" class="btn btn-ghost">Escribime</a>
@@ -568,29 +604,68 @@
   </div>
 </div>
 
+<div class="framework-band">
+  <div class="wrap">
+    <div class="framework-grid reveal">
+      <div class="fw-item">
+        <div class="fw-step">
+          <span class="fw-num">1</span>
+          <span class="fw-label">THINK</span>
+          <span class="fw-arrow">→</span>
+        </div>
+        <span class="fw-desc">Estrategia, Discovery &amp; Research</span>
+      </div>
+      <div class="fw-item">
+        <div class="fw-step">
+          <span class="fw-num">2</span>
+          <span class="fw-label">BUILD</span>
+          <span class="fw-arrow">→</span>
+        </div>
+        <span class="fw-desc">Product Delivery &amp; Execution</span>
+      </div>
+      <div class="fw-item">
+        <div class="fw-step">
+          <span class="fw-num">3</span>
+          <span class="fw-label">LAUNCH</span>
+          <span class="fw-arrow">→</span>
+        </div>
+        <span class="fw-desc">Go-to-Market &amp; Growth</span>
+      </div>
+      <div class="fw-item">
+        <div class="fw-step">
+          <span class="fw-num">4</span>
+          <span class="fw-label">SCALE</span>
+        </div>
+        <span class="fw-desc">AI, Data &amp; Optimization</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <section id="sobre-mi">
   <div class="wrap">
     <div class="section-head reveal">
       <p class="section-label">01 — Sobre mí</p>
-      <h2 class="section-title">Producto con visión de negocio, ejecución de builder.</h2>
+      <h2 class="section-title">Product Builder con visión de negocio.</h2>
     </div>
-    <div class="about-grid reveal">
+    <div class="about-grid reveal" style="grid-template-columns:1fr 1fr; align-items:center;">
       <div>
-        <p>Lidero negocios digitales y ecosistemas de producto B2B/B2C en LATAM, con foco en posicionamiento, planes de lanzamiento (GTM), funnels de conversión y automatización de marketing con CRM. <strong>Uso Claude AI a diario</strong> para research, redacción, prototipado y automatización — parte integral de cómo trabajo, no una prueba de concepto.</p>
-        <p>Fuerte orientación a datos: KPIs de negocio, mejora continua de la experiencia del cliente a lo largo de todo el journey. En paralelo, sigo de cerca el ecosistema cripto argentino y opero arbitraje financiero entre exchanges de forma independiente — manejo práctico de wallets y stablecoins que aplico también a proyectos de fintech.</p>
+        <p><strong>Construyo y escalo productos digitales que generan crecimiento e impacto medible.</strong> Lidero iniciativas B2B y B2C en fintech, banca, telecomunicaciones y e-commerce, conectando estrategia, ejecución y Go-to-Market.</p>
+        <p>Conduzco el ciclo completo del producto, desde el discovery hasta el lanzamiento y la optimización continua, utilizando datos e Inteligencia Artificial para acelerar decisiones, automatizar procesos y crear mejores experiencias para los usuarios.</p>
+        <p>Creo que los mejores productos nacen del equilibrio entre negocio, tecnología y experiencia de usuario. Trabajo de forma hands-on junto a equipos multidisciplinarios para transformar problemas complejos en soluciones simples, priorizando el impacto, la velocidad de ejecución y el aprendizaje continuo.</p>
       </div>
       <div class="about-facts">
         <div class="fact">
-          <div class="fact-label">Foco actual</div>
-          <div class="fact-value">Product · Growth · IA aplicada</div>
+          <div class="fact-label">Enfoque</div>
+          <div class="fact-value">Product Builder · Product Strategy · Growth · AI-Native</div>
         </div>
         <div class="fact">
           <div class="fact-label">Industrias</div>
-          <div class="fact-value">Banking · eCommerce · Telco</div>
+          <div class="fact-value">Fintech · Banking · Telecommunications · eCommerce</div>
         </div>
         <div class="fact">
           <div class="fact-label">Stack</div>
-          <div class="fact-value">Jira · Figma · HubSpot · GA4 · SQL · Power BI · Tableau · PostHog · Apollo · n8n · Claude AI · Lovable</div>
+          <div class="fact-value">Claude AI · ChatGPT · Lovable · n8n · Jira · Figma · SQL · GA4 · PostHog · Power BI</div>
         </div>
         <div class="fact">
           <div class="fact-label">Idiomas</div>
@@ -604,70 +679,70 @@
 <section id="que-hago">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="section-label">02 — Qué hago</p>
-      <h2 class="section-title">Cuatro frentes, un mismo objetivo: crecer con orden.</h2>
+      <p class="section-label">02 — Cómo genero impacto</p>
+      <h2 class="section-title">Cuatro capacidades. Un solo objetivo: convertir oportunidades en productos que impulsan el crecimiento del negocio.</h2>
     </div>
     <div class="services-grid reveal">
       <div class="service-card">
-        <div class="service-index">GTM</div>
-        <h3>Producto &amp; lanzamientos</h3>
-        <p>Posicionamiento, mensajería y planes de lanzamiento (GTM), definición de propuesta de valor y customer journey post-conversión.</p>
+        <div class="service-index">PRODUCT</div>
+        <h3>Estrategia, construcción y lanzamiento de productos</h3>
+        <p>Lidero el ciclo completo del producto, desde el discovery hasta el lanzamiento y la optimización continua, alineando negocio, tecnología y experiencia de usuario para construir soluciones que generan impacto.</p>
         <details class="case">
           <summary>Ver caso real</summary>
           <div class="case-body">
             <div class="case-tag">Telefónica Argentina · Movistar TV/Play</div>
-            <div class="case-row"><b>Reto</b><span>Lanzar un producto digital nuevo (IPTV/OTT) coordinando IT, Marketing, BI y Comercial.</span></div>
-            <div class="case-row"><b>Acción</b><span>Gestión de roadmap y backlog, y automatización del proceso de onboarding post-activación.</span></div>
+            <div class="case-row"><b>Reto</b><span>Construir desde cero y lanzar la nueva plataforma IPTV/OTT de Movistar para el mercado argentino, desarrollando una propuesta de valor capaz de competir con plataformas como Netflix y coordinando equipos de IT, Marketing, BI y Comercial.</span></div>
+            <div class="case-row"><b>Mi aporte</b><span>Definición de la visión y estrategia del producto. Construcción y priorización del roadmap y backlog. Coordinación de equipos multidisciplinarios bajo metodologías ágiles. Liderazgo del lanzamiento (Go-to-Market) y optimización del proceso de onboarding para acelerar la adopción.</span></div>
             <div class="case-metrics">
-              <em>Lanzamiento en 12 meses</em><em>+25% conversión</em><em>+25% satisfacción</em>
+              <em>Plataforma lanzada en 12 meses</em><em>+25% conversión</em><em>+25% satisfacción de usuarios</em>
             </div>
           </div>
         </details>
       </div>
       <div class="service-card">
-        <div class="service-index">CRM</div>
-        <h3>Growth &amp; automatización</h3>
-        <p>Email marketing, WhatsApp Business, flujos automatizados y CRM (HubSpot) orientados a reducir churn y subir adopción.</p>
+        <div class="service-index">GROWTH</div>
+        <h3>Go-to-Market, posicionamiento y expansión</h3>
+        <p>Diseño estrategias de Go-to-Market, posicionamiento y expansión para acelerar el crecimiento del producto, abrir nuevos mercados y maximizar el valor para clientes y negocio.</p>
         <details class="case">
           <summary>Ver caso real</summary>
           <div class="case-body">
             <div class="case-tag">Accusys Technology · Banking</div>
-            <div class="case-row"><b>Reto</b><span>Reducir el churn y mejorar la fidelización en un ecosistema B2B bancario.</span></div>
-            <div class="case-row"><b>Acción</b><span>Estrategia de email marketing y automatización, con flujos de onboarding, engagement y fidelización.</span></div>
+            <div class="case-row"><b>Reto</b><span>Liderar la expansión comercial de soluciones bancarias en Perú y República Dominicana, adaptando la propuesta de valor, el posicionamiento y la estrategia Go-to-Market a las necesidades de cada mercado.</span></div>
+            <div class="case-row"><b>Mi aporte</b><span>Diseño de la estrategia Go-to-Market para nuevos mercados. Adaptación de la propuesta de valor y del posicionamiento del producto. Desarrollo de materiales comerciales y herramientas de habilitación para equipos de ventas. Automatización del customer journey para acelerar la adopción y fortalecer la relación con los clientes.</span></div>
             <div class="case-metrics">
-              <em>-15% churn</em><em>+18 pts NPS</em>
+              <em>Expansión exitosa a nuevos mercados en LATAM</em><em>+18 pts NPS</em><em>+25% oportunidades comerciales calificadas</em>
             </div>
           </div>
         </details>
       </div>
       <div class="service-card">
         <div class="service-index">IA</div>
-        <h3>IA aplicada &amp; agentes</h3>
-        <p>Automatización de procesos con n8n, agentes de IA, prototipado con Claude y construcción de landings orientadas a conversión.</p>
+        <h3>Inteligencia Artificial aplicada al producto</h3>
+        <p>Integro Inteligencia Artificial en discovery, research, automatización y optimización de procesos para acelerar la entrega de valor, mejorar la productividad y potenciar la toma de decisiones.</p>
         <details class="case">
           <summary>Ver caso real</summary>
           <div class="case-body">
             <div class="case-tag">Accusys Technology · Banking</div>
-            <div class="case-row"><b>Reto</b><span>Modernizar los canales de atención al cliente sin escalar el equipo.</span></div>
-            <div class="case-row"><b>Acción</b><span>Evolución hacia canales omnicanal (chatbot, email, soporte automatizado), usando Claude AI como herramienta central de trabajo diario.</span></div>
+            <div class="case-row"><b>Reto</b><span>Modernizar los canales de atención al cliente sin incrementar la estructura operativa.</span></div>
+            <div class="case-row"><b>Mi aporte</b><span>Diseño de flujos automatizados impulsados por IA. Implementación de asistentes inteligentes para atención y soporte. Uso de Claude AI para research, documentación, prototipado y aceleración de iniciativas de producto. Optimización de la experiencia omnicanal.</span></div>
             <div class="case-metrics">
-              <em>Mejor relacionamiento con clientes</em><em>Nuevas fuentes de ingresos digitales</em>
+              <em>Automatización de procesos críticos</em><em>Nuevos canales digitales de atención</em><em>Mejor experiencia con clientes</em>
             </div>
           </div>
         </details>
       </div>
       <div class="service-card">
         <div class="service-index">DATA</div>
-        <h3>Data &amp; analytics</h3>
-        <p>SQL, Power BI, Google Analytics y Tag Manager para decisiones basadas en datos, con A/B testing y seguimiento de KPIs de negocio.</p>
+        <h3>Producto guiado por datos</h3>
+        <p>Transformo datos en decisiones mediante analítica de producto, experimentación continua y seguimiento de KPIs para descubrir oportunidades de crecimiento y maximizar resultados.</p>
         <details class="case">
           <summary>Ver caso real</summary>
           <div class="case-body">
-            <div class="case-tag">MercadoLibre · Producto Ads</div>
-            <div class="case-row"><b>Reto</b><span>Entender por qué no despegaba la adopción del producto Ads entre sellers SMB/B2B.</span></div>
-            <div class="case-row"><b>Acción</b><span>Análisis de performance por vertical y comportamiento de usuarios, junto a branding, content y UX.</span></div>
+            <div class="case-tag">Mercado Libre · Mercado Ads</div>
+            <div class="case-row"><b>Reto</b><span>Incrementar la adopción de Mercado Ads entre sellers SMB y definir nuevas funcionalidades que fortalecieran la propuesta de valor del producto para acompañar su expansión a nivel global.</span></div>
+            <div class="case-row"><b>Mi aporte</b><span>Análisis del comportamiento de usuarios y métricas de producto. Identificación de oportunidades mediante investigación y análisis de datos. Definición y validación de nuevas funcionalidades orientadas a incrementar la adopción. Colaboración con equipos de UX, Ingeniería y Negocio para priorizar iniciativas de mayor impacto.</span></div>
             <div class="case-metrics">
-              <em>+40% usuarios activos</em><em>+25% conversión</em>
+              <em>+40% usuarios activos</em><em>+25% conversión</em><em>Nuevas funcionalidades incorporadas</em>
             </div>
           </div>
         </details>
@@ -681,94 +756,108 @@
     <div class="section-head reveal">
       <p class="section-label">03 — Recursos gratuitos</p>
       <div class="lib-intro">
-        <h2 class="section-title">Lo que leo y estudio, por tema.</h2>
-        <span class="lib-count"><b>121</b> libros leídos y estudiados</span>
+        <h2 class="section-title">Nunca dejo de aprender. Nunca dejo de construir.</h2>
       </div>
     </div>
+    <div class="reveal" style="max-width:68ch; margin-bottom:36px;">
+      <p style="color:var(--text); font-size:17px; font-weight:600; margin:0 0 18px;">No puedo regalarte mis años de experiencia. Pero sí puedo compartir el conocimiento que uso para acelerar ese camino.</p>
+      <p style="color:var(--text-muted); font-size:16px; margin:0 0 14px;">Creo que los mejores productos no nacen por casualidad. Son el resultado de mejores decisiones, mejores preguntas y un aprendizaje constante.</p>
+      <p style="color:var(--text-muted); font-size:16px; margin:0 0 14px;">Durante mi carrera he invertido miles de horas leyendo, estudiando y aplicando ideas sobre producto, estrategia, liderazgo, psicología, negocios, finanzas, Inteligencia Artificial y desarrollo personal. Algunas cambiaron mi forma de pensar. Otras transformaron mi manera de trabajar. Y unas pocas terminaron definiendo el profesional que soy hoy.</p>
+      <p style="color:var(--text-muted); font-size:16px; margin:0 0 14px;">Por eso decidí compartir esta colección de forma completamente gratuita, para devolver parte del conocimiento que otras personas compartieron antes conmigo.</p>
+      <p style="color:var(--text-muted); font-size:16px; margin:0 0 14px;">Si alguna de estas ideas te ayuda a construir un mejor producto, liderar un mejor equipo o tomar una mejor decisión, entonces habrá cumplido su propósito.</p>
+      <p style="color:var(--gold); font-family:var(--display); font-size:17px; font-weight:600; margin:0;">El conocimiento solo crea valor cuando se comparte.</p>
+    </div>
     <div class="lib-grid reveal">
-      <div class="lib-card">
+      <a href="#" target="_blank" rel="noopener" class="lib-card">
         <div class="lib-top">
           <span class="lib-index">01</span>
           <span class="lib-badge">21 libros</span>
         </div>
-        <h3>Liderazgo</h3>
-        <p>Coaching ejecutivo, liderazgo de equipos y desarrollo de personas.</p>
-      </div>
-      <div class="lib-card">
+        <h3>Product Leadership</h3>
+        <p>Estrategia de producto, liderazgo, gestión de equipos, toma de decisiones y construcción de organizaciones de alto rendimiento.</p>
+        <span class="lib-cta">Explorar colección <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#" target="_blank" rel="noopener" class="lib-card">
         <div class="lib-top">
           <span class="lib-index">02</span>
           <span class="lib-badge">36 libros</span>
         </div>
-        <h3>Empresarial</h3>
-        <p>Emprendimiento, negociación, comunicación y toma de decisiones.</p>
-      </div>
-      <div class="lib-card">
+        <h3>Business &amp; Strategy</h3>
+        <p>Modelos de negocio, emprendimiento, negociación, comunicación, innovación y pensamiento estratégico.</p>
+        <span class="lib-cta">Explorar colección <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#" target="_blank" rel="noopener" class="lib-card">
         <div class="lib-top">
           <span class="lib-index">03</span>
           <span class="lib-badge">8 libros</span>
         </div>
-        <h3>Marketing &amp; Ventas</h3>
-        <p>Neuromarketing, técnicas de cierre y psicología de la venta.</p>
-      </div>
-      <div class="lib-card">
+        <h3>Marketing &amp; Growth</h3>
+        <p>Posicionamiento, branding, psicología del consumidor, growth marketing y estrategias de adquisición.</p>
+        <span class="lib-cta">Explorar colección <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#" target="_blank" rel="noopener" class="lib-card">
         <div class="lib-top">
           <span class="lib-index">04</span>
           <span class="lib-badge">10 libros</span>
         </div>
-        <h3>Inteligencia Emocional</h3>
-        <p>Autoconocimiento, gestión de emociones y equilibrio interior.</p>
-      </div>
-      <div class="lib-card">
+        <h3>Emotional Intelligence</h3>
+        <p>Autoconocimiento, inteligencia emocional, liderazgo consciente y gestión del cambio.</p>
+        <span class="lib-cta">Explorar colección <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#" target="_blank" rel="noopener" class="lib-card">
         <div class="lib-top">
           <span class="lib-index">05</span>
           <span class="lib-badge">15 libros</span>
         </div>
-        <h3>Finanzas</h3>
-        <p>Educación financiera, mentalidad de inversión y creación de riqueza.</p>
-      </div>
-      <div class="lib-card">
+        <h3>Finance &amp; Investing</h3>
+        <p>Educación financiera, inversión, creación de patrimonio y mentalidad de largo plazo.</p>
+        <span class="lib-cta">Explorar colección <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#" target="_blank" rel="noopener" class="lib-card">
         <div class="lib-top">
           <span class="lib-index">06</span>
           <span class="lib-badge">31 libros</span>
         </div>
-        <h3>Mentalidad y Desarrollo Personal</h3>
-        <p>Hábitos, motivación, PNL y alto rendimiento personal.</p>
-      </div>
+        <h3>High Performance</h3>
+        <p>Hábitos, productividad, psicología, disciplina y desarrollo personal aplicado al crecimiento profesional.</p>
+        <span class="lib-cta">Explorar colección <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
     </div>
-    <p class="lib-note reveal">Esta formación autodidacta complementa mi experiencia profesional. ¿Querés una recomendación de lectura sobre alguno de estos temas? Escribime y te comparto mis favoritos.</p>
+    <p class="lib-note reveal">Aprender es una ventaja competitiva. Cada libro de esta biblioteca influyó en la forma en que lidero productos, tomo decisiones y construyo soluciones. Si buscas una recomendación sobre alguno de estos temas, estaré encantado de compartir mis favoritos.</p>
   </div>
 </section>
 
 <section id="resultados">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="section-label">04 — Resultados</p>
-      <h2 class="section-title">Lo que dejé en cada organización.</h2>
+      <p class="section-label">04 — Impacto</p>
+      <h2 class="section-title">Los mejores productos cuentan una historia. Los mejores resultados la demuestran.</h2>
     </div>
+    <p class="hero-sub reveal" style="margin-bottom:32px">Cada desafío fue diferente, pero todos tuvieron algo en común: entender el problema correcto, construir la solución adecuada y medir el impacto generado.</p>
     <div class="results-grid reveal">
       <div class="result-card">
         <div class="result-mono">Banking</div>
         <div class="result-metric">+18</div>
         <div class="result-metric-label">puntos de NPS</div>
-        <div class="result-org"><div class="org-mark"><img src="data:image/jpeg;base64,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" alt="Accusys Technology"></div><strong>Accusys Technology</strong>Senior PM · 2022–actualidad</div>
+        <div class="result-org"><div class="org-mark"><img src="data:image/jpeg;base64,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" alt="Accusys Technology"></div><strong>Accusys Technology</strong>Senior Product Manager</div>
       </div>
       <div class="result-card">
-        <div class="result-mono">eCommerce Ads</div>
+        <div class="result-mono">eCommerce</div>
         <div class="result-metric">+40%</div>
         <div class="result-metric-label">usuarios activos</div>
-        <div class="result-org"><div class="org-mark"><img src="data:image/jpeg;base64,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" alt="MercadoLibre"></div><strong>MercadoLibre</strong>Product Commerce Supervisor · 2021–22</div>
+        <div class="result-org"><div class="org-mark"><img src="data:image/jpeg;base64,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" alt="MercadoLibre"></div><strong>Mercado Libre</strong>Product Commerce Supervisor</div>
       </div>
       <div class="result-card">
-        <div class="result-mono">IPTV &amp; OTT LATAM</div>
+        <div class="result-mono">Streaming &amp; OTT</div>
         <div class="result-metric">$200M</div>
         <div class="result-metric-label">revenue anual</div>
-        <div class="result-org"><div class="org-mark"><img src="data:image/jpeg;base64,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" alt="Telefónica"></div><strong>Telefónica Hispam</strong>Product Manager · 2019–21</div>
+        <div class="result-org"><div class="org-mark"><img src="data:image/jpeg;base64,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" alt="Telefónica"></div><strong>Telefónica Hispam</strong>Product Manager</div>
       </div>
       <div class="result-card">
-        <div class="result-mono">Lanzamiento producto</div>
+        <div class="result-mono">Product Launch</div>
         <div class="result-metric">12m</div>
-        <div class="result-metric-label">idea a mercado</div>
-        <div class="result-org"><div class="org-mark"><img src="data:image/jpeg;base64,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" alt="Movistar"></div><strong>Telefónica Argentina</strong>Product Owner · 2018–19</div>
+        <div class="result-metric-label">de la idea al mercado</div>
+        <div class="result-org"><div class="org-mark"><img src="data:image/jpeg;base64,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" alt="Movistar"></div><strong>Movistar TV / Play</strong>Product Owner</div>
       </div>
     </div>
   </div>
@@ -777,44 +866,44 @@
 <section id="experiencia">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="section-label">05 — Experiencia</p>
-      <h2 class="section-title">Recorrido en LATAM, de telco a fintech.</h2>
+      <p class="section-label">05 — Trayectoria</p>
+      <h2 class="section-title">Construyendo productos que impulsan el crecimiento en LATAM.</h2>
     </div>
     <div class="timeline reveal">
       <div class="tl-item">
-        <div class="tl-date">MAY 2022 — ACTUALIDAD</div>
-        <div class="tl-role">Senior Product Manager · Banking</div>
-        <div class="tl-org-row"><div class="org-mark"><img src="data:image/jpeg;base64,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" alt="Accusys Technology"></div><div class="tl-org">Accusys Technology Argentina</div></div>
-        <p class="desc">Estrategia integral del ecosistema digital B2B en LATAM: adquisición, activación, retención y fidelización, con expansión a Perú, República Dominicana y Puerto Rico.</p>
+        <div class="tl-date">MAYO 2022 — ACTUALIDAD</div>
+        <div class="tl-role">Senior Product Manager</div>
+        <div class="tl-org-row"><div class="org-mark"><img src="data:image/jpeg;base64,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" alt="Accusys Technology"></div><div class="tl-org">Accusys Technology · Argentina</div></div>
+        <p class="desc">Lidero la estrategia y evolución del ecosistema digital B2B para instituciones financieras en Latinoamérica, impulsando iniciativas de producto, experiencia del cliente, Go-to-Market y expansión regional.</p>
         <div class="tl-metrics">
-          <span>+20% adquisición</span><span>-15% churn</span><span>+18 NPS</span><span>3 mercados nuevos</span>
+          <span>+20% adquisición</span><span>-15% churn</span><span>+18 pts NPS</span><span>Expansión a Perú, RD y Puerto Rico</span>
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-date">JUL 2021 — MAY 2022</div>
+        <div class="tl-date">JULIO 2021 — MAYO 2022</div>
         <div class="tl-role">Product Commerce Supervisor · Ads</div>
-        <div class="tl-org-row"><div class="org-mark"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCABgAGADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3eiiivwI+kCqWqaxZ6NAkt5KVMjCOKJFLyTOeiIg5Zj6AVbZlRS7sFVRkknAA9TXn0uq6tq3iaTXdFhuZ9MitTZ208XlxmQOf3rxhyrHlUKyKyg4IwwOa9fJcup4yvbET5Ka3b09Fd6Xf5XfQwr1JQj7iuztdM1m11SOcxiWGW2fy7i3uE8uW3bGcOp6ZGCD0IOQTUNx4o0G0Yrca3pkTDqGukB/nXO3+n2HxBs7cSWnm+K9LgMiQ3trJCupwIcFJFb5SeR3bYzAg4Yg3dGt9HuNOt7rTbC0ht5kDoqW6IV9QQBwQcgjsQa9bOsgw+XtVYycqctrW08r638tF+DIw1ada8Xo0akHivw/ctth13S5D6LdJn+dT6jrNppltFPKzS+e4igigHmSXEh6Iij7x6/QAk4ArI1ODSoLKe51C0tGtoY2kkMkCsAoGTxjn6Vn6XYaX4GhfUH05bXxPq1uZYbS0s3lGmW7EKMIgxv8A7x+Xcw25CrSybIsPmEnNylGEd7218r6W9bO3zQYmrOiktG2dPpes2esJKbZ2EsD+XPBKhSWB/wC66HlT+h6jIq9Xnv8AaGu6fr9tr+oW19Jp8Vu1pcuyxvP5I+ZZGRCzkhuSd52gkBeprvbW6gvbeO5tpo54JVDxyRsGV1PQgjqK8zO8tpYOvbDT56b2aaevVNrS6/KzLoVJTj76syWiiivGNwooooA5PxGx17Wk8PE/8S+CFbrUFB/124kRwn/ZO1mYdwoHQmtYAAAAAADAA7Cs/QvDtv4h8b+J4Z9V1OzliWzkWK0mWMPG0RAY5Uk8qw64roJvhteRfNp/izU1PXZexQ3CfThVbH/Aq+5jwxiMRhqU6U4qPKmk77ySbb03vp6JLoccMdTpyakne5iMxt/E/hm6j4lF+1vn1SSGTcP/AB1T9VFPvbL+wPFt/po+W11AHUrQY4UkgToPo5V/+2hptx4d8XWes6JJdafZ31va6jFM91YSFSqYZCWifkcPn5Wb6V0XxM0130SLWrdQbrRZPtYz/FDjbMmfeMk/VRXu4fJa0splgq6967cdU9d19+q+bOeeKisSqsNupzi2f/CQeJdM0TrbxEalejsYo2/dof8AekwfcRtUt2xn8aeJJpMl45Le2XPaNYQ4H03SOfxrZ+GFqtzpl14kJ3NrMnmQE/w2qZWEfiMv9ZDWPLoXiu+8Ta9NY6Za2tvc3gKXd/MdrKkSJlY0+ZuVPUrSqZNWjlCwVFe+7N6pa3Td79rJfIFiovE+1lt0JentWNpuPDXiOKyhG3S9YaQpEPu290AWO0dlkUMcf3lJ/irqIPhxfzfNqPiu/OcfJYQRW6D8SHb/AMerA8Z+FbTw9feGWg1XV7m4n1iJVhubnzFKhHZmxjsB29a8anwriaNKpKrOPLytta9E2ntunr+GzZvVx9ObSinc6aikHSlr4M7QooooA4L4gz6z4N1O28e+H4UnltIGs9Qt3BKy25OVYgYJ2Nz17+ma2vDnxM8Q65p0d/YN4d1e3IwSrS2sit/ddf3m010TKrqVYBlIwQRkEV5V4h+EN/peovrfgDUTplyxy9kz7Ym9lPIx/ssCPQivusj4hf1aOCqVVTlH4ZNXi1/LLqrdJLS2j2R59fDJTdTlunuuvyPSv+E+8S7cf8Itp+71/tc4/wDROao6v4g8Va9p9xpz2mjabBdxtDLIs8lxIiMCG2jYg3YJxngehry4fFHxX4Zc2/i3wnONnH2iFTGG988ofwIq/b/HnwpKB5sWpwMeoMSuB+IavXrVOIkuajTjJdJQtJfLV/kTCOCfxNryeh3+haz4n8MaVa6Rb2+k6naWMS29vJNNJbymNRhQ+EZcgADIxnrgVpf8J74lAx/wi2n7vUascf8AonNeYT/HfwlED5a6lMfQQKv6lqzn+L2u6+wt/CfhO6uJG4EsqmQD3wuF/NsUqNTiNq9SkkusppRXq9V+QTjgltL7tT0/WfiD4lsLOW9uv+Ec0a0jHzzTSy3JX2AxGCfQVyvgvV9a+J3iKLxjrESQ6fpkL2mmxxqVWWRuJJ9pJIyAB1OOmTgmsfSfhTr/AIqvo9U+IOptLGh3R6dDJwPYkfKo9lyT616zbW0Nnbx29vEkMMShEjRcKijoAOwrzs44hdLDTwkaqqVJ6NxVoxXVRe8m9m9rbajo4ZSmp8tku+7/AMiWiiivgD0QoryrVviR4v1nxDqWl+B9EtbyDS22XE843b2GRgfMoHIYAck4zxWdZ/Ffx54rV28MeGbMiyjBvPNy/wA/OVXLLjocLya+lhwpjZQVSThFWTd5xXLf4ebtzdDkeNpp21+7f0PZqK82t/jPZH4fP4nnstt5HP8AYzZq/DT4zwx5C7fm6ZGCOtZl38QviN4dsoNf1/w1p50aUqWjg3LNErfdzljgn3HXg4rKnwxj5ScJJRak4pSkk5SW6jd69PLXcbxlNarXr/w562QCCpGQeoPQ1nXPhnQ7x99zoumTt/ektI2P5kVyXjX4qR6HY6Suh2R1TUNYjWW0iOcBDjBIHJJJwFHoeeKyNU+KPiXw5oWn22q6JCfFWozOsNoqkRpHuCoxAYkkk4Az2PTFPCZBmM4wnS91zbSXMk3a93a97Kzu2KeJoptS1t5HoMHhXw/bOHg0LSonHRktIwR+OK01RUUIihVH8IGB+VeWW3xE8a+HdesNP8Z6DaLbX7BUuLFWPlZIGThmBwSMjg455q9rHi7x3qXie+0jwpoVrHbWHyvealG6pMQcHYcgYzkDGc4zxVVcixs5pVKkXG3NzuacbXtv66W3BYmmlote1tT0eo554raF555UiijUs8jsFVQOpJPQV5fofxpd/DmuXmt6dEmoaO8cTRWz/JcO7MigEk4+ZGzyRgZFc94l8Y+PNV8CX13rXh+zi0TU4QkU9vlXg3MNrMCxJQ4xkgdR61rQ4Sxsq/sq1oLmUbuS1bs/d1958rTt8t9BSxtNRvHXS/8Aw57bYahaapZxXtjcxXNtKMxyxNuVxnHB+oNWK8W0j4h3XhfwJ4U0TRLFL/W9RibyYpM7EBldQSARkk5wMgcEk1qQfEbxd4V1+w07x1pmnx2moNsju7M4EZyBz8xBAJGRwcHPNKvwrilOapWsnPlTaU5KLabUeu3z6BHGwsr+V+yuHwPZW1bxnhgcamM4P+1JTfgKytD4pwQf+Jmehz2avVVjRCSiKpPJ2gDNCRpHnYirnk7QBmssbn6xKxK9nb23s+u3Jby1vbyt5jhheXk1+G/4nzLZ6Fe678M9Vn06Frl7DXGnkjjG5ihh2kgDk4yCfbNX2vfhjdWNskEPi3Ub+cqrafFdszB+4G75W56Yr6LREjB2Iqd/lGK8203xde33jfxjp1rZaXbf2TZO1tL5Kq7yg43SSHHHPTge9fUYXiarjvayVNpQfPpU5dG4xtK0ddddLNanHPCKnypvfTY53UbCDSfit4C06GGW3jgsolSCeQPJGP3h2sRwSOhI9KtfGSC60Pxf4b8YfZpLjT7JkWYoPuMsm7B9MgnBPGRVjUviB4l0T4ZLr16uj3GtPem2WWEJJEiYJB+RiCeDxnvzXfWXivRbj7LYXWrab/aM8MZe1aZQ5ZlBI2k+/SuWvi8XhqtHFTpKcYKdOVpN81m3J3tdL39G77alxhCalBO17P07fkcfH8Yj4i8R6dpHg3T/AO0UmIN3PcI8Yt03DJ49FycnvgDNcRdaxpN/428QJ8SNV1e3itZWWzsopJEjKB2wAq/7O0g8bsk5r3iRtN0O2knk+x6fbry7kLEg+p4FU5NW8N3umrrMt3pU1ipKreSFDGCDjAY++a8/BZxh8O28LhZRi1y8yl79730lytJtaWSTsaVKE5fHNX3t0+4+fNJ8IanrPgjxRqmnabcR2ctzby2kAUlpIkeUsF/vbVkXkddpxmum1z4saNrXw2Tw9aQ3L6xcW8Vm1sIiQjLtBIPf7vAHOSK9k0nxBo+uK39lanZ3oj+8LeVWKfUDpVpbK1Sc3C20CzHrII1DfnjNdWK4qjVr82Ow7vCanFczTTSirSvF3Xup30fyJhg2o/u5bqz0PBdQ0bU/h5d+CPE2o2UslrZWqQ3iIMmBt0hKnsDtl47ZUjvVvxz4ltPi5rWhaF4XjubgQzGWe4aIqsYbAJPoAASSe+AM17oyK6lWUMpGCCMg1Hb2ltaKVtreGBTyRFGEB/IVzx4si5wxVWjevBSUZKVo+829Y2d7cztqr9S3gnZwjL3Xa/yJqKKK+NO8Q9K8R0n/AJH74of9g6f+de31w1p8NGtfEHinVv7VDf2/bSW4i8jHkbjnOd3zfTivocix1DDQrqtK3NGKWj1anF9PJM5MVTlNx5Vs/wBDySb5fgLakAca05/Q11HjP4ZeG9I+GA1W1hK6jBFBObwyMWnZyu4HnHO7jHTArsdJ+FNnbeAZfCGpXrXkbzNOtzFH5bRuSCpAJPIx+Oa5/wD4Urrl3aW+kan44uLjRLdgUtUtyrYHQAliBj8cdhX164iws63NTxLpxjWlN6S9+Ls7aLyatK29zh+qzUbOF7xt00Zysk918RfEHgXQtaupmtJdOSabY2DI+JNz5/vERqM9ufWpPHWkQ2HjrRPCen6Nd6npVjAJ4tJiuNrTu5dnO9voPfCkDrXpS/DKG38b6R4hs71Le00u0W0jsfJJJVUdR8+7/a9O3vU3jr4dQeL57TUrXUJtK1iy4gvIhuwM5AYZHQ5wQQeT61zw4mwcMVSVOXLR5JaWklCcnLVpWd0na8dUm7Mp4So4SbXvXXzSsecWvh7xBD420bWtC+HupeHIoZVS6RZ0kjkjJAY4BGBtJyOc8HqK94rz/wAP/DXVYNdh1rxL4svdZmtseTCm6GIEdCw3fNjrjAGeua9Ar5viTMKeLqUowkpckbXXP3va825O3d23sdmEpOCbatf0/QKKKK+bOs//2Q==" alt="MercadoLibre"></div><div class="tl-org">MercadoLibre Argentina</div></div>
-        <p class="desc">Visión y roadmap del producto Ads (SMB/B2B): adquisición, activación y retención de sellers con campañas segmentadas.</p>
+        <div class="tl-org-row"><div class="org-mark"><img src="data:image/jpeg;base64,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" alt="MercadoLibre"></div><div class="tl-org">Mercado Libre · Argentina</div></div>
+        <p class="desc">Responsable de la estrategia y evolución del producto Mercado Ads para sellers SMB, impulsando iniciativas de adquisición, activación y adopción mediante decisiones basadas en datos.</p>
         <div class="tl-metrics">
           <span>+40% usuarios activos</span><span>+25% conversión</span>
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-date">AGO 2019 — JUL 2021</div>
-        <div class="tl-role">Product Manager · eCommerce &amp; Negocios Digitales LATAM</div>
+        <div class="tl-date">AGOSTO 2019 — JULIO 2021</div>
+        <div class="tl-role">Product Manager</div>
         <div class="tl-org-row"><div class="org-mark"><img src="data:image/jpeg;base64,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" alt="Telefónica"></div><div class="tl-org">Telefónica Hispam</div></div>
-        <p class="desc">Escalamiento del ecosistema Movistar TV/Play en LATAM. Gestión de partners de contenido (HBO, FOX, TNT) y automatización de campañas de adquisición.</p>
+        <p class="desc">Lideré la evolución del ecosistema Movistar TV/Play para Latinoamérica, gestionando el roadmap del producto, alianzas estratégicas con partners de contenido y la expansión de la plataforma en la región.</p>
         <div class="tl-metrics">
-          <span>$200M revenue anual</span><span>Base duplicada en 18m</span><span>+35% NPS</span>
+          <span>USD 200M revenue anual</span><span>Base duplicada en 18m</span><span>+35% NPS</span>
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-date">SEP 2018 — AGO 2019</div>
-        <div class="tl-role">Product Owner · Movistar TV/Play (IPTV &amp; OTT)</div>
+        <div class="tl-date">SEPTIEMBRE 2018 — AGOSTO 2019</div>
+        <div class="tl-role">Product Owner</div>
         <div class="tl-org-row"><div class="org-mark"><img src="data:image/jpeg;base64,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" alt="Movistar"></div><div class="tl-org">Telefónica Argentina</div></div>
-        <p class="desc">Lanzamiento del producto en Argentina: roadmap, backlog y coordinación con IT, Marketing, BI y Comercial.</p>
+        <p class="desc">Responsable del lanzamiento de Movistar TV/Play en Argentina, liderando el roadmap, backlog y la coordinación entre Producto, Ingeniería, Marketing, BI y Comercial.</p>
         <div class="tl-metrics">
-          <span>Lanzamiento en 12m</span><span>+25% conversión</span><span>+25% satisfacción</span>
+          <span>Producto lanzado en 12m</span><span>+25% conversión</span><span>+25% satisfacción</span>
         </div>
       </div>
     </div>
@@ -907,7 +996,7 @@
       <div class="footer-contacts">
         <a href="mailto:enmanueltolosa@gmail.com">enmanueltolosa@gmail.com</a>
         <a href="tel:+5491123932507">+54 9 11 2393-2507</a>
-        <a href="https://linkedin.com/in/emanueltc" target="_blank" rel="noopener">LinkedIn — Enmanuel Tolosa</a>
+        <a href="https://linkedin.com/in/enmanueltolosa" target="_blank" rel="noopener">LinkedIn — Enmanuel Tolosa</a>
       </div>
     </div>
     <div class="footer-bottom">
