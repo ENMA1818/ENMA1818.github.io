@@ -148,10 +148,7 @@
   @keyframes lineUp{
     to{ opacity:1; transform:translateY(0); }
   }
-  h1 em{
-    font-style:normal;
-    color:var(--gold);
-  }
+  h1 em{ font-style:normal; }
   @media (prefers-reduced-motion: reduce){
     .eyebrow, h1 .line span{ animation:none; opacity:1; transform:none; }
   }
@@ -243,7 +240,7 @@
   .brands-band{
     border-bottom:1px solid var(--line);
     background:var(--bg-panel);
-    padding:36px 0 30px;
+    padding:32px 0 28px;
     overflow:hidden;
   }
   .brands-label{
@@ -282,7 +279,7 @@
   .framework-band{
     border-bottom:1px solid var(--line);
     background:var(--bg-panel);
-    padding:48px 0;
+    padding:40px 0;
   }
   .framework-grid{
     display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
@@ -323,11 +320,11 @@
   }
   .section-title{
     font-family:var(--display); font-size:clamp(25px,3vw,34px);
-    font-weight:700; margin:0; letter-spacing:-0.01em; line-height:1.2;
+    font-weight:700; margin:0; letter-spacing:-0.01em; line-height:1.25; max-width:32ch;
   }
 
   .about-grid{
-    display:grid; grid-template-columns:1.4fr 1fr; gap:56px;
+    display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;
   }
   .about-grid p{ color:var(--text-muted); font-size:16.5px; margin:0 0 18px; }
   .about-grid p strong{ color:var(--text); font-weight:600; }
@@ -335,7 +332,7 @@
   .fact{ padding:18px 0; border-top:1px solid var(--line); }
   .fact:first-child{ border-top:none; }
   .fact-label{ font-family:var(--mono); font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; }
-  .fact-value{ font-family:var(--display); font-size:20px; margin-top:5px; }
+  .fact-value{ font-family:var(--display); font-size:18px; margin-top:5px; line-height:1.35; }
   @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; } }
 
   .services-grid{
@@ -343,7 +340,7 @@
     background:var(--line);
     border:1px solid var(--line);
   }
-  .service-card{ background:var(--bg); padding:34px; transition:background .25s ease; }
+  .service-card{ background:var(--bg); padding:36px 34px; transition:background .25s ease; }
   .service-card:hover{ background:var(--bg-elevated); }
   .service-index{ font-family:var(--mono); color:var(--teal); font-size:13px; margin-bottom:16px; }
   .service-card h3{ font-family:var(--display); font-size:19.5px; margin:0 0 10px; font-weight:600; }
@@ -387,11 +384,11 @@
     background:var(--line); border:1px solid var(--line);
   }
   .result-card{
-    background:var(--bg-panel); padding:28px 22px;
+    background:var(--bg-panel); padding:30px 24px;
     display:flex; flex-direction:column; gap:14px;
   }
   .result-mono{ font-family:var(--mono); font-size:11.5px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em; }
-  .result-metric{ font-family:var(--display); font-size:30px; font-weight:700; color:var(--gold); line-height:1; }
+  .result-metric{ font-family:var(--display); font-size:34px; font-weight:700; color:var(--gold); line-height:1; }
   .result-metric-label{ font-size:13px; color:var(--text-muted); }
   .result-org{ margin-top:auto; padding-top:14px; border-top:1px solid var(--line); font-size:13px; color:var(--text-muted); }
   .result-org strong{ display:block; color:var(--text); font-family:var(--display); font-size:14.5px; margin-bottom:2px; }
@@ -423,7 +420,7 @@
   .lib-count b{ color:var(--gold); }
   .lib-grid{
     display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
-    background:var(--line); border:1px solid var(--line); margin-top:32px;
+    background:var(--line); border:1px solid var(--line); margin-top:0;
   }
   .lib-card{
     background:var(--bg-panel); padding:30px 26px;
@@ -455,7 +452,7 @@
   @media (max-width:860px){ .lib-grid{ grid-template-columns:repeat(2,1fr); } }
   @media (max-width:560px){ .lib-grid{ grid-template-columns:1fr; } }
 
-  .timeline{ position:relative; padding-left:28px; }
+  .timeline{ position:relative; padding-left:32px; }
   .timeline::before{
     content:""; position:absolute; left:0; top:6px; bottom:6px;
     width:1px; background:var(--line-strong);
@@ -463,7 +460,7 @@
   .tl-item{ position:relative; padding-bottom:44px; }
   .tl-item:last-child{ padding-bottom:0; }
   .tl-item::before{
-    content:""; position:absolute; left:-32px; top:5px;
+    content:""; position:absolute; left:-36px; top:5px;
     width:9px; height:9px; border-radius:50%;
     background:var(--bg); border:2px solid var(--gold);
   }
@@ -477,8 +474,8 @@
     border:1px solid var(--line-strong); padding:4px 10px;
   }
 
-  .edu-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-  .edu-card{ border-top:1px solid var(--line-strong); padding-top:16px; }
+  .edu-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .edu-card{ background:var(--bg); padding:20px 22px; }
   .edu-year{ font-family:var(--mono); font-size:12px; color:var(--gold); }
   .edu-name{ font-family:var(--display); font-size:15.5px; margin:6px 0 2px; }
   .edu-org{ color:var(--text-muted); font-size:13px; }
@@ -524,7 +521,7 @@
     font-family:var(--display); font-size:clamp(28px,4vw,44px); font-weight:700;
     max-width:14ch; margin:0 0 24px; letter-spacing:-0.02em; line-height:1.12;
   }
-  .footer-contacts{ display:flex; flex-direction:column; gap:12px; font-family:var(--mono); font-size:14px; }
+  .footer-contacts{ display:flex; flex-direction:column; gap:10px; align-self:center; font-family:var(--mono); font-size:14px; }
   .footer-contacts a{ text-decoration:none; color:var(--text-muted); transition:color .2s; }
   .footer-contacts a:hover{ color:var(--gold); }
   .footer-bottom{
@@ -532,10 +529,266 @@
     display:flex; justify-content:space-between; color:var(--text-muted);
     font-family:var(--mono); font-size:12px; flex-wrap:wrap; gap:10px;
   }
+
+  /* ---------- FLOATING CTA ---------- */
+  .floating-cta{
+    position:fixed; bottom:28px; right:28px; z-index:40;
+    background:var(--gold); color:#0F1113;
+    font-family:var(--mono); font-size:13.5px; font-weight:600;
+    padding:14px 24px; border-radius:2px; text-decoration:none;
+    box-shadow:0 4px 20px rgba(212,167,44,0.3);
+    transition:all .25s ease;
+    animation:float-pulse 3s ease-in-out infinite;
+  }
+  .floating-cta:hover{
+    background:#E7BE3D; transform:translateY(-2px);
+    box-shadow:0 6px 28px rgba(212,167,44,0.45);
+  }
+  @keyframes float-pulse{
+    0%,100%{ box-shadow:0 4px 20px rgba(212,167,44,0.3); }
+    50%{ box-shadow:0 4px 28px rgba(212,167,44,0.5); }
+  }
+  @media(max-width:640px){
+    .floating-cta{ bottom:16px; right:16px; padding:12px 18px; font-size:12.5px; }
+  }
+
+  /* ---------- ENHANCED AVAILABILITY BADGE ---------- */
+  .eyebrow-enhanced{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--mono); font-size:12.5px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--teal);
+    margin-bottom:22px;
+    background:var(--teal-soft); padding:8px 16px;
+    border:1px solid rgba(79,143,130,0.3);
+    opacity:0; animation:fadeUp .7s ease .1s forwards;
+  }
+  .dot-glow{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--teal);
+    box-shadow:0 0 6px rgba(79,143,130,0.8);
+    animation:pulse 2.2s infinite;
+  }
+
+  /* ---------- TYPING EFFECT ---------- */
+  .typing{
+    font-family:var(--display); font-size:22px; font-weight:600;
+    color:var(--gold); margin:0 0 20px;
+    border-right:2px solid var(--gold);
+    white-space:nowrap; overflow:hidden;
+    width:0; animation:typing 2.5s steps(30) .8s forwards, blink .6s step-end infinite;
+  }
+  @keyframes typing{ to{ width:100%; } }
+  @keyframes blink{ 50%{ border-color:transparent; } }
+  @media(prefers-reduced-motion:reduce){ .typing{ width:100%; animation:none; border:none; } }
+  @media(max-width:640px){ .typing{ font-size:17px; } }
+
+  /* ---------- MID-PAGE CTA BAND ---------- */
+  .cta-band{
+    background:var(--bg-panel);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:48px 0;
+    text-align:center;
+  }
+  .cta-band h3{
+    font-family:var(--display); font-size:clamp(20px,2.8vw,26px);
+    font-weight:700; margin:0 0 10px; letter-spacing:-.01em;
+  }
+  .cta-band p{
+    color:var(--text-muted); font-size:15px; margin:0 0 24px;
+    max-width:46ch; display:inline-block;
+  }
+  .cta-band .btn{ margin:0 8px; }
+
+  /* ---------- COUNTER ANIMATION ---------- */
+  .result-metric[data-target]{ transition:none; }
+
+
+  /* ---------- SCROLL PROGRESS ---------- */
+  .scroll-progress{
+    position:fixed; top:0; left:0; z-index:50;
+    width:0%; height:3px;
+    background:linear-gradient(90deg, var(--teal), var(--gold));
+    transition:width .1s linear;
+  }
+
+  /* ---------- HERO STATS ---------- */
+  .hero-stats{
+    display:flex; gap:0; margin-top:32px;
+    border:1px solid var(--line-strong);
+    opacity:0; animation:fadeUp .7s ease .8s forwards;
+  }
+  .hero-stat{
+    flex:1; padding:14px 20px; text-align:center;
+    border-right:1px solid var(--line);
+    font-family:var(--mono); font-size:12.5px; color:var(--text-muted);
+  }
+  .hero-stat:last-child{ border-right:none; }
+  .hero-stat b{
+    display:block; font-family:var(--display); font-size:22px;
+    color:var(--gold); font-weight:700; margin-bottom:2px;
+  }
+  @media(max-width:640px){
+    .hero-stats{ flex-direction:column; }
+    .hero-stat{ border-right:none; border-bottom:1px solid var(--line); padding:10px 16px; text-align:left; display:flex; gap:10px; align-items:center; }
+    .hero-stat:last-child{ border-bottom:none; }
+    .hero-stat b{ display:inline; font-size:18px; margin:0; }
+  }
+
+  /* ---------- GRADIENT TEXT ---------- */
+  h1 em{
+    font-style:normal;
+    background:linear-gradient(135deg, var(--gold) 0%, #F5F2EA 50%, var(--gold) 100%);
+    background-size:200% 200%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    animation:gradient-shift 4s ease-in-out infinite;
+  }
+  @keyframes gradient-shift{
+    0%,100%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+  }
+  @media(prefers-reduced-motion:reduce){ h1 em{ animation:none; background-position:0% 50%; } }
+
+  /* ---------- CARD ELEVATION ---------- */
+  .service-card, .result-card, .lib-card, .fw-card, .fw-item{
+    transition:background .25s ease, transform .25s ease, box-shadow .25s ease;
+  }
+  .service-card:hover, .lib-card:hover, .fw-card:hover, .fw-item:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 32px rgba(0,0,0,0.3);
+  }
+  .result-card{
+    transition:background .25s ease, transform .25s ease, box-shadow .25s ease;
+  }
+  .result-card:hover{
+    background:var(--bg-elevated);
+    transform:translateY(-3px);
+    box-shadow:0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  /* ---------- DOT GRID BG ---------- */
+  body::before{
+    content:"";
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background-image:radial-gradient(rgba(245,242,234,0.04) 1px, transparent 1px);
+    background-size:24px 24px;
+  }
+
+  /* ---------- STAGGER REVEAL ---------- */
+  .stagger > *{ opacity:0; transform:translateY(18px); transition:opacity .5s ease, transform .5s ease; }
+  .stagger.in-view > *:nth-child(1){ transition-delay:.05s; }
+  .stagger.in-view > *:nth-child(2){ transition-delay:.12s; }
+  .stagger.in-view > *:nth-child(3){ transition-delay:.19s; }
+  .stagger.in-view > *:nth-child(4){ transition-delay:.26s; }
+  .stagger.in-view > *:nth-child(5){ transition-delay:.33s; }
+  .stagger.in-view > *:nth-child(6){ transition-delay:.40s; }
+  .stagger.in-view > *{ opacity:1; transform:translateY(0); }
+  @media(prefers-reduced-motion:reduce){
+    .stagger > *{ opacity:1; transform:none; transition:none; }
+  }
+
+
+  /* ---------- 1. MOUSE-FOLLOW GLOW ON HERO ---------- */
+  .hero-section{ position:relative; }
+  .hero-glow{
+    position:absolute; width:400px; height:400px; border-radius:50%;
+    background:radial-gradient(circle, rgba(212,167,44,0.08) 0%, transparent 70%);
+    pointer-events:none; z-index:0;
+    transform:translate(-50%,-50%);
+    transition:left .3s ease, top .3s ease;
+    display:none;
+  }
+  @media(hover:hover){ .hero-glow{ display:block; } }
+
+  /* ---------- 2. SHINE SWEEP ON CTA BUTTONS ---------- */
+  .btn-primary{
+    position:relative; overflow:hidden;
+  }
+  .btn-primary::after{
+    content:""; position:absolute;
+    top:0; left:-100%; width:60%; height:100%;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation:shine-sweep 4s ease-in-out infinite;
+  }
+  @keyframes shine-sweep{
+    0%,100%{ left:-100%; }
+    50%{ left:150%; }
+  }
+  @media(prefers-reduced-motion:reduce){ .btn-primary::after{ animation:none; display:none; } }
+
+  /* ---------- 3. GLOW BORDER ON RESULT CARDS ---------- */
+  .result-card{
+    position:relative;
+  }
+  .result-card::before{
+    content:""; position:absolute; inset:-1px; z-index:-1;
+    background:transparent;
+    transition:background .4s ease;
+  }
+  .result-card:hover::before{
+    background:linear-gradient(135deg, var(--gold-soft), var(--teal-soft));
+  }
+  .result-card:hover .result-metric{
+    text-shadow:0 0 20px rgba(212,167,44,0.4);
+  }
+
+  /* ---------- 4. NAV ANIMATED UNDERLINE ---------- */
+  .nav-links a{
+    position:relative;
+  }
+  .nav-links a::after{
+    content:""; position:absolute; bottom:-4px; left:0;
+    width:0; height:1px;
+    background:var(--gold);
+    transition:width .3s ease;
+  }
+  .nav-links a:hover::after{ width:100%; }
+
+  /* ---------- 5. FORM INPUT GLOW ON FOCUS ---------- */
+  .field input:focus, .field textarea:focus{
+    outline:none;
+    border-color:var(--gold);
+    box-shadow:0 0 0 3px rgba(212,167,44,0.15), 0 0 20px rgba(212,167,44,0.08);
+  }
+
+  /* ---------- 6. STATS BAR ANIMATED BORDER ---------- */
+  .hero-stats{
+    position:relative;
+    background:var(--bg-panel);
+  }
+  .hero-stats::before{
+    content:""; position:absolute; inset:-1px; z-index:-1;
+    background:linear-gradient(90deg, var(--teal), var(--gold), var(--teal));
+    background-size:200% 100%;
+    animation:stats-border 6s linear infinite;
+  }
+  @keyframes stats-border{
+    0%{ background-position:0% 50%; }
+    100%{ background-position:200% 50%; }
+  }
+  @media(prefers-reduced-motion:reduce){ .hero-stats::before{ animation:none; } }
+
+  /* ---------- 7. SECTION LABEL GROWING DASH ---------- */
+  .section-label{
+    position:relative; display:inline-block; padding-bottom:10px;
+  }
+  .section-label::after{
+    content:""; position:absolute; bottom:0; left:0;
+    width:0; height:1px; background:var(--gold);
+    transition:width .8s ease;
+  }
+  .reveal.in-view .section-label::after,
+  .in-view .section-label::after{
+    width:48px;
+  }
+
 </style>
 </head>
 <body>
 
+<div class="scroll-progress" id="scrollbar"></div>
 <header>
   <nav class="nav">
     <a href="#top" class="nav-brand">TOLOSA<span>.</span>PM</a>
@@ -545,7 +798,7 @@
       <li><a href="#recursos">Recursos gratuitos</a></li>
       <li><a href="#resultados">Resultados</a></li>
       <li><a href="#experiencia">Experiencia</a></li>
-      <li><a href="casos.html">Casos de uso</a></li>
+      <li><a href="casos.html">Product Thinking</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
@@ -553,19 +806,21 @@
 
 <div id="top" class="hero-section">
   <div class="hero-mesh" aria-hidden="true"></div>
+  <div class="hero-glow" id="heroGlow"></div>
   <div class="wrap hero">
     <div>
-      <div class="eyebrow"><span class="dot-live"></span> Headquarter Buenos Aires, Argentina · Disponible para relocalización y remoto LATAM/USA/Europa</div>
+      <div class="eyebrow-enhanced"><span class="dot-glow"></span> Disponible para nuevos desafíos · Buenos Aires · Remoto LATAM/USA/Europa</div>
       <h1>
         <span class="line"><span>Transforming ideas into</span></span>
         <span class="line"><span>products that drive</span></span>
         <span class="line"><span><em>business growth.</em></span></span>
       </h1>
-      <p class="hero-sub">Think. Build. Launch. Scale.</p>
+      <p class="typing">Think. Build. Launch. Scale.</p>
       <p class="hero-sub" style="margin-top:16px">Product Builder con visión de negocio. Transformo oportunidades en productos escalables, liderando el ciclo completo del producto —desde el discovery hasta el Go-to-Market y la optimización continua— para generar crecimiento e impacto medible mediante estrategia, datos e Inteligencia Artificial.</p>
       <div class="cta-row">
-        <a href="#experiencia" class="btn btn-primary">Ver experiencia</a>
-        <a href="#contacto" class="btn btn-ghost">Escribime</a>
+        <a href="#contacto" class="btn btn-primary">Contactame</a>
+        <a href="#experiencia" class="btn btn-ghost">Ver experiencia</a>
+        
       </div>
     </div>
     <div class="hero-photo">
@@ -606,7 +861,7 @@
 
 <div class="framework-band">
   <div class="wrap">
-    <div class="framework-grid reveal">
+    <div class="framework-grid reveal stagger">
       <div class="fw-item">
         <div class="fw-step">
           <span class="fw-num">1</span>
@@ -648,7 +903,7 @@
       <p class="section-label">01 — Sobre mí</p>
       <h2 class="section-title">Product Builder con visión de negocio.</h2>
     </div>
-    <div class="about-grid reveal" style="grid-template-columns:1fr 1fr; align-items:center;">
+    <div class="about-grid reveal">
       <div>
         <p><strong>Construyo y escalo productos digitales que generan crecimiento e impacto medible.</strong> Lidero iniciativas B2B y B2C en fintech, banca, telecomunicaciones y e-commerce, conectando estrategia, ejecución y Go-to-Market.</p>
         <p>Conduzco el ciclo completo del producto, desde el discovery hasta el lanzamiento y la optimización continua, utilizando datos e Inteligencia Artificial para acelerar decisiones, automatizar procesos y crear mejores experiencias para los usuarios.</p>
@@ -682,7 +937,7 @@
       <p class="section-label">02 — Cómo genero impacto</p>
       <h2 class="section-title">Cuatro capacidades. Un solo objetivo: convertir oportunidades en productos que impulsan el crecimiento del negocio.</h2>
     </div>
-    <div class="services-grid reveal">
+    <div class="services-grid reveal stagger">
       <div class="service-card">
         <div class="service-index">PRODUCT</div>
         <h3>Estrategia, construcción y lanzamiento de productos</h3>
@@ -751,6 +1006,15 @@
   </div>
 </section>
 
+<div class="cta-band">
+  <div class="wrap">
+    <h3>¿Buscás este perfil para tu equipo?</h3>
+    <p>Product Builder con experiencia real en banking, eCommerce y telco. Disponible para nuevos desafíos.</p>
+    <a href="#contacto" class="btn btn-primary">Contactame</a>
+    <a href="casos.html" class="btn btn-ghost">Ver cómo pienso</a>
+  </div>
+</div>
+
 <section id="recursos">
   <div class="wrap">
     <div class="section-head reveal">
@@ -767,7 +1031,7 @@
       <p style="color:var(--text-muted); font-size:16px; margin:0 0 14px;">Si alguna de estas ideas te ayuda a construir un mejor producto, liderar un mejor equipo o tomar una mejor decisión, entonces habrá cumplido su propósito.</p>
       <p style="color:var(--gold); font-family:var(--display); font-size:17px; font-weight:600; margin:0;">El conocimiento solo crea valor cuando se comparte.</p>
     </div>
-    <div class="lib-grid reveal">
+    <div class="lib-grid reveal stagger">
       <a href="#" target="_blank" rel="noopener" class="lib-card">
         <div class="lib-top">
           <span class="lib-index">01</span>
@@ -833,8 +1097,8 @@
       <p class="section-label">04 — Impacto</p>
       <h2 class="section-title">Los mejores productos cuentan una historia. Los mejores resultados la demuestran.</h2>
     </div>
-    <p class="hero-sub reveal" style="margin-bottom:32px">Cada desafío fue diferente, pero todos tuvieron algo en común: entender el problema correcto, construir la solución adecuada y medir el impacto generado.</p>
-    <div class="results-grid reveal">
+    <p class="hero-sub reveal" style="margin-bottom:36px">Cada desafío fue diferente, pero todos tuvieron algo en común: entender el problema correcto, construir la solución adecuada y medir el impacto generado.</p>
+    <div class="results-grid reveal stagger">
       <div class="result-card">
         <div class="result-mono">Banking</div>
         <div class="result-metric">+18</div>
@@ -862,6 +1126,14 @@
     </div>
   </div>
 </section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <h3>Estos resultados pueden ser los de tu próximo producto.</h3>
+    <p>Hablemos sobre cómo puedo aportar a tu equipo.</p>
+    <a href="#contacto" class="btn btn-primary">Escribime</a>
+  </div>
+</div>
 
 <section id="experiencia">
   <div class="wrap">
@@ -916,7 +1188,7 @@
       <p class="section-label">06 — Formación</p>
       <h2 class="section-title">Base académica y certificaciones.</h2>
     </div>
-    <div class="edu-grid reveal">
+    <div class="edu-grid reveal stagger">
       <div class="edu-card">
         <div class="edu-year">2024</div>
         <div class="edu-name">CX Management, Ingresos y Fidelización</div>
@@ -996,7 +1268,7 @@
       <div class="footer-contacts">
         <a href="mailto:enmanueltolosa@gmail.com">enmanueltolosa@gmail.com</a>
         <a href="tel:+5491123932507">+54 9 11 2393-2507</a>
-        <a href="https://linkedin.com/in/enmanueltolosa" target="_blank" rel="noopener">LinkedIn — Enmanuel Tolosa</a>
+        <a href="https://www.linkedin.com/in/emanueltc/" target="_blank" rel="noopener">LinkedIn — Enmanuel Tolosa</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1013,11 +1285,71 @@
         if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
       });
     }, { threshold: 0.15 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
   } else {
-    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
+    document.querySelectorAll('.reveal, .stagger').forEach(el => el.classList.add('in-view'));
   }
 </script>
 
+
+<a href="#contacto" class="floating-cta">Hablemos →</a>
+
+<script>
+// Counter animation for result metrics
+function animateCounters(){
+  document.querySelectorAll('.result-metric').forEach(el=>{
+    const text = el.textContent.trim();
+    const match = text.match(/([+$]?)([\d.]+)(.*)/);
+    if(!match) return;
+    const prefix = match[1], target = parseFloat(match[2]), suffix = match[3];
+    const isFloat = text.includes('.');
+    let start = 0;
+    const duration = 1800;
+    const startTime = performance.now();
+    function update(now){
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed/duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = isFloat ? (target * eased).toFixed(0) : Math.floor(target * eased);
+      el.textContent = prefix + current + suffix;
+      if(progress < 1) requestAnimationFrame(update);
+      else el.textContent = prefix + (isFloat ? target.toFixed(0) : target) + suffix;
+    }
+    requestAnimationFrame(update);
+  });
+}
+const counterIO = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ animateCounters(); counterIO.disconnect(); }
+  });
+},{threshold:0.3});
+const resultsGrid = document.querySelector('.results-grid');
+if(resultsGrid) counterIO.observe(resultsGrid);
+</script>
+
+<script>
+// Scroll progress bar
+const bar = document.getElementById('scrollbar');
+window.addEventListener('scroll', ()=>{
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  bar.style.width = pct + '%';
+});
+</script>
+
+<script>
+// Mouse-follow glow on hero
+const heroSection = document.querySelector('.hero-section');
+const glow = document.getElementById('heroGlow');
+if(heroSection && glow && window.matchMedia('(hover:hover)').matches){
+  heroSection.addEventListener('mousemove', (e)=>{
+    const rect = heroSection.getBoundingClientRect();
+    glow.style.left = (e.clientX - rect.left) + 'px';
+    glow.style.top = (e.clientY - rect.top) + 'px';
+  });
+  heroSection.addEventListener('mouseenter', ()=>{ glow.style.opacity='1'; });
+  heroSection.addEventListener('mouseleave', ()=>{ glow.style.opacity='0'; });
+}
+</script>
 </body>
 </html>
