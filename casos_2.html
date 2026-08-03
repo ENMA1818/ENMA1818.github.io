@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Thinking — Enmanuel Tolosa</title>
+<meta name="description" content="Cómo pienso. Cómo tomo decisiones. Cómo construyo productos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0F1113;--bg-panel:#171A1E;--bg-elevated:#1D2126;
+    --text:#F5F2EA;--text-muted:#9BA2AC;
+    --gold:#D4A72C;--gold-soft:rgba(212,167,44,0.14);
+    --teal:#4F8F82;--teal-soft:rgba(79,143,130,0.14);
+    --line:rgba(245,242,234,0.09);--line-strong:rgba(245,242,234,0.20);
+    --display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--mono:'IBM Plex Mono',monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .wrap{max-width:960px;margin:0 auto;padding:0 32px}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in-view{opacity:1;transform:translateY(0)}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:30;background:rgba(15,17,19,0.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1120px;margin:0 auto}
+  .nav-brand{font-family:var(--mono);font-size:14px;letter-spacing:.08em;text-decoration:none;color:var(--text)}
+  .nav-brand span{color:var(--gold)}
+  .nav-back{font-family:var(--mono);font-size:13px;color:var(--text-muted);text-decoration:none;transition:color .2s}
+  .nav-back:hover{color:var(--gold)}
+
+  /* HERO */
+  .hero{padding:96px 0 64px;border-bottom:1px solid var(--line)}
+  .hero-num{font-family:var(--mono);font-size:13px;color:var(--teal);margin-bottom:8px}
+  .hero-label{font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+  h1{font-family:var(--display);font-weight:700;font-size:clamp(32px,4.5vw,48px);line-height:1.1;letter-spacing:-.02em;margin:0 0 24px;max-width:22ch}
+  h1 em{font-style:normal;color:var(--gold)}
+  .hero-sub{color:var(--text-muted);font-size:17px;max-width:58ch;margin:0 0 16px}
+  .hero-highlight{color:var(--text);font-size:18px;font-weight:600;margin:0 0 20px;max-width:58ch}
+
+  /* MANIFESTO */
+  .manifesto{padding:72px 0;border-bottom:1px solid var(--line)}
+  .manifesto p{color:var(--text-muted);font-size:16.5px;max-width:62ch;margin:0 0 16px}
+  .manifesto p:last-child{margin-bottom:0}
+  .manifesto p strong{color:var(--text);font-weight:600}
+  .manifesto .closing{color:var(--gold);font-family:var(--display);font-size:17px;font-weight:600;margin-top:28px}
+
+  /* FRAMEWORK */
+  .fw-section{padding:72px 0;border-bottom:1px solid var(--line)}
+  .fw-title{font-family:var(--display);font-size:clamp(22px,3vw,28px);font-weight:700;margin:0 0 36px;letter-spacing:-.01em}
+  .fw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .fw-card{background:var(--bg-panel);padding:28px 24px;display:flex;flex-direction:column;gap:14px}
+  .fw-card-label{font-family:var(--display);font-size:18px;font-weight:700;color:var(--gold)}
+  .fw-card-title{font-family:var(--display);font-size:15px;font-weight:600;margin:0}
+  .fw-card p{color:var(--text-muted);font-size:13.5px;margin:0}
+  .fw-card p em{font-style:italic;color:var(--text-muted);display:block;margin-top:10px;font-size:13px}
+  @media(max-width:760px){.fw-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.fw-grid{grid-template-columns:1fr}}
+
+  /* LIBRARY INDEX */
+  .lib-section{padding:72px 0;border-bottom:1px solid var(--line)}
+  .lib-title{font-family:var(--display);font-size:clamp(22px,3vw,28px);font-weight:700;margin:0 0 8px;letter-spacing:-.01em}
+  .lib-subtitle{font-family:var(--mono);font-size:13px;color:var(--text-muted);margin:0 0 28px}
+  .lib-intro-text{color:var(--text-muted);font-size:15px;max-width:58ch;margin:0 0 32px}
+  .lib-intro-text em{font-style:normal;color:var(--text);font-weight:600}
+  .case-index{display:flex;flex-direction:column;gap:0;background:var(--bg);border:1px solid var(--line)}
+  .case-expand{ border-bottom:1px solid var(--line); }
+  .case-expand:last-child{ border-bottom:none; }
+  .index-item{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;background:var(--bg-panel);padding:24px 28px;text-decoration:none;transition:background .25s;cursor:pointer;list-style:none}
+  .index-item::-webkit-details-marker{display:none}
+  .index-item:hover{background:var(--bg-elevated)}
+  .case-expand[open] .index-item{border-bottom:1px solid var(--line)}
+  .case-expand[open] .index-arrow{color:var(--gold)}
+  .case-content{padding:40px 28px;background:var(--bg)}
+  .case-content .case-header{margin-bottom:40px}
+  .index-num{font-family:var(--mono);font-size:13px;color:var(--teal)}
+  .index-title{font-family:var(--display);font-size:17px;font-weight:600}
+  .index-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .index-meta span{font-family:var(--mono);font-size:11px;color:var(--text-muted);border:1px solid var(--line-strong);padding:3px 8px}
+  .index-meta span.chip-real{color:var(--teal);border-color:rgba(79,143,130,0.4);background:var(--teal-soft)}
+  .index-arrow{color:var(--text-muted);font-family:var(--mono);transition:color .2s,transform .2s}
+  .index-item:hover .index-arrow{color:var(--gold);transform:translateX(4px)}
+  @media(max-width:640px){.index-item{grid-template-columns:1fr;gap:8px}.index-arrow{display:none}}
+
+  /* CASO */
+  .case-article{padding:80px 0;border-bottom:1px solid var(--line)}
+  .case-header{margin-bottom:48px}
+  .case-kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+  .case-title{font-family:var(--display);font-size:clamp(24px,3.4vw,34px);font-weight:700;line-height:1.18;letter-spacing:-.01em;margin:0 0 18px;max-width:30ch}
+  .case-chips{display:flex;gap:8px;flex-wrap:wrap}
+  .case-chips span{font-family:var(--mono);font-size:11.5px;padding:5px 11px;border:1px solid var(--line-strong);color:var(--text-muted)}
+  .case-chips span.chip-real{color:var(--teal);border-color:rgba(79,143,130,0.4);background:var(--teal-soft)}
+
+  .phase{margin-bottom:40px}
+  .phase-tag{display:inline-block;font-family:var(--display);font-size:13px;font-weight:700;color:var(--gold);background:var(--gold-soft);padding:4px 10px;margin-bottom:14px;letter-spacing:.04em}
+  .phase-label{font-family:var(--display);font-size:20px;font-weight:700;margin:0 0 16px}
+  .phase p{margin:0 0 14px;color:var(--text-muted);font-size:16px;max-width:66ch}
+  .phase p:last-child{margin-bottom:0}
+  .phase p strong{color:var(--text);font-weight:600}
+
+  /* OPTIONS */
+  .options{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:20px 0 8px}
+  @media(max-width:760px){.options{grid-template-columns:1fr}}
+  .option{background:var(--bg-panel);padding:24px;display:flex;flex-direction:column;gap:10px;position:relative}
+  .option.chosen{background:var(--bg-elevated)}
+  .option.chosen::before{content:"ELEGIDA";position:absolute;top:14px;right:14px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--gold);border:1px solid var(--gold-soft);background:var(--gold-soft);padding:3px 8px}
+  .option-name{font-family:var(--mono);font-size:12px;color:var(--gold)}
+  .option h4{font-family:var(--display);font-size:15.5px;font-weight:600;margin:0;padding-right:64px}
+  .option p{font-size:13.5px;color:var(--text-muted);margin:0}
+  .option .tradeoff{font-size:12.5px}
+  .option .tradeoff b{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);display:block;margin-bottom:3px;font-weight:500}
+
+  /* METRICS */
+  .metrics-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .metrics-row em{font-style:normal;font-family:var(--mono);font-size:12.5px;color:var(--gold);border:1px solid var(--gold-soft);background:var(--gold-soft);padding:6px 12px}
+
+  /* SCALE LIST */
+  .scale-list{list-style:none;padding:0;margin:14px 0 0}
+  .scale-list li{font-size:14.5px;color:var(--text-muted);padding:6px 0;padding-left:18px;position:relative}
+  .scale-list li::before{content:"→";position:absolute;left:0;color:var(--gold);font-family:var(--mono);font-size:12px}
+
+  .case-closing{color:var(--gold);font-family:var(--display);font-size:17px;font-weight:600;margin-top:28px}
+
+  /* CTA */
+  .cta-final{padding:80px 0 96px}
+  .cta-final h2{font-family:var(--display);font-size:clamp(24px,3.4vw,36px);font-weight:700;letter-spacing:-.01em;margin:0 0 16px;max-width:22ch;line-height:1.15}
+  .cta-final p{color:var(--text-muted);margin:0 0 28px;max-width:56ch}
+  .btn{font-family:var(--mono);font-size:13.5px;letter-spacing:.03em;padding:13px 22px;border-radius:2px;text-decoration:none;display:inline-block;transition:all .2s;background:var(--gold);color:#0F1113;font-weight:600}
+  .btn:hover{background:#E7BE3D;transform:translateY(-1px)}
+
+  footer{border-top:1px solid var(--line);padding:28px 0}
+  .footer-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--text-muted);font-family:var(--mono);font-size:12px}
+
+  /* ---------- SCROLL PROGRESS ---------- */
+  .scroll-progress{
+    position:fixed; top:0; left:0; z-index:50;
+    width:0%; height:3px;
+    background:linear-gradient(90deg, var(--teal), var(--gold));
+    transition:width .1s linear;
+  }
+
+  /* ---------- DOT GRID BG ---------- */
+  body::before{
+    content:"";
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background-image:radial-gradient(rgba(245,242,234,0.04) 1px, transparent 1px);
+    background-size:24px 24px;
+  }
+
+  /* ---------- HERO GLOW ---------- */
+  .hero{ position:relative; overflow:hidden; }
+  .hero-glow{
+    position:absolute; width:400px; height:400px; border-radius:50%;
+    background:radial-gradient(circle, rgba(212,167,44,0.08) 0%, transparent 70%);
+    pointer-events:none; z-index:0;
+    transform:translate(-50%,-50%);
+    transition:left .3s ease, top .3s ease;
+    display:none; opacity:0;
+  }
+  @media(hover:hover){ .hero-glow{ display:block; } }
+
+  /* ---------- SHINE SWEEP ON CTA ---------- */
+  .btn{
+    position:relative; overflow:hidden;
+  }
+  .btn::after{
+    content:""; position:absolute;
+    top:0; left:-100%; width:60%; height:100%;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation:shine-sweep 4s ease-in-out infinite;
+  }
+  @keyframes shine-sweep{
+    0%,100%{ left:-100%; }
+    50%{ left:150%; }
+  }
+  @media(prefers-reduced-motion:reduce){ .btn::after{ animation:none; display:none; } }
+
+  /* ---------- NAV ANIMATED UNDERLINE ---------- */
+  .nav-back{
+    position:relative;
+  }
+  .nav-back::after{
+    content:""; position:absolute; bottom:-4px; left:0;
+    width:0; height:1px;
+    background:var(--gold);
+    transition:width .3s ease;
+  }
+  .nav-back:hover::after{ width:100%; }
+
+  /* ---------- CARD ELEVATION ---------- */
+  .fw-card, .option, .index-item{
+    transition:background .25s ease, transform .25s ease, box-shadow .25s ease;
+  }
+  .fw-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 32px rgba(0,0,0,0.3);
+  }
+  .option:hover{
+    background:var(--bg-elevated);
+    transform:translateY(-2px);
+    box-shadow:0 6px 24px rgba(0,0,0,0.25);
+  }
+
+  /* ---------- OPTION GLOW ON CHOSEN ---------- */
+  .option.chosen{
+    border:1px solid rgba(212,167,44,0.2);
+    box-shadow:0 0 24px rgba(212,167,44,0.08);
+  }
+
+  /* ---------- PHASE TAG GLOW ---------- */
+  .phase-tag{
+    box-shadow:0 0 12px rgba(212,167,44,0.15);
+    transition:box-shadow .3s ease;
+  }
+
+  /* ---------- METRICS GLOW ---------- */
+  .metrics-row em{
+    transition:box-shadow .3s ease, transform .3s ease;
+  }
+  .metrics-row em:hover{
+    box-shadow:0 0 16px rgba(212,167,44,0.25);
+    transform:translateY(-1px);
+  }
+
+  /* ---------- SCALE LIST STAGGER ---------- */
+  .scale-list li{
+    opacity:0; transform:translateX(-10px);
+    transition:opacity .4s ease, transform .4s ease;
+  }
+  .in-view .scale-list li{ opacity:1; transform:translateX(0); }
+  .in-view .scale-list li:nth-child(1){ transition-delay:.05s; }
+  .in-view .scale-list li:nth-child(2){ transition-delay:.1s; }
+  .in-view .scale-list li:nth-child(3){ transition-delay:.15s; }
+  .in-view .scale-list li:nth-child(4){ transition-delay:.2s; }
+  .in-view .scale-list li:nth-child(5){ transition-delay:.25s; }
+  .in-view .scale-list li:nth-child(6){ transition-delay:.3s; }
+  @media(prefers-reduced-motion:reduce){
+    .scale-list li{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* ---------- STAGGER GRID ---------- */
+  .stagger > *{ opacity:0; transform:translateY(18px); transition:opacity .5s ease, transform .5s ease; }
+  .stagger.in-view > *:nth-child(1){ transition-delay:.05s; }
+  .stagger.in-view > *:nth-child(2){ transition-delay:.12s; }
+  .stagger.in-view > *:nth-child(3){ transition-delay:.19s; }
+  .stagger.in-view > *:nth-child(4){ transition-delay:.26s; }
+  .stagger.in-view > *{ opacity:1; transform:translateY(0); }
+  @media(prefers-reduced-motion:reduce){
+    .stagger > *{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* ---------- MANIFESTO QUOTE LINE ---------- */
+  .manifesto{
+    position:relative;
+    padding-left:24px;
+  }
+  .manifesto::before{
+    content:""; position:absolute; left:0; top:0; bottom:0;
+    width:2px;
+    background:linear-gradient(180deg, var(--gold), var(--teal), transparent);
+  }
+
+  /* ---------- CLOSING GLOW ---------- */
+  .closing, .case-closing{
+    text-shadow:0 0 20px rgba(212,167,44,0.2);
+  }
+
+  /* ---------- FLOATING CTA ---------- */
+  .floating-cta{
+    position:fixed; bottom:28px; right:28px; z-index:40;
+    background:var(--gold); color:#0F1113;
+    font-family:var(--mono); font-size:13.5px; font-weight:600;
+    padding:14px 24px; border-radius:2px; text-decoration:none;
+    box-shadow:0 4px 20px rgba(212,167,44,0.3);
+    transition:all .25s ease;
+    animation:float-pulse 3s ease-in-out infinite;
+  }
+  .floating-cta:hover{
+    background:#E7BE3D; transform:translateY(-2px);
+    box-shadow:0 6px 28px rgba(212,167,44,0.45);
+  }
+  @keyframes float-pulse{
+    0%,100%{ box-shadow:0 4px 20px rgba(212,167,44,0.3); }
+    50%{ box-shadow:0 4px 28px rgba(212,167,44,0.5); }
+  }
+  @media(max-width:640px){
+    .floating-cta{ bottom:16px; right:16px; padding:12px 18px; font-size:12.5px; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollbar"></div>
+<header>
+  <nav class="nav">
+    <a href="index.html" class="nav-brand">TOLOSA<span>.</span>PM</a>
+    <a href="index.html" class="nav-back">← Volver al inicio</a>
+  </nav>
+</header>
+
+<!-- ==================== HERO ==================== -->
+<div class="wrap hero">
+  <div class="hero-glow" id="heroGlow"></div>
+  <p class="hero-num">06</p>
+  <p class="hero-label">THINK</p>
+  <h1>Product Thinking</h1>
+  <p class="hero-highlight">Cómo pienso. Cómo tomo decisiones. Cómo construyo productos.</p>
+  <p class="hero-sub">Los resultados cuentan una parte de la historia.</p>
+  <p class="hero-sub" style="margin-bottom:0">Estos casos cuentan la otra.</p>
+</div>
+
+<!-- ==================== MANIFESTO ==================== -->
+<div class="wrap manifesto reveal">
+  <p>Detrás de cada producto hay conversaciones difíciles, decisiones incómodas y muchas hipótesis que poner a prueba. Eso es justamente lo que más disfruto de mi trabajo.</p>
+  <p>En esta sección comparto algunos de los desafíos que tuve la oportunidad de liderar, junto con análisis de productos y problemas de negocio que me resultan especialmente interesantes.</p>
+  <p>Algunos casos nacen de mi experiencia profesional. Otros son Product Challenges desarrollados por iniciativa propia.</p>
+  <p>Todos tienen el mismo objetivo: mostrar <strong>cómo pienso, cómo tomo decisiones y cómo transformo problemas complejos en productos que generan impacto.</strong></p>
+  <p class="closing">Porque, al final, eso es lo que más disfruto construir.</p>
+</div>
+
+<!-- ==================== MI FORMA DE TRABAJAR ==================== -->
+<div class="wrap fw-section reveal">
+  <h2 class="fw-title">Mi forma de trabajar</h2>
+  <div class="fw-grid stagger">
+    <div class="fw-card">
+      <span class="fw-card-label">THINK</span>
+      <h3 class="fw-card-title">Todo comienza entendiendo el negocio.</h3>
+      <p>Antes de hablar de funcionalidades, necesito entender qué problema estamos resolviendo, por qué es importante y qué impacto tendría resolverlo.<em>Las mejores decisiones casi siempre nacen de hacer las preguntas correctas.</em></p>
+    </div>
+    <div class="fw-card">
+      <span class="fw-card-label">BUILD</span>
+      <h3 class="fw-card-title">Con el problema claro, llega el momento de construir.</h3>
+      <p>Defino la estrategia, priorizo el roadmap, alineo a los equipos y convierto una visión en un plan de ejecución.<em>No siempre gana la solución más grande. Normalmente gana la que entrega más valor con el menor costo de aprendizaje.</em></p>
+    </div>
+    <div class="fw-card">
+      <span class="fw-card-label">LAUNCH</span>
+      <h3 class="fw-card-title">Un lanzamiento nunca representa el final del proyecto.</h3>
+      <p>Es el momento en que las hipótesis empiezan a enfrentarse con la realidad.<em>Por eso me gusta trabajar cerca del negocio, del equipo comercial y, sobre todo, de los clientes.</em></p>
+    </div>
+    <div class="fw-card">
+      <span class="fw-card-label">SCALE</span>
+      <h3 class="fw-card-title">Después del lanzamiento comienza una nueva etapa.</h3>
+      <p>Medir, aprender y optimizar. Los productos evolucionan constantemente, y siempre existe una oportunidad para mejorar la experiencia, simplificar procesos o encontrar nuevas fuentes de crecimiento.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PRODUCT LIBRARY ==================== -->
+<div class="wrap lib-section reveal">
+  <h2 class="lib-title">Product Library</h2>
+  <p class="lib-subtitle">Experiencias reales y Product Challenges</p>
+  <p class="lib-intro-text">Cada caso aborda un problema distinto. <em>Lo interesante no es la industria. Lo interesante es el razonamiento detrás de cada decisión.</em></p>
+  <div class="case-index">
+    <details class="case-expand" id="caso-01">
+      <summary class="index-item">
+        <span class="index-num">01</span>
+        <span>
+          <span class="index-title">Lanzar TV Digital B2B en un mercado dominado por el cable</span>
+          <span class="index-meta"><span>Telecomunicaciones · B2B</span><span>Lanzamiento 0→1</span><span class="chip-real">Experiencia Real</span><span>5 min de lectura</span></span>
+        </span>
+        <span class="index-arrow">→ Ver caso</span>
+      </summary>
+      <div class="case-content">
+
+  <div class="case-header">
+    <p class="case-kicker">Caso 01</p>
+    <h2 class="case-title">Lanzar un producto de TV Digital (IPTV/OTT) para empresas</h2>
+    <div class="case-chips">
+      <span>Telecomunicaciones · B2B</span>
+      <span>Lanzamiento 0→1</span>
+      <span class="chip-real">Experiencia Real · Telefónica Argentina · 2018–2019</span>
+    </div>
+  </div>
+
+  <!-- THINK -->
+  <div class="phase">
+    <span class="phase-tag">THINK</span>
+    <p class="phase-label">El contexto</p>
+    <p>Cuando llegué al proyecto, Telefónica ya contaba con una plataforma IPTV para clientes residenciales.</p>
+    <p>El desafío era diferente: llevar esa capacidad al segmento corporativo y completar la estrategia de <strong>Cuádruple Play.</strong></p>
+    <p>La televisión no era el negocio principal. Era la pieza que fortalecía toda la propuesta de valor, ayudaba a reducir el churn y aumentaba el valor de cada cliente dentro del ecosistema de servicios.</p>
+    <p>La infraestructura ya existía. La oportunidad consistía en adaptarla al segmento Empresas antes que la competencia.</p>
+  </div>
+
+  <div class="phase">
+    <p class="phase-label">El verdadero problema</p>
+    <p>A simple vista parecía un proyecto tecnológico. <strong>Pero no lo era.</strong></p>
+    <p>El desafío consistía en alinear áreas con prioridades muy diferentes.</p>
+    <p>Ingeniería buscaba estabilidad. Marketing quería funcionalidades. Comercial necesitaba salir al mercado cuanto antes. BI necesitaba información para medir el impacto.</p>
+    <p><strong>Mi trabajo fue lograr que todos dejaran de optimizar su propia área y comenzaran a construir un mismo producto.</strong></p>
+  </div>
+
+  <div class="phase">
+    <p class="phase-label">Las alternativas</p>
+    <div class="options">
+      <div class="option">
+        <span class="option-name">Opción A</span>
+        <h4>Lanzamiento Full Feature</h4>
+        <p>Construir toda la plataforma antes de salir al mercado.</p>
+        <p class="tradeoff"><b>Trade-off</b>Una propuesta mucho más completa, pero con más de dos años de desarrollo y un riesgo muy alto de retrasar el lanzamiento.</p>
+      </div>
+      <div class="option chosen">
+        <span class="option-name">Opción B</span>
+        <h4>MVP por fases</h4>
+        <p>Lanzar el núcleo del producto e iterar junto a clientes reales.</p>
+        <p class="tradeoff"><b>Trade-off</b>Menos funcionalidades en la primera versión, pero un Time-to-Market mucho más competitivo y aprendizaje continuo.</p>
+      </div>
+      <div class="option">
+        <span class="option-name">Opción C</span>
+        <h4>Marca Blanca</h4>
+        <p>Construir la oferta sobre una plataforma OTT existente mediante un partnership.</p>
+        <p class="tradeoff"><b>Trade-off</b>Mayor velocidad de salida, aunque con menor diferenciación y menor capacidad de evolución.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <p class="phase-label">La decisión</p>
+    <p><strong>Elegimos construir un MVP.</strong></p>
+    <p>No porque fuera la alternativa más sencilla. Sino porque era la que mejor respondía al objetivo del negocio.</p>
+    <p>En un producto B2B entendí que el éxito no depende de tener más funcionalidades. Depende de darle al equipo comercial una solución confiable para comenzar a vender, aprender del mercado y evolucionar el producto con evidencia en lugar de suposiciones.</p>
+  </div>
+
+  <!-- BUILD -->
+  <div class="phase">
+    <span class="phase-tag">BUILD</span>
+    <p class="phase-label">Mi rol</p>
+    <p>Lideré la estrategia y la construcción del producto desde la perspectiva de negocio.</p>
+    <p>Trabajé en la definición de la visión, la priorización del roadmap y backlog, la coordinación entre Producto, Tecnología, Marketing, BI y Comercial, además del diseño del proceso de onboarding para reducir la carga operativa desde el primer día.</p>
+    <p><strong>Más que coordinar entregas, mi responsabilidad era mantener a todos enfocados en el mismo objetivo.</strong></p>
+  </div>
+
+  <!-- LAUNCH -->
+  <div class="phase">
+    <span class="phase-tag">LAUNCH</span>
+    <p class="phase-label">El resultado</p>
+    <div class="metrics-row">
+      <em>Lanzamiento del producto en 12 meses</em>
+      <em>+25% en tasa de conversión</em>
+      <em>+25% en satisfacción del cliente corporativo</em>
+    </div>
+    <p style="margin-top:20px">Más allá de las métricas, el mayor aprendizaje fue confirmar que <strong>una estrategia bien priorizada puede generar más valor que una solución perfecta entregada demasiado tarde.</strong></p>
+  </div>
+
+  <!-- SCALE -->
+  <div class="phase">
+    <span class="phase-tag">SCALE</span>
+    <p class="phase-label">Si tuviera que construir este producto nuevamente</p>
+    <p>Mantendría la estrategia general, pero ampliaría la forma de medir el éxito.</p>
+    <p>Además de las métricas del lanzamiento, pondría especial atención en indicadores que validaran el impacto del negocio a largo plazo:</p>
+    <ul class="scale-list">
+      <li>Churn de clientes 4P frente a clientes 2P y 3P.</li>
+      <li>Activación durante los primeros 30 días.</li>
+      <li>Adopción por cuenta corporativa.</li>
+      <li>Tickets de soporte por cliente.</li>
+      <li>Revenue incremental generado por clientes existentes.</li>
+      <li>Valor aportado por la estrategia de convergencia.</li>
+    </ul>
+    <p class="case-closing">Porque lanzar un producto nunca representa el final del trabajo. Es el comienzo del aprendizaje.</p>
+  </div>
+
+      </div><!-- .case-content -->
+    </details>
+  </div>
+</div>
+
+<!-- ==================== CTA ==================== -->
+<div class="wrap cta-final">
+  <h2>¿Tenés un problema de producto parecido?</h2>
+  <p>Estos casos se actualizan seguido con nuevos problemas que analizo. Si alguno se parece al que tenés en tu equipo, hablemos.</p>
+  <a href="index.html#contacto" class="btn">Escribime</a>
+</div>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>Headquarter Buenos Aires, Argentina — remoto LATAM / USA / Europa</span>
+    <span>© 2026 Enmanuel Tolosa</span>
+  </div>
+</footer>
+
+<script>
+  if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    const io=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('in-view');io.unobserve(el.target)}})},{threshold:.12});
+    document.querySelectorAll('.reveal,.stagger').forEach(el=>io.observe(el));
+  }else{document.querySelectorAll('.reveal,.stagger').forEach(el=>el.classList.add('in-view'))}
+</script>
+
+<a href="index.html#contacto" class="floating-cta">Contactame →</a>
+
+<script>
+// Scroll progress bar
+const bar = document.getElementById('scrollbar');
+window.addEventListener('scroll', ()=>{
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  bar.style.width = pct + '%';
+});
+
+// Mouse-follow glow on hero
+const heroEl = document.querySelector('.hero');
+const glow = document.getElementById('heroGlow');
+if(heroEl && glow && window.matchMedia('(hover:hover)').matches){
+  heroEl.addEventListener('mousemove', (e)=>{
+    const rect = heroEl.getBoundingClientRect();
+    glow.style.left = (e.clientX - rect.left) + 'px';
+    glow.style.top = (e.clientY - rect.top) + 'px';
+  });
+  heroEl.addEventListener('mouseenter', ()=>{ glow.style.opacity='1'; });
+  heroEl.addEventListener('mouseleave', ()=>{ glow.style.opacity='0'; });
+}
+
+// Add in-view to scale list parent on scroll
+const scalePhase = document.querySelector('.scale-list')?.closest('.phase');
+if(scalePhase){
+  const sio = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in-view'); sio.unobserve(e.target); }});
+  },{threshold:0.2});
+  sio.observe(scalePhase);
+}
+</script>
+</body>
+</html>
