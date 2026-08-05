@@ -148,7 +148,10 @@
   @keyframes lineUp{
     to{ opacity:1; transform:translateY(0); }
   }
-  h1 em{ font-style:normal; }
+  h1 em{
+    font-style:normal;
+    color:var(--gold);
+  }
   @media (prefers-reduced-motion: reduce){
     .eyebrow, h1 .line span{ animation:none; opacity:1; transform:none; }
   }
@@ -320,7 +323,7 @@
   }
   .section-title{
     font-family:var(--display); font-size:clamp(25px,3vw,34px);
-    font-weight:700; margin:0; letter-spacing:-0.01em; line-height:1.25; max-width:32ch;
+    font-weight:700; margin:0; letter-spacing:-0.01em; line-height:1.25; max-width:36ch;
   }
 
   .about-grid{
@@ -332,7 +335,7 @@
   .fact{ padding:18px 0; border-top:1px solid var(--line); }
   .fact:first-child{ border-top:none; }
   .fact-label{ font-family:var(--mono); font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; }
-  .fact-value{ font-family:var(--display); font-size:18px; margin-top:5px; line-height:1.35; }
+  .fact-value{ font-family:var(--display); font-size:17px; margin-top:5px; line-height:1.4; }
   @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; } }
 
   .services-grid{
@@ -340,7 +343,7 @@
     background:var(--line);
     border:1px solid var(--line);
   }
-  .service-card{ background:var(--bg); padding:36px 34px; transition:background .25s ease; }
+  .service-card{ background:var(--bg); padding:36px 32px; transition:background .25s ease; }
   .service-card:hover{ background:var(--bg-elevated); }
   .service-index{ font-family:var(--mono); color:var(--teal); font-size:13px; margin-bottom:16px; }
   .service-card h3{ font-family:var(--display); font-size:19.5px; margin:0 0 10px; font-weight:600; }
@@ -384,7 +387,7 @@
     background:var(--line); border:1px solid var(--line);
   }
   .result-card{
-    background:var(--bg-panel); padding:30px 24px;
+    background:var(--bg-panel); padding:32px 26px;
     display:flex; flex-direction:column; gap:14px;
   }
   .result-mono{ font-family:var(--mono); font-size:11.5px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em; }
@@ -411,7 +414,7 @@
   /* Biblioteca de recursos */
   .lib-intro{
     display:flex; justify-content:space-between; align-items:flex-end;
-    gap:24px; flex-wrap:wrap; margin-bottom:8px;
+    gap:24px; flex-wrap:wrap; margin-bottom:12px;
   }
   .lib-count{
     font-family:var(--mono); font-size:12.5px; color:var(--text-muted);
@@ -420,7 +423,7 @@
   .lib-count b{ color:var(--gold); }
   .lib-grid{
     display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
-    background:var(--line); border:1px solid var(--line); margin-top:0;
+    background:var(--line); border:1px solid var(--line); margin-top:32px;
   }
   .lib-card{
     background:var(--bg-panel); padding:30px 26px;
@@ -484,7 +487,7 @@
 
   /* ---------- FORM CONTACTO ---------- */
   .contact-grid{
-    display:grid; grid-template-columns:1.2fr 0.8fr; gap:56px; align-items:start;
+    display:grid; grid-template-columns:1.2fr 0.8fr; gap:48px; align-items:start;
   }
   @media (max-width:860px){ .contact-grid{ grid-template-columns:1fr; } }
   .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
@@ -519,9 +522,9 @@
   }
   .footer-title{
     font-family:var(--display); font-size:clamp(28px,4vw,44px); font-weight:700;
-    max-width:14ch; margin:0 0 24px; letter-spacing:-0.02em; line-height:1.12;
+    max-width:16ch; margin:0 0 24px; letter-spacing:-0.02em; line-height:1.12;
   }
-  .footer-contacts{ display:flex; flex-direction:column; gap:10px; align-self:center; font-family:var(--mono); font-size:14px; }
+  .footer-contacts{ display:flex; flex-direction:column; gap:12px; font-family:var(--mono); font-size:14px; }
   .footer-contacts a{ text-decoration:none; color:var(--text-muted); transition:color .2s; }
   .footer-contacts a:hover{ color:var(--gold); }
   .footer-bottom{
@@ -530,265 +533,77 @@
     font-family:var(--mono); font-size:12px; flex-wrap:wrap; gap:10px;
   }
 
-  /* ---------- FLOATING CTA ---------- */
-  .floating-cta{
-    position:fixed; bottom:28px; right:28px; z-index:40;
-    background:var(--gold); color:#0F1113;
-    font-family:var(--mono); font-size:13.5px; font-weight:600;
-    padding:14px 24px; border-radius:2px; text-decoration:none;
-    box-shadow:0 4px 20px rgba(212,167,44,0.3);
+  /* ---------- WHATSAPP FLOAT ---------- */
+  .float-wa{
+    position:fixed;bottom:28px;left:28px;z-index:40;
+    width:54px;height:54px;border-radius:50%;
+    background:#25D366;display:flex;align-items:center;justify-content:center;
+    text-decoration:none;
+    box-shadow:0 4px 16px rgba(37,211,102,0.35);
     transition:all .25s ease;
-    animation:float-pulse 3s ease-in-out infinite;
+    animation:wa-pulse 3s ease-in-out infinite;
   }
-  .floating-cta:hover{
-    background:#E7BE3D; transform:translateY(-2px);
-    box-shadow:0 6px 28px rgba(212,167,44,0.45);
+  .float-wa:hover{
+    transform:scale(1.08);
+    box-shadow:0 6px 24px rgba(37,211,102,0.5);
   }
-  @keyframes float-pulse{
-    0%,100%{ box-shadow:0 4px 20px rgba(212,167,44,0.3); }
-    50%{ box-shadow:0 4px 28px rgba(212,167,44,0.5); }
+  .float-wa svg{width:28px;height:28px;fill:white}
+  @keyframes wa-pulse{
+    0%,100%{box-shadow:0 4px 16px rgba(37,211,102,0.35)}
+    50%{box-shadow:0 4px 24px rgba(37,211,102,0.55)}
   }
   @media(max-width:640px){
-    .floating-cta{ bottom:16px; right:16px; padding:12px 18px; font-size:12.5px; }
+    .float-wa{bottom:16px;left:16px;width:46px;height:46px}
+    .float-wa svg{width:24px;height:24px}
   }
 
-  /* ---------- ENHANCED AVAILABILITY BADGE ---------- */
-  .eyebrow-enhanced{
-    display:inline-flex; align-items:center; gap:10px;
-    font-family:var(--mono); font-size:12.5px; letter-spacing:0.1em;
-    text-transform:uppercase; color:var(--teal);
-    margin-bottom:22px;
-    background:var(--teal-soft); padding:8px 16px;
-    border:1px solid rgba(79,143,130,0.3);
-    opacity:0; animation:fadeUp .7s ease .1s forwards;
-  }
-  .dot-glow{
-    width:8px; height:8px; border-radius:50%;
-    background:var(--teal);
-    box-shadow:0 0 6px rgba(79,143,130,0.8);
-    animation:pulse 2.2s infinite;
-  }
-
-  /* ---------- TYPING EFFECT ---------- */
-  .typing{
-    font-family:var(--display); font-size:22px; font-weight:600;
-    color:var(--gold); margin:0 0 20px;
-    border-right:2px solid var(--gold);
-    white-space:nowrap; overflow:hidden;
-    width:0; animation:typing 2.5s steps(30) .8s forwards, blink .6s step-end infinite;
-  }
-  @keyframes typing{ to{ width:100%; } }
-  @keyframes blink{ 50%{ border-color:transparent; } }
-  @media(prefers-reduced-motion:reduce){ .typing{ width:100%; animation:none; border:none; } }
-  @media(max-width:640px){ .typing{ font-size:17px; } }
-
-  /* ---------- MID-PAGE CTA BAND ---------- */
-  .cta-band{
+  /* ---------- CALENDAR CTA SECTION ---------- */
+  .cal-section{
+    padding:64px 0;
     background:var(--bg-panel);
     border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);
-    padding:48px 0;
     text-align:center;
   }
-  .cta-band h3{
-    font-family:var(--display); font-size:clamp(20px,2.8vw,26px);
-    font-weight:700; margin:0 0 10px; letter-spacing:-.01em;
+  .cal-section h3{
+    font-family:var(--display);font-size:clamp(20px,3vw,28px);
+    font-weight:700;margin:0 0 12px;list-style:none;
   }
-  .cta-band p{
-    color:var(--text-muted); font-size:15px; margin:0 0 24px;
-    max-width:46ch; display:inline-block;
+  .cal-section h3::before,.cal-section h3::after{content:none;display:none}
+  .cal-section h3 em{font-style:normal;color:var(--gold)}
+  .cal-section .wrap > p{
+    color:var(--text-muted);font-size:15.5px;margin:0 0 8px;
+    max-width:50ch;display:inline-block;list-style:none;
   }
-  .cta-band .btn{ margin:0 8px; }
-
-  /* ---------- COUNTER ANIMATION ---------- */
-  .result-metric[data-target]{ transition:none; }
-
-
-  /* ---------- SCROLL PROGRESS ---------- */
-  .scroll-progress{
-    position:fixed; top:0; left:0; z-index:50;
-    width:0%; height:3px;
-    background:linear-gradient(90deg, var(--teal), var(--gold));
-    transition:width .1s linear;
+  .cal-section .wrap > p::before,.cal-section .wrap > p::after{content:none;display:none}
+  .cal-channels{
+    display:flex;justify-content:center;gap:14px;flex-wrap:wrap;
+    margin-top:28px;
   }
-
-  /* ---------- HERO STATS ---------- */
-  .hero-stats{
-    display:flex; gap:0; margin-top:32px;
-    border:1px solid var(--line-strong);
-    opacity:0; animation:fadeUp .7s ease .8s forwards;
+  .btn-cal{
+    font-family:var(--mono);font-size:12.5px;padding:14px 24px;
+    text-decoration:none;transition:all .25s;font-weight:600;
+    display:inline-flex;align-items:center;gap:8px;
+    position:relative;overflow:hidden;border-radius:2px;
   }
-  .hero-stat{
-    flex:1; padding:14px 20px; text-align:center;
-    border-right:1px solid var(--line);
-    font-family:var(--mono); font-size:12.5px; color:var(--text-muted);
+  .btn-cal-gold{background:var(--gold);color:#0F1113}
+  .btn-cal-gold:hover{background:#E7BE3D;transform:translateY(-1px);box-shadow:0 4px 20px rgba(212,167,44,.3)}
+  .btn-cal-gold::after{content:"";position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);animation:cal-shine 4s ease infinite}
+  @keyframes cal-shine{0%,100%{left:-100%}50%{left:150%}}
+  .btn-cal-wa{background:#25D366;color:white}
+  .btn-cal-wa:hover{background:#2BE070;transform:translateY(-1px);box-shadow:0 4px 20px rgba(37,211,102,.3)}
+  .btn-cal-mail{border:1px solid var(--line-strong);color:var(--text)}
+  .btn-cal-mail:hover{border-color:var(--gold);color:var(--gold)}
+  .cal-note{
+    font-family:var(--mono);font-size:11px;color:var(--text-muted);
+    margin-top:20px;letter-spacing:.02em;
   }
-  .hero-stat:last-child{ border-right:none; }
-  .hero-stat b{
-    display:block; font-family:var(--display); font-size:22px;
-    color:var(--gold); font-weight:700; margin-bottom:2px;
-  }
-  @media(max-width:640px){
-    .hero-stats{ flex-direction:column; }
-    .hero-stat{ border-right:none; border-bottom:1px solid var(--line); padding:10px 16px; text-align:left; display:flex; gap:10px; align-items:center; }
-    .hero-stat:last-child{ border-bottom:none; }
-    .hero-stat b{ display:inline; font-size:18px; margin:0; }
-  }
-
-  /* ---------- GRADIENT TEXT ---------- */
-  h1 em{
-    font-style:normal;
-    background:linear-gradient(135deg, var(--gold) 0%, #F5F2EA 50%, var(--gold) 100%);
-    background-size:200% 200%;
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-    animation:gradient-shift 4s ease-in-out infinite;
-  }
-  @keyframes gradient-shift{
-    0%,100%{ background-position:0% 50%; }
-    50%{ background-position:100% 50%; }
-  }
-  @media(prefers-reduced-motion:reduce){ h1 em{ animation:none; background-position:0% 50%; } }
-
-  /* ---------- CARD ELEVATION ---------- */
-  .service-card, .result-card, .lib-card, .fw-card, .fw-item{
-    transition:background .25s ease, transform .25s ease, box-shadow .25s ease;
-  }
-  .service-card:hover, .lib-card:hover, .fw-card:hover, .fw-item:hover{
-    transform:translateY(-3px);
-    box-shadow:0 8px 32px rgba(0,0,0,0.3);
-  }
-  .result-card{
-    transition:background .25s ease, transform .25s ease, box-shadow .25s ease;
-  }
-  .result-card:hover{
-    background:var(--bg-elevated);
-    transform:translateY(-3px);
-    box-shadow:0 8px 32px rgba(0,0,0,0.3);
-  }
-
-  /* ---------- DOT GRID BG ---------- */
-  body::before{
-    content:"";
-    position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background-image:radial-gradient(rgba(245,242,234,0.04) 1px, transparent 1px);
-    background-size:24px 24px;
-  }
-
-  /* ---------- STAGGER REVEAL ---------- */
-  .stagger > *{ opacity:0; transform:translateY(18px); transition:opacity .5s ease, transform .5s ease; }
-  .stagger.in-view > *:nth-child(1){ transition-delay:.05s; }
-  .stagger.in-view > *:nth-child(2){ transition-delay:.12s; }
-  .stagger.in-view > *:nth-child(3){ transition-delay:.19s; }
-  .stagger.in-view > *:nth-child(4){ transition-delay:.26s; }
-  .stagger.in-view > *:nth-child(5){ transition-delay:.33s; }
-  .stagger.in-view > *:nth-child(6){ transition-delay:.40s; }
-  .stagger.in-view > *{ opacity:1; transform:translateY(0); }
-  @media(prefers-reduced-motion:reduce){
-    .stagger > *{ opacity:1; transform:none; transition:none; }
-  }
-
-
-  /* ---------- 1. MOUSE-FOLLOW GLOW ON HERO ---------- */
-  .hero-section{ position:relative; }
-  .hero-glow{
-    position:absolute; width:400px; height:400px; border-radius:50%;
-    background:radial-gradient(circle, rgba(212,167,44,0.08) 0%, transparent 70%);
-    pointer-events:none; z-index:0;
-    transform:translate(-50%,-50%);
-    transition:left .3s ease, top .3s ease;
-    display:none;
-  }
-  @media(hover:hover){ .hero-glow{ display:block; } }
-
-  /* ---------- 2. SHINE SWEEP ON CTA BUTTONS ---------- */
-  .btn-primary{
-    position:relative; overflow:hidden;
-  }
-  .btn-primary::after{
-    content:""; position:absolute;
-    top:0; left:-100%; width:60%; height:100%;
-    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    animation:shine-sweep 4s ease-in-out infinite;
-  }
-  @keyframes shine-sweep{
-    0%,100%{ left:-100%; }
-    50%{ left:150%; }
-  }
-  @media(prefers-reduced-motion:reduce){ .btn-primary::after{ animation:none; display:none; } }
-
-  /* ---------- 3. GLOW BORDER ON RESULT CARDS ---------- */
-  .result-card{
-    position:relative;
-  }
-  .result-card::before{
-    content:""; position:absolute; inset:-1px; z-index:-1;
-    background:transparent;
-    transition:background .4s ease;
-  }
-  .result-card:hover::before{
-    background:linear-gradient(135deg, var(--gold-soft), var(--teal-soft));
-  }
-  .result-card:hover .result-metric{
-    text-shadow:0 0 20px rgba(212,167,44,0.4);
-  }
-
-  /* ---------- 4. NAV ANIMATED UNDERLINE ---------- */
-  .nav-links a{
-    position:relative;
-  }
-  .nav-links a::after{
-    content:""; position:absolute; bottom:-4px; left:0;
-    width:0; height:1px;
-    background:var(--gold);
-    transition:width .3s ease;
-  }
-  .nav-links a:hover::after{ width:100%; }
-
-  /* ---------- 5. FORM INPUT GLOW ON FOCUS ---------- */
-  .field input:focus, .field textarea:focus{
-    outline:none;
-    border-color:var(--gold);
-    box-shadow:0 0 0 3px rgba(212,167,44,0.15), 0 0 20px rgba(212,167,44,0.08);
-  }
-
-  /* ---------- 6. STATS BAR ANIMATED BORDER ---------- */
-  .hero-stats{
-    position:relative;
-    background:var(--bg-panel);
-  }
-  .hero-stats::before{
-    content:""; position:absolute; inset:-1px; z-index:-1;
-    background:linear-gradient(90deg, var(--teal), var(--gold), var(--teal));
-    background-size:200% 100%;
-    animation:stats-border 6s linear infinite;
-  }
-  @keyframes stats-border{
-    0%{ background-position:0% 50%; }
-    100%{ background-position:200% 50%; }
-  }
-  @media(prefers-reduced-motion:reduce){ .hero-stats::before{ animation:none; } }
-
-  /* ---------- 7. SECTION LABEL GROWING DASH ---------- */
-  .section-label{
-    position:relative; display:inline-block; padding-bottom:10px;
-  }
-  .section-label::after{
-    content:""; position:absolute; bottom:0; left:0;
-    width:0; height:1px; background:var(--gold);
-    transition:width .8s ease;
-  }
-  .reveal.in-view .section-label::after,
-  .in-view .section-label::after{
-    width:48px;
-  }
+  @media(prefers-reduced-motion:reduce){.btn-cal-gold::after{animation:none;display:none}}
 
 </style>
 </head>
 <body>
 
-<div class="scroll-progress" id="scrollbar"></div>
 <header>
   <nav class="nav">
     <a href="#top" class="nav-brand">TOLOSA<span>.</span>PM</a>
@@ -798,7 +613,7 @@
       <li><a href="#recursos">Recursos gratuitos</a></li>
       <li><a href="#resultados">Resultados</a></li>
       <li><a href="#experiencia">Experiencia</a></li>
-      <li><a href="casos.html">Product Thinking</a></li>
+      <li><a href="casos.html">Casos de uso</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
@@ -806,21 +621,19 @@
 
 <div id="top" class="hero-section">
   <div class="hero-mesh" aria-hidden="true"></div>
-  <div class="hero-glow" id="heroGlow"></div>
   <div class="wrap hero">
     <div>
-      <div class="eyebrow-enhanced"><span class="dot-glow"></span> Disponible para nuevos desafíos · Buenos Aires · Remoto LATAM/USA/Europa</div>
+      <div class="eyebrow"><span class="dot-live"></span> Headquarter Buenos Aires, Argentina · Disponible para relocalización y remoto LATAM/USA/Europa</div>
       <h1>
         <span class="line"><span>Transforming ideas into</span></span>
         <span class="line"><span>products that drive</span></span>
         <span class="line"><span><em>business growth.</em></span></span>
       </h1>
-      <p class="typing">Think. Build. Launch. Scale.</p>
-      <p class="hero-sub" style="margin-top:16px">Product Builder con visión de negocio. Transformo oportunidades en productos escalables, liderando el ciclo completo del producto —desde el discovery hasta el Go-to-Market y la optimización continua— para generar crecimiento e impacto medible mediante estrategia, datos e Inteligencia Artificial.</p>
+      <p class="hero-sub">Think. Build. Launch. Scale.</p>
+      <p class="hero-sub" style="margin-top:14px">Product Builder con visión de negocio. Transformo oportunidades en productos escalables, liderando el ciclo completo del producto —desde el discovery hasta el Go-to-Market y la optimización continua— para generar crecimiento e impacto medible mediante estrategia, datos e Inteligencia Artificial.</p>
       <div class="cta-row">
-        <a href="#contacto" class="btn btn-primary">Contactame</a>
-        <a href="#experiencia" class="btn btn-ghost">Ver experiencia</a>
-        
+        <a href="#experiencia" class="btn btn-primary">Ver experiencia</a>
+        <a href="https://wa.me/5491123932507?text=Hola%20Enmanuel%2C%20vi%20tu%20web%20y%20me%20gustar%C3%ADa%20conversar." target="_blank" rel="noopener" class="btn btn-ghost" style="display:inline-flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color:#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
       </div>
     </div>
     <div class="hero-photo">
@@ -861,7 +674,7 @@
 
 <div class="framework-band">
   <div class="wrap">
-    <div class="framework-grid reveal stagger">
+    <div class="framework-grid reveal">
       <div class="fw-item">
         <div class="fw-step">
           <span class="fw-num">1</span>
@@ -937,7 +750,7 @@
       <p class="section-label">02 — Cómo genero impacto</p>
       <h2 class="section-title">Cuatro capacidades. Un solo objetivo: convertir oportunidades en productos que impulsan el crecimiento del negocio.</h2>
     </div>
-    <div class="services-grid reveal stagger">
+    <div class="services-grid reveal">
       <div class="service-card">
         <div class="service-index">PRODUCT</div>
         <h3>Estrategia, construcción y lanzamiento de productos</h3>
@@ -1006,15 +819,6 @@
   </div>
 </section>
 
-<div class="cta-band">
-  <div class="wrap">
-    <h3>¿Buscás este perfil para tu equipo?</h3>
-    <p>Product Builder con experiencia real en banking, eCommerce y telco. Disponible para nuevos desafíos.</p>
-    <a href="#contacto" class="btn btn-primary">Contactame</a>
-    <a href="casos.html" class="btn btn-ghost">Ver cómo pienso</a>
-  </div>
-</div>
-
 <section id="recursos">
   <div class="wrap">
     <div class="section-head reveal">
@@ -1031,7 +835,7 @@
       <p style="color:var(--text-muted); font-size:16px; margin:0 0 14px;">Si alguna de estas ideas te ayuda a construir un mejor producto, liderar un mejor equipo o tomar una mejor decisión, entonces habrá cumplido su propósito.</p>
       <p style="color:var(--gold); font-family:var(--display); font-size:17px; font-weight:600; margin:0;">El conocimiento solo crea valor cuando se comparte.</p>
     </div>
-    <div class="lib-grid reveal stagger">
+    <div class="lib-grid reveal">
       <a href="#" target="_blank" rel="noopener" class="lib-card">
         <div class="lib-top">
           <span class="lib-index">01</span>
@@ -1097,8 +901,8 @@
       <p class="section-label">04 — Impacto</p>
       <h2 class="section-title">Los mejores productos cuentan una historia. Los mejores resultados la demuestran.</h2>
     </div>
-    <p class="hero-sub reveal" style="margin-bottom:36px">Cada desafío fue diferente, pero todos tuvieron algo en común: entender el problema correcto, construir la solución adecuada y medir el impacto generado.</p>
-    <div class="results-grid reveal stagger">
+    <p class="hero-sub reveal" style="margin-bottom:32px">Cada desafío fue diferente, pero todos tuvieron algo en común: entender el problema correcto, construir la solución adecuada y medir el impacto generado.</p>
+    <div class="results-grid reveal">
       <div class="result-card">
         <div class="result-mono">Banking</div>
         <div class="result-metric">+18</div>
@@ -1126,14 +930,6 @@
     </div>
   </div>
 </section>
-
-<div class="cta-band">
-  <div class="wrap">
-    <h3>Estos resultados pueden ser los de tu próximo producto.</h3>
-    <p>Hablemos sobre cómo puedo aportar a tu equipo.</p>
-    <a href="#contacto" class="btn btn-primary">Escribime</a>
-  </div>
-</div>
 
 <section id="experiencia">
   <div class="wrap">
@@ -1188,7 +984,7 @@
       <p class="section-label">06 — Formación</p>
       <h2 class="section-title">Base académica y certificaciones.</h2>
     </div>
-    <div class="edu-grid reveal stagger">
+    <div class="edu-grid reveal">
       <div class="edu-card">
         <div class="edu-year">2024</div>
         <div class="edu-name">CX Management, Ingresos y Fidelización</div>
@@ -1227,6 +1023,29 @@
     </div>
   </div>
 </section>
+
+
+<div class="cal-section reveal">
+  <div class="wrap">
+    <h3>Agendá tu <em>Discovery Meeting</em></h3>
+    <p>30 minutos para explorar cómo puedo aportar a tu equipo o proyecto. Sin compromiso, sin pitch. Solo una conversación estratégica.</p>
+    <div style="max-width:680px;margin:32px auto 0;border:1px solid var(--line-strong);overflow:hidden;">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/enmanueltolosa/30min?hide_gdpr_banner=1&background_color=171a1e&text_color=f5f2ea&primary_color=d4a72c" style="min-width:320px;height:660px;"></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    </div>
+    <div class="cal-channels" style="margin-top:24px;">
+      <a href="https://wa.me/5491123932507?text=Hola%20Enmanuel%2C%20vi%20tu%20web%20y%20me%20gustar%C3%ADa%20conversar." target="_blank" rel="noopener" class="btn-cal btn-cal-wa">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp directo
+      </a>
+      <a href="mailto:enmanueltolosa@gmail.com?subject=Oportunidad%20—%20Desde%20tu%20web" class="btn-cal btn-cal-mail">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+    </div>
+    <p class="cal-note">Sin compromiso. Si hay fit, avanzamos. Si no, te comparto mi perspectiva igual.</p>
+  </div>
+</div>
 
 <footer id="contacto">
   <div class="wrap">
@@ -1268,7 +1087,7 @@
       <div class="footer-contacts">
         <a href="mailto:enmanueltolosa@gmail.com">enmanueltolosa@gmail.com</a>
         <a href="tel:+5491123932507">+54 9 11 2393-2507</a>
-        <a href="https://www.linkedin.com/in/emanueltc/" target="_blank" rel="noopener">LinkedIn — Enmanuel Tolosa</a>
+        <a href="https://linkedin.com/in/enmanueltolosa" target="_blank" rel="noopener">LinkedIn — Enmanuel Tolosa</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1285,71 +1104,15 @@
         if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
       });
     }, { threshold: 0.15 });
-    document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   } else {
-    document.querySelectorAll('.reveal, .stagger').forEach(el => el.classList.add('in-view'));
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
   }
 </script>
 
 
-<a href="#contacto" class="floating-cta">Hablemos →</a>
-
-<script>
-// Counter animation for result metrics
-function animateCounters(){
-  document.querySelectorAll('.result-metric').forEach(el=>{
-    const text = el.textContent.trim();
-    const match = text.match(/([+$]?)([\d.]+)(.*)/);
-    if(!match) return;
-    const prefix = match[1], target = parseFloat(match[2]), suffix = match[3];
-    const isFloat = text.includes('.');
-    let start = 0;
-    const duration = 1800;
-    const startTime = performance.now();
-    function update(now){
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed/duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = isFloat ? (target * eased).toFixed(0) : Math.floor(target * eased);
-      el.textContent = prefix + current + suffix;
-      if(progress < 1) requestAnimationFrame(update);
-      else el.textContent = prefix + (isFloat ? target.toFixed(0) : target) + suffix;
-    }
-    requestAnimationFrame(update);
-  });
-}
-const counterIO = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){ animateCounters(); counterIO.disconnect(); }
-  });
-},{threshold:0.3});
-const resultsGrid = document.querySelector('.results-grid');
-if(resultsGrid) counterIO.observe(resultsGrid);
-</script>
-
-<script>
-// Scroll progress bar
-const bar = document.getElementById('scrollbar');
-window.addEventListener('scroll', ()=>{
-  const h = document.documentElement;
-  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-  bar.style.width = pct + '%';
-});
-</script>
-
-<script>
-// Mouse-follow glow on hero
-const heroSection = document.querySelector('.hero-section');
-const glow = document.getElementById('heroGlow');
-if(heroSection && glow && window.matchMedia('(hover:hover)').matches){
-  heroSection.addEventListener('mousemove', (e)=>{
-    const rect = heroSection.getBoundingClientRect();
-    glow.style.left = (e.clientX - rect.left) + 'px';
-    glow.style.top = (e.clientY - rect.top) + 'px';
-  });
-  heroSection.addEventListener('mouseenter', ()=>{ glow.style.opacity='1'; });
-  heroSection.addEventListener('mouseleave', ()=>{ glow.style.opacity='0'; });
-}
-</script>
+<a href="https://wa.me/5491123932507?text=Hola%20Enmanuel%2C%20vi%20tu%20web%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20una%20oportunidad." class="float-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 </body>
 </html>
