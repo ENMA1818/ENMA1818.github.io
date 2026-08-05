@@ -72,7 +72,7 @@
   .case-index{display:flex;flex-direction:column;gap:0;background:var(--bg);border:1px solid var(--line)}
   .case-expand{ border-bottom:1px solid var(--line); }
   .case-expand:last-child{ border-bottom:none; }
-  .index-item{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;background:var(--bg-panel);padding:24px 28px;text-decoration:none;transition:background .25s;cursor:pointer;list-style:none}
+  .index-item{display:grid;grid-template-columns:auto auto 1fr auto;gap:20px;align-items:center;background:var(--bg-panel);padding:24px 28px;text-decoration:none;transition:background .25s;cursor:pointer;list-style:none}
   .index-item::-webkit-details-marker{display:none}
   .index-item:hover{background:var(--bg-elevated)}
   .case-expand[open] .index-item{border-bottom:1px solid var(--line)}
@@ -293,6 +293,84 @@
     .floating-cta{ bottom:16px; right:16px; padding:12px 18px; font-size:12.5px; }
   }
 
+
+  /* ---------- CASE COMPANY BADGE ---------- */
+  .company-badge{
+    display:flex;align-items:center;gap:18px;
+    padding:20px 24px;background:var(--bg-panel);
+    border:1px solid var(--line);margin-bottom:32px;
+    position:relative;
+    transition:background .3s ease;
+  }
+  .company-badge::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,var(--gold),var(--teal),var(--gold));
+    background-size:200% 100%;
+    animation:cb-border 5s linear infinite;
+  }
+  @keyframes cb-border{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+  .company-badge:hover{background:var(--bg-elevated)}
+  @media(prefers-reduced-motion:reduce){.company-badge::before{animation:none}}
+  .company-badge .cb-logo{
+    width:64px;height:64px;overflow:hidden;
+    border:1px solid var(--line-strong);flex-shrink:0;
+    box-shadow:0 0 20px rgba(212,167,44,0.1);
+    transition:box-shadow .3s ease;
+  }
+  .company-badge:hover .cb-logo{
+    box-shadow:0 0 28px rgba(212,167,44,0.25);
+  }
+  .company-badge .cb-logo img{width:100%;height:100%;object-fit:cover}
+  .company-badge .cb-mono{
+    width:48px;height:48px;display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line-strong);font-family:var(--mono);
+    font-size:16px;font-weight:700;color:var(--gold);flex-shrink:0;
+  }
+  .company-badge .cb-info{display:flex;flex-direction:column;gap:2px}
+  .company-badge .cb-name{font-family:var(--display);font-size:16px;font-weight:700}
+  .company-badge .cb-role{font-family:var(--mono);font-size:11px;color:var(--text-muted);letter-spacing:.04em}
+  .company-badge .cb-period{font-family:var(--mono);font-size:10px;color:var(--teal);letter-spacing:.04em}
+
+  /* ---------- CASE CTA BANNER ---------- */
+  .case-cta{
+    margin-top:48px;padding:36px;
+    background:var(--bg-panel);border:1px solid var(--line);
+    position:relative;overflow:hidden;
+    transition:box-shadow .3s ease,transform .3s ease;
+  }
+  .case-cta:hover{
+    box-shadow:0 8px 32px rgba(0,0,0,0.3);
+    transform:translateY(-2px);
+  }
+  .case-cta::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,var(--gold),var(--teal));
+  }
+  .case-cta-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .case-cta h4{font-family:var(--display);font-size:18px;font-weight:700;margin:0 0 6px}
+  .case-cta p{font-family:var(--mono);font-size:12.5px;color:var(--text-muted);margin:0}
+  .case-cta .btn{white-space:nowrap;position:relative;overflow:hidden}
+  .case-cta .btn::after{
+    content:"";position:absolute;top:0;left:-100%;width:60%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
+    animation:shine 4s ease infinite;
+  }
+  @keyframes shine{0%,100%{left:-100%}50%{left:150%}}
+  @media(prefers-reduced-motion:reduce){.case-cta .btn::after{animation:none;display:none}}
+
+  /* ---------- CASE INDEX LOGO ---------- */
+  .index-logo{width:48px;height:48px;overflow:hidden;border:1px solid var(--line-strong);flex-shrink:0;transition:transform .3s ease,box-shadow .3s ease}
+  .index-logo img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+  .index-item:hover .index-logo{box-shadow:0 0 16px rgba(212,167,44,0.25);transform:scale(1.08)}
+  .index-item:hover .index-logo img{transform:scale(1.1)}
+  
+
+
+  .float-cta{position:fixed;bottom:24px;right:24px;z-index:40;background:var(--gold);color:#0F1113;font-family:var(--mono);font-size:13px;font-weight:600;padding:13px 22px;text-decoration:none;box-shadow:0 4px 20px rgba(212,167,44,0.3);transition:all .25s;animation:fp 3s ease infinite}
+  .float-cta:hover{background:#E0B62E;transform:translateY(-2px)}
+  @keyframes fp{0%,100%{box-shadow:0 4px 20px rgba(212,167,44,0.3)}50%{box-shadow:0 4px 28px rgba(212,167,44,0.5)}}
+  @media(max-width:640px){.float-cta{bottom:16px;right:16px;padding:10px 16px;font-size:12px}}
+
 </style>
 </head>
 <body>
@@ -361,6 +439,7 @@
     <details class="case-expand" id="caso-01">
       <summary class="index-item">
         <span class="index-num">01</span>
+        <span class="index-logo"><img src="data:image/jpeg;base64,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" alt="Movistar"></span>
         <span>
           <span class="index-title">Lanzar TV Digital B2B en un mercado dominado por el cable</span>
           <span class="index-meta"><span>Telecomunicaciones · B2B</span><span>Lanzamiento 0→1</span><span class="chip-real">Experiencia Real</span><span>5 min de lectura</span></span>
@@ -376,6 +455,15 @@
       <span>Telecomunicaciones · B2B</span>
       <span>Lanzamiento 0→1</span>
       <span class="chip-real">Experiencia Real · Telefónica Argentina · 2018–2019</span>
+    </div>
+  </div>
+
+  <div class="company-badge">
+    <div class="cb-logo"><img src="data:image/jpeg;base64,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" alt="Movistar"></div>
+    <div class="cb-info">
+      <span class="cb-name">Telefónica Argentina — Movistar TV/Play</span>
+      <span class="cb-role">Product Owner · IPTV &amp; OTT</span>
+      <span class="cb-period">Septiembre 2018 — Agosto 2019</span>
     </div>
   </div>
 
@@ -464,10 +552,297 @@
       <li>Valor aportado por la estrategia de convergencia.</li>
     </ul>
     <p class="case-closing">Porque lanzar un producto nunca representa el final del trabajo. Es el comienzo del aprendizaje.</p>
+
+    <div class="case-cta">
+      <div class="case-cta-inner">
+        <div>
+          <h4>¿Te interesa este caso?</h4>
+          <p>Si estás enfrentando un desafío similar — lanzamiento de producto, coordinación de equipos o estrategia de plataforma — podemos conversarlo.</p>
+        </div>
+        <a href="mailto:enmanueltolosa@gmail.com?subject=Caso%2001%20—%20Lanzamiento%20TV%20Digital&body=Hola%20Enmanuel%2C%0A%0AMe%20interesó%20tu%20caso%20sobre%20el%20lanzamiento%20de%20Movistar%20TV.%20Me%20gustaría%20conversar%20sobre..." class="btn">Hablemos sobre este caso →</a>
+      </div>
+    </div>
   </div>
 
       </div><!-- .case-content -->
     </details>
+
+    <!-- ============================================================
+         CASO 02 — LATAM Airport Self-Service
+         ============================================================ -->
+    <details class="case-expand" id="caso-02">
+      <summary class="index-item">
+        <span class="index-num">02</span>
+        <span class="index-logo"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCABgAGADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5zooor9XGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFXtDs0v9WtrWRrVUlbYTdTiGMZB+854X6mvcvD/AMHtG1ZSdS1N9cEKfPHpEIeOEgdHv22xDHf7xrzcbmMcLJKUW15f1+djuw2Fp1ablOqovon19ey+/rsfP9Fd74W+H0nirwR4l1DS9Lv9R1bT761ht4rQNKRE/mbyVUfN90c10Pw5+D9lquj3Nz4sWTT57y8fTLFZruO1a2kRW8ydkkIMirJ5cZReclvStqmOpU1Jyezt59zg5jyGivVdJ0HwrY+EvE1zr/g68Or+F5bW1uVGrSRrPJJI8bEgIdmNmcDOc1oXnwas/wDhBZJYoWi8Tiy/tj7P9vjZliLFvsvkZ8zesOJN+3npUPMKcXaSa1t09e+1mvvFzHjVFez6b8OvAUHhvSbjXNQktNUtrCLW9Tie7CG7tpUnZIYVP/LT5IOn/PSvP/iR4ctPC/i+8sdNMjabIkV3ZNI24tBLGsic98BsZ9q0o4yFWbpxTuNO5zFFFFdYwooooAD0P0Nel/FzxbNexad4df8AtfzLKGJ5Xu9SWZHDRKVRYYsRRhR6Zb1PFeaUVjOjGc4zfS4mjoPDeh6hqVjqF1Z3/wBk+zqPLj83YbmTBbYvzDJ2hjxnnaP4qk03w22rNbi41PYjWDXy7ivy/vjHsBkdVBJ+bJI6+tc3RRKnNttS/ALG/qmgX1pBfXC3U15DDfyWc8io+3KbcO5PTJbAz6VftvB1xd3d4U1lBd215cW3zZDyJFGWeRWzzxj5c5xnGcEVyW5sEZOD1560lJ052spfgKx0V34YZNI0XU5b6WT+0yqcwswhG5kA3ZO4jbnaBVTxRo8uhaobKSeW4VY0aOSQbSUI4+XJKjg8HB9hWTubbtycdcZ4oJLEkkknuaqMJp3b79P62GkJRRRWowooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="LATAM Airlines"></span>
+        <span>
+          <span class="index-title">Reducir la congestión en bag drop sin confiar en métricas imperfectas</span>
+          <span class="index-meta"><span>Aviación · B2C</span><span>Optimización Operacional</span><span>Product Challenge</span><span>8 min de lectura</span></span>
+        </span>
+        <span class="index-arrow">→ Ver caso</span>
+      </summary>
+      <div class="case-content">
+
+  <div class="case-header">
+    <p class="case-kicker">Caso 02</p>
+    <h2 class="case-title">Passenger Airport Experience: Day of Travel Self-Service</h2>
+    <div class="case-chips">
+      <span>Aviación · B2C</span>
+      <span>Optimización Operacional</span>
+      <span>Product Challenge</span>
+    </div>
+  </div>
+
+  <div class="company-badge">
+    <div class="cb-logo"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCABgAGADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5zooor9XGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFXtDs0v9WtrWRrVUlbYTdTiGMZB+854X6mvcvD/AMHtG1ZSdS1N9cEKfPHpEIeOEgdHv22xDHf7xrzcbmMcLJKUW15f1+djuw2Fp1ablOqovon19ey+/rsfP9Fd74W+H0nirwR4l1DS9Lv9R1bT761ht4rQNKRE/mbyVUfN90c10Pw5+D9lquj3Nz4sWTT57y8fTLFZruO1a2kRW8ydkkIMirJ5cZReclvStqmOpU1Jyezt59zg5jyGivVdJ0HwrY+EvE1zr/g68Or+F5bW1uVGrSRrPJJI8bEgIdmNmcDOc1oXnwas/wDhBZJYoWi8Tiy/tj7P9vjZliLFvsvkZ8zesOJN+3npUPMKcXaSa1t09e+1mvvFzHjVFez6b8OvAUHhvSbjXNQktNUtrCLW9Tie7CG7tpUnZIYVP/LT5IOn/PSvP/iR4ctPC/i+8sdNMjabIkV3ZNI24tBLGsic98BsZ9q0o4yFWbpxTuNO5zFFFFdYwooooAD0P0Nel/FzxbNexad4df8AtfzLKGJ5Xu9SWZHDRKVRYYsRRhR6Zb1PFeaUVjOjGc4zfS4mjoPDeh6hqVjqF1Z3/wBk+zqPLj83YbmTBbYvzDJ2hjxnnaP4qk03w22rNbi41PYjWDXy7ivy/vjHsBkdVBJ+bJI6+tc3RRKnNttS/ALG/qmgX1pBfXC3U15DDfyWc8io+3KbcO5PTJbAz6VftvB1xd3d4U1lBd215cW3zZDyJFGWeRWzzxj5c5xnGcEVyW5sEZOD1560lJ052spfgKx0V34YZNI0XU5b6WT+0yqcwswhG5kA3ZO4jbnaBVTxRo8uhaobKSeW4VY0aOSQbSUI4+XJKjg8HB9hWTubbtycdcZ4oJLEkkknuaqMJp3b79P62GkJRRRWowooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="LATAM Airlines"></div>
+    <div class="cb-info">
+      <span class="cb-name">LATAM Airlines — SCL Hub</span>
+      <span class="cb-role">PM · Airport Flow: Check-in &amp; Bag Drop</span>
+      <span class="cb-period">Product Challenge · Análisis por iniciativa propia</span>
+    </div>
+  </div>
+
+  <!-- THINK -->
+  <div class="phase">
+    <span class="phase-tag">THINK</span>
+    <p class="phase-label">El contexto</p>
+    <p>LATAM está impulsando una estrategia de "Day of Travel Self-Service" para reducir el costo por pasajero y sostener el crecimiento sin aumentar dotación en aeropuertos.</p>
+    <p>En SCL y LIM, el plan prioriza subir la adopción de check-in digital y aumentar el uso de <strong>Self Bag Drop (SBD)</strong> — máquinas donde el pasajero etiqueta y despacha su equipaje sin agente.</p>
+    <p>El journey del pasajero es "phygital": arranca en la app/web, pasa por kioscos, SBD, counters asistidos, seguridad y puerta de embarque. Cualquier fricción en un punto se traslada al siguiente y puede terminar afectando la puntualidad de los vuelos (OTP).</p>
+  </div>
+
+  <div class="phase">
+    <p class="phase-label">El verdadero problema</p>
+    <p>En las últimas 8 semanas, en el banco doméstico de la mañana en SCL (06:00–09:00), se observa:</p>
+    <ul class="scale-list">
+      <li><strong>OTD cayó 3,0 puntos</strong> (salida en puerta) y OTP cayó 2,1 puntos vs. baseline del trimestre anterior.</li>
+      <li><strong>Queue Time de bag drop subió +35%</strong> (SBD + asistido).</li>
+      <li><strong>+18% de pasajeros requieren Manual Intervention</strong> en bag drop: un agente tiene que destrabar un caso que debía ser self-service.</li>
+    </ul>
+    <p style="margin-top:16px">A primera vista parece un problema de filas. <strong>Pero no lo es.</strong></p>
+    <p>Operaciones reporta que en los peores días, el volumen de pasajeros que llega a gate fuera de la ventana de embarque por congestión en bag drop extiende el cierre de embarque y genera demora en puerta.</p>
+    <p>La presión ejecutiva es "arreglar filas ya" porque está pegando directo en demora de salida y en NPS del día de viaje. Pero el equipo de Data advierte algo importante: <strong>la medición de Queue Time está inestable</strong> — sensores con caídas, cambios de layout y muestreos manuales inconsistentes.</p>
+    <p>Algunos días con alta fila no muestran caída equivalente de OTP, y viceversa. Los datos no cierran.</p>
+  </div>
+
+  <div class="phase">
+    <p class="phase-label">Las tensiones reales</p>
+    <p>Como PM del squad "Airport Flow: Check-in & Bag Drop", soy responsable de la experiencia y performance de check-in digital, kioscos, SBD, integración con DCS y señalización en app/kiosco.</p>
+    <p>Cada área tiene una lectura distinta del problema:</p>
+    <ul class="scale-list">
+      <li><strong>Airport Ops</strong> insiste en que "la cola es por uso incorrecto del SBD" y pide volver a más counters asistidos en peak. Solución rápida, pero mata la estrategia de self-service.</li>
+      <li><strong>CX</strong> cree que el problema es claridad: los pasajeros no entienden restricciones, documentos y pasos. Pide mejorar información antes de tocar operación.</li>
+      <li><strong>Tech</strong> dice que cualquier cambio profundo en SBD requiere coordinación con proveedor y ventanas operacionales limitadas.</li>
+    </ul>
+    <p style="margin-top:16px"><strong>Mi desafío:</strong> decidir dónde enfocarme y qué mover primero sin confiar ciegamente en métricas imperfectas. Mañana hay comité con Operaciones y CX — me piden un plan de 30 días con "impacto medible" en OTP y reducción de filas, pero no puedo prometer instrumentación perfecta en ese período.</p>
+  </div>
+
+  <div class="phase">
+    <p class="phase-label">Las alternativas</p>
+    <div class="options">
+      <div class="option">
+        <span class="option-name">Opción A</span>
+        <h4>Revertir a counters asistidos en peak</h4>
+        <p>Aumentar agentes en los mostradores de 06:00 a 09:00, reducir dependencia de SBD en la franja crítica.</p>
+        <p class="tradeoff"><b>Trade-off</b>Alivia filas de forma inmediata, pero contradice la estrategia de self-service, aumenta costo operativo y no resuelve la causa raíz.</p>
+      </div>
+      <div class="option chosen">
+        <span class="option-name">Opción B</span>
+        <h4>Fix & Measure: intervención quirúrgica en 3 capas</h4>
+        <p>Semana 1: observación en campo + triaje de errores SBD. Semana 2-3: fix rápido en UX de kiosco/app + agente de triaje pre-SBD. Semana 4: medir con instrumentación manual controlada.</p>
+        <p class="tradeoff"><b>Trade-off</b>Requiere presencia en campo y un agente de triaje temporal, pero genera evidencia real sin esperar sensores perfectos y protege la estrategia de self-service.</p>
+      </div>
+      <div class="option">
+        <span class="option-name">Opción C</span>
+        <h4>Instrumentar primero, decidir después</h4>
+        <p>Priorizar la corrección de sensores y medición de Queue Time antes de tomar cualquier acción operativa.</p>
+        <p class="tradeoff"><b>Trade-off</b>Datos confiables para decisiones futuras, pero 6-8 semanas sin acción visible. Políticamente insostenible con OTD cayendo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <p class="phase-label">La decisión</p>
+    <p><strong>Opción B: Fix & Measure en 3 capas.</strong></p>
+    <p>La razón: no puedo esperar instrumentación perfecta mientras OTD sigue cayendo, pero tampoco puedo "arreglar filas" destruyendo la estrategia de self-service. La salida es actuar quirúrgicamente donde la evidencia cualitativa (observación en campo) complementa los datos cuantitativos imperfectos.</p>
+    <p>El insight clave: si +18% de pasajeros necesitan intervención manual en SBD, el problema no está en la fila — está antes de la fila. Pasajeros llegan al SBD sin entender qué necesitan (documentación, tamaño de equipaje, etiquetado). Eso es un problema de <strong>preparación del pasajero</strong>, no de capacidad de máquinas.</p>
+  </div>
+
+  <!-- BUILD -->
+  <div class="phase">
+    <span class="phase-tag">BUILD</span>
+    <p class="phase-label">Plan de 30 días</p>
+    <p><strong>Semana 1 — Observación y triaje:</strong> ir al aeropuerto. Parar 3 mañanas en la zona SBD durante peak y registrar las causas de cada manual intervention. Clasificar: ¿documentación? ¿equipaje fuera de medida? ¿error de interfaz? ¿pasajero que no hizo check-in online? Sin sensores perfectos, los ojos son la mejor instrumentación disponible.</p>
+    <p><strong>Semana 2-3 — Intervención quirúrgica:</strong> basado en lo observado, ejecutar fixes rápidos. Si la causa principal es preparación del pasajero: push notification en la app 2 horas antes con checklist claro ("Tu equipaje debe tener X, llevá Y documento, hacé check-in antes de llegar"). Pantalla de pre-validación en kiosco antes de derivar a SBD. Agente de triaje temporal en la entrada de la zona SBD (no para operar — para filtrar y redirigir).</p>
+    <p><strong>Semana 4 — Medir con lo que hay:</strong> comparar % de manual intervention (métrica robusta, viene del sistema) y OTD (métrica clara) pre vs. post intervención. No Queue Time — esa métrica no es confiable todavía.</p>
+  </div>
+
+  <!-- LAUNCH -->
+  <div class="phase">
+    <span class="phase-tag">LAUNCH</span>
+    <p class="phase-label">Lo que presento en el comité</p>
+    <p>Reencuadrar el problema: <strong>"No tenemos un problema de filas. Tenemos un problema de preparación del pasajero que se manifiesta como fila."</strong></p>
+    <p>El plan de 30 días no promete sensores arreglados ni filas eliminadas. Promete:</p>
+    <div class="metrics-row">
+      <em>Reducir Manual Intervention en SBD</em>
+      <em>Proteger OTD del banco doméstico AM</em>
+      <em>Diagnóstico de causa raíz verificado en campo</em>
+    </div>
+    <p style="margin-top:16px">Y un compromiso: <strong>en 30 días vamos a saber exactamente por qué falla el SBD en peak, vamos a tener un fix desplegado, y vamos a poder medir si funcionó — sin depender de sensores rotos.</strong></p>
+  </div>
+
+  <!-- SCALE -->
+  <div class="phase">
+    <span class="phase-tag">SCALE</span>
+    <p class="phase-label">Qué viene después de los 30 días</p>
+    <p>Si la intervención funciona (baja manual intervention y se estabiliza OTD), el siguiente paso es escalar:</p>
+    <ul class="scale-list">
+      <li>Automatizar la lógica de triaje en la app (pre-validación inteligente antes de llegar al aeropuerto).</li>
+      <li>Trabajar con Tech para mejorar la UX del SBD en los puntos de error más frecuentes.</li>
+      <li>Priorizar con Data la corrección de instrumentación de Queue Time como proyecto paralelo — ahora sí con tiempo y sin presión de OTD.</li>
+      <li>Replicar el modelo de observación + fix rápido en LIM antes de escalar a toda la red.</li>
+      <li>Medir: throughput de SBD (pasajeros/minuto), % de manual intervention por tipo de error, OTD por franja horaria, y NPS del día de viaje segmentado por canal (self-service vs. asistido).</li>
+    </ul>
+    <p class="case-closing">A veces la mejor decisión no es tener mejores datos. Es actuar con los que tenés mientras construís los que necesitás.</p>
+  </div>
+
+      </div><!-- .case-content -->
+    </details>
+
+    <!-- ============================================================
+         CASO 03 — MercadoLibre Ads
+         ============================================================ -->
+    <details class="case-expand" id="caso-03">
+      <summary class="index-item">
+        <span class="index-num">03</span>
+        <span class="index-logo"><img src="data:image/jpeg;base64,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" alt="MercadoLibre"></span>
+        <span>
+          <span class="index-title">Cómo multiplicar la adopción de un producto de Ads entre sellers que nunca hicieron publicidad</span>
+          <span class="index-meta"><span>eCommerce · B2B</span><span>Adopción &amp; Activación</span><span class="chip-real">Experiencia Real</span><span>7 min de lectura</span></span>
+        </span>
+        <span class="index-arrow">→ Ver caso</span>
+      </summary>
+      <div class="case-content">
+
+  <div class="case-header">
+    <p class="case-kicker">Caso 03</p>
+    <h2 class="case-title">Incrementar la adopción de Mercado Ads entre sellers SMB que nunca habían invertido en publicidad</h2>
+    <div class="case-chips">
+      <span>eCommerce · B2B</span>
+      <span>Adopción &amp; Activación</span>
+      <span class="chip-real">Experiencia Real · MercadoLibre Argentina · 2021–2022</span>
+    </div>
+  </div>
+
+  <div class="company-badge">
+    <div class="cb-logo"><img src="data:image/jpeg;base64,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" alt="MercadoLibre"></div>
+    <div class="cb-info">
+      <span class="cb-name">MercadoLibre Argentina — Mercado Ads</span>
+      <span class="cb-role">Product Commerce Supervisor · Ads SMB/B2B</span>
+      <span class="cb-period">Julio 2021 — Mayo 2022</span>
+    </div>
+  </div>
+
+  <!-- THINK -->
+  <div class="phase">
+    <span class="phase-tag">THINK</span>
+    <p class="phase-label">El contexto</p>
+    <p>MercadoLibre es el marketplace más grande de Latinoamérica. <strong>Mercado Ads</strong> es su producto de publicidad interna: permite a los sellers pagar para posicionar sus productos dentro de los resultados de búsqueda de la plataforma.</p>
+    <p>El producto funcionaba bien con sellers grandes — operaciones profesionales con equipos de marketing que entendían campañas, pujas y segmentación. Pero la oportunidad de crecimiento no estaba ahí.</p>
+    <p>Estaba en el segmento <strong>SMB</strong>: miles de vendedores pequeños y medianos que representaban un enorme volumen de transacciones, pero que apenas usaban Ads. No porque no quisieran vender más. Sino porque <strong>nunca habían hecho publicidad en su vida</strong>.</p>
+  </div>
+
+  <div class="phase">
+    <p class="phase-label">El verdadero problema</p>
+    <p>La lectura inicial del negocio era que hacían falta más features: mejores opciones de segmentación, dashboards más completos, más formatos de anuncio. La lógica era "si el producto es mejor, lo van a usar más".</p>
+    <p><strong>Pero eso no era lo que decían los datos.</strong></p>
+    <p>Cuando analicé el comportamiento de usuarios por vertical y por tamaño de seller, el patrón fue claro: los sellers SMB sí entraban a Ads. Muchos creaban su primera campaña. Pero una proporción altísima abandonaba en los primeros días o nunca volvía a invertir después del primer intento.</p>
+    <p>El problema no era que el producto no tuviera suficientes features. Era que el journey desde "quiero vender más" hasta "tengo una campaña que funciona" tenía demasiados pasos, demasiada jerga técnica y cero acompañamiento para alguien que nunca gestionó un presupuesto publicitario.</p>
+    <p><strong>No era un problema de producto. Era un problema de activación.</strong></p>
+  </div>
+
+  <div class="phase">
+    <p class="phase-label">Las tensiones</p>
+    <ul class="scale-list">
+      <li><strong>Negocio</strong> quería más revenue de Ads rápido. La presión era subir inversión por seller y ampliar la base activa.</li>
+      <li><strong>Producto</strong> proponía nuevas funcionalidades para competir con la sofisticación de Google y Meta Ads.</li>
+      <li><strong>UX/Data</strong> señalaba que antes de agregar más features había que entender por qué los sellers existentes no volvían después del primer uso.</li>
+      <li><strong>Branding y Content</strong> quería campañas educativas masivas, pero sin un journey simplificado la educación sola no iba a mover la aguja.</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <p class="phase-label">Las alternativas</p>
+    <div class="options">
+      <div class="option">
+        <span class="option-name">Opción A</span>
+        <h4>Más features, más sofisticación</h4>
+        <p>Agregar segmentación avanzada, nuevos formatos de anuncio y dashboards de performance.</p>
+        <p class="tradeoff"><b>Trade-off</b>Fortalece la propuesta para sellers grandes, pero complejiza aún más el producto para SMBs que ya no entienden el actual.</p>
+      </div>
+      <div class="option chosen">
+        <span class="option-name">Opción B</span>
+        <h4>Simplificar y activar</h4>
+        <p>Rediseñar el journey de primer uso, simplificar la creación de campaña para SMBs y focalizar en activación y habitualidad.</p>
+        <p class="tradeoff"><b>Trade-off</b>No agrega valor inmediato para sellers avanzados, pero desbloquea el segmento de mayor volumen y potencial de crecimiento.</p>
+      </div>
+      <div class="option">
+        <span class="option-name">Opción C</span>
+        <h4>Campaña masiva de educación</h4>
+        <p>Invertir en contenido educativo, tutoriales y webinars para enseñar a los sellers a usar Ads.</p>
+        <p class="tradeoff"><b>Trade-off</b>Genera awareness, pero sin cambiar el producto la tasa de activación real no se mueve — entender cómo funciona algo complejo no es lo mismo que usarlo fácilmente.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <p class="phase-label">La decisión</p>
+    <p><strong>Opción B: simplificar y activar.</strong></p>
+    <p>El razonamiento: en un marketplace con miles de sellers SMB, el crecimiento de Ads no iba a venir de cobrarle más a pocos sellers grandes. Iba a venir de <strong>activar la cola larga</strong> — miles de sellers pequeños que, con una inversión modesta pero constante, generan un volumen agregado enorme.</p>
+    <p>Para eso, el producto tenía que ser tan simple que un vendedor de zapatillas en Córdoba pudiera crear su primera campaña en 3 minutos sin saber qué es un CPC.</p>
+  </div>
+
+  <!-- BUILD -->
+  <div class="phase">
+    <span class="phase-tag">BUILD</span>
+    <p class="phase-label">Mi rol</p>
+    <p>Lideré la estrategia de producto para el segmento SMB con foco en tres ejes:</p>
+    <p><strong>1. Diagnóstico por vertical:</strong> analicé la performance de Ads cruzando comportamiento de uso, vertical del seller, tamaño de operación y rentabilidad por segmento. Esto permitió identificar qué verticales tenían mayor potencial de activación y cuáles necesitaban un approach distinto.</p>
+    <p><strong>2. Rediseño del journey de activación:</strong> trabajé con UX y Data para simplificar la creación de la primera campaña. Menos pasos, lenguaje más directo, valores por defecto inteligentes. La idea: que el seller configure su primera campaña casi sin darse cuenta, y que vea resultados rápido para generar el hábito de inversión.</p>
+    <p><strong>3. Estrategias de retención por cohorte:</strong> diseñé campañas segmentadas de activación y retención para incrementar la habitualidad de uso y el ticket promedio por cuenta. Coordiné con Ventas, Operaciones, Marketing y Comercial para asegurar una propuesta de valor consistente en todos los puntos de contacto.</p>
+    <p>También colaboré con Finanzas en el análisis de rentabilidad por vertical y propuse ajustes de pricing para maximizar el margen del canal.</p>
+  </div>
+
+  <!-- LAUNCH -->
+  <div class="phase">
+    <span class="phase-tag">LAUNCH</span>
+    <p class="phase-label">El resultado</p>
+    <div class="metrics-row">
+      <em>+40% base de usuarios activos</em>
+      <em>+25% tasa de conversión</em>
+      <em>+18% activación mensual de nuevos sellers</em>
+      <em>+12% ticket promedio por cuenta en 6 meses</em>
+    </div>
+    <p style="margin-top:20px">El aprendizaje más importante: <strong>a veces "mejorar el producto" no significa agregarle más cosas. Significa quitarle todo lo que impide que la gente lo use.</strong></p>
+    <p>Los sellers SMB no necesitaban un producto de Ads más sofisticado. Necesitaban uno que los tratara como lo que eran: vendedores que quieren vender más, no profesionales de marketing digital.</p>
+  </div>
+
+  <!-- SCALE -->
+  <div class="phase">
+    <span class="phase-tag">SCALE</span>
+    <p class="phase-label">Si tuviera que escalar este producto nuevamente</p>
+    <p>Mantendría la estrategia de simplificación, pero agregaría dos capas que en ese momento no llegamos a implementar:</p>
+    <ul class="scale-list">
+      <li><strong>Automatización inteligente:</strong> un modo "piloto automático" donde el seller solo define cuánto quiere invertir y el sistema optimiza campañas automáticamente. Elimina la necesidad de que el SMB aprenda sobre pujas y keywords.</li>
+      <li><strong>Onboarding personalizado por vertical:</strong> en vez de un journey genérico, adaptar las recomendaciones al tipo de negocio del seller ("Vendés electrónica? Te conviene promocionar X con presupuesto Y").</li>
+      <li><strong>Cohorte analysis más granular:</strong> medir no solo activación sino time-to-value — ¿cuántos días tarda un seller nuevo en ver su primera venta atribuida a Ads? Reducir ese número debería ser el north star.</li>
+      <li><strong>Loop de retroalimentación con Comercial:</strong> usar los insights de producto para armar el pitch del equipo de ventas. Si sabemos qué vertical tiene mejor ROI en Ads, el canal comercial puede prospectar con data.</li>
+    </ul>
+    <p class="case-closing">El mejor producto de publicidad para un seller que nunca hizo publicidad es uno donde no siente que está haciendo publicidad. Solo que está vendiendo más.</p>
+  </div>
+
+      </div><!-- .case-content -->
+    </details>
+
   </div>
 </div>
 
@@ -525,5 +900,6 @@ if(scalePhase){
   sio.observe(scalePhase);
 }
 </script>
+<a href="index.html#contacto" class="float-cta">Contactame →</a>
 </body>
 </html>
