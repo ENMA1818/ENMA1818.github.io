@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Product Thinking — Enmanuel Tolosa</title>
 <meta name="description" content="Cómo pienso. Cómo tomo decisiones. Cómo construyo productos.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -30,8 +32,9 @@
   /* NAV */
   header{position:sticky;top:0;z-index:30;background:rgba(15,17,19,0.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1120px;margin:0 auto}
-  .nav-brand{font-family:var(--mono);font-size:14px;letter-spacing:.08em;text-decoration:none;color:var(--text)}
+  .nav-brand{font-family:var(--mono);font-size:14px;letter-spacing:.08em;text-decoration:none;color:var(--text);display:inline-flex;align-items:center;gap:10px}
   .nav-brand span{color:var(--gold)}
+  .nav-logo{width:32px;height:32px;flex-shrink:0}
   .nav-back{font-family:var(--mono);font-size:13px;color:var(--text-muted);text-decoration:none;transition:color .2s}
   .nav-back:hover{color:var(--gold)}
 
@@ -420,7 +423,7 @@
 <div class="scroll-progress" id="scrollbar"></div>
 <header>
   <nav class="nav">
-    <a href="index.html" class="nav-brand">TOLOSA<span>.</span>PM</a>
+    <a href="index.html" class="nav-brand"><svg class="nav-logo" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg"><circle cx="110" cy="110" r="90" fill="none" stroke="#D4A72C" stroke-width="4"/><text x="110" y="136" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="82" fill="#F5F2EA">ET</text></svg>TOLOSA<span>.</span>PM</a>
     <a href="index.html" class="nav-back">← Volver al inicio</a>
   </nav>
 </header>
