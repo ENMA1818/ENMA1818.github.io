@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-08-05T12:00:00.000Z",
+  "items": [
+    {
+      "source": "Hacker News",
+      "type": "community",
+      "title": "Cómo los equipos de producto están rediseñando flujos con agentes de IA",
+      "url": "https://news.ycombinator.com",
+      "date": "2026-08-04",
+      "take": ""
+    },
+    {
+      "source": "TechCrunch",
+      "type": "community",
+      "title": "La adopción empresarial de IA generativa pasa de piloto a producción",
+      "url": "https://techcrunch.com",
+      "date": "2026-08-03",
+      "take": ""
+    },
+    {
+      "source": "Google News",
+      "type": "community",
+      "title": "Modelos de IA multimodal ganan terreno en atención al cliente",
+      "url": "https://news.google.com",
+      "date": "2026-08-02",
+      "take": ""
+    },
+    {
+      "source": "Hacker News",
+      "type": "community",
+      "title": "Debate sobre costos de inferencia y ROI de proyectos de IA",
+      "url": "https://news.ycombinator.com",
+      "date": "2026-08-01",
+      "take": ""
+    }
+  ]
+}
