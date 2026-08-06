@@ -316,28 +316,6 @@
     text-shadow:0 0 20px rgba(212,167,44,0.2);
   }
 
-  /* ---------- FLOATING CTA ---------- */
-  .floating-cta{
-    position:fixed; bottom:28px; right:28px; z-index:40;
-    background:var(--gold); color:#0F1113;
-    font-family:var(--mono); font-size:13.5px; font-weight:600;
-    padding:14px 24px; border-radius:2px; text-decoration:none;
-    box-shadow:0 4px 20px rgba(212,167,44,0.3);
-    transition:all .25s ease;
-    animation:float-pulse 3s ease-in-out infinite;
-  }
-  .floating-cta:hover{
-    background:#E7BE3D; transform:translateY(-2px);
-    box-shadow:0 6px 28px rgba(212,167,44,0.45);
-  }
-  @keyframes float-pulse{
-    0%,100%{ box-shadow:0 4px 20px rgba(212,167,44,0.3); }
-    50%{ box-shadow:0 4px 28px rgba(212,167,44,0.5); }
-  }
-  @media(max-width:640px){
-    .floating-cta{ bottom:16px; right:16px; padding:12px 18px; font-size:12.5px; }
-  }
-
 
   /* ---------- CASE COMPANY BADGE ---------- */
   .company-badge{
@@ -1029,8 +1007,6 @@
     document.querySelectorAll('.reveal,.stagger').forEach(el=>io.observe(el));
   }else{document.querySelectorAll('.reveal,.stagger').forEach(el=>el.classList.add('in-view'))}
 </script>
-
-<a href="index.html#contacto" class="floating-cta">Contactame →</a>
 
 <script>
 // Scroll progress bar
