@@ -894,9 +894,8 @@
     <div class="radar-live"><span class="dot-live"></span> <span id="ai-trends-status">Cargando tendencias…</span></div>
     <div class="radar-head-row">
       <h2 class="radar-title reveal">Tendencias en Inteligencia Artificial.</h2>
-      <p class="radar-cmd">$ ai-trends --fetch --daily</p>
     </div>
-    <p class="radar-intro reveal">Se actualiza solo todos los días: agrego automáticamente lo más relevante que se está discutiendo en IA — modelos, producto, agentes, adopción en empresas.</p>
+    <p class="radar-intro reveal">Se actualiza solo todos los días: agrego automáticamente lo más relevante que se está discutiendo en IA: modelos, producto, agentes, adopción en empresas.</p>
     <div id="ai-trends-grid" class="radar-grid reveal"></div>
     <p class="radar-note reveal">Fuente agregada automáticamente. Si querés conversar sobre cómo aplicar alguna de estas tendencias a tu producto, hablemos.</p>
   </div>
@@ -912,7 +911,7 @@
     items: [
       { source: "Hacker News", type: "community", title: "Cómo los equipos de producto están rediseñando flujos con agentes de IA", url: "https://news.ycombinator.com", date: "2026-08-04", take: "" },
       { source: "TechCrunch", type: "community", title: "La adopción empresarial de IA generativa pasa de piloto a producción", url: "https://techcrunch.com", date: "2026-08-03", take: "" },
-      { source: "Google News", type: "community", title: "Modelos de IA multimodal ganan terreno en atención al cliente", url: "https://news.google.com", date: "2026-08-02", take: "" },
+      { source: "VentureBeat", type: "community", title: "Modelos de IA multimodal ganan terreno en atención al cliente", url: "https://venturebeat.com", date: "2026-08-02", take: "" },
       { source: "Hacker News", type: "community", title: "Debate sobre costos de inferencia y ROI de proyectos de IA", url: "https://news.ycombinator.com", date: "2026-08-01", take: "" }
     ]
   };
@@ -934,6 +933,10 @@
     return "actualizado hace " + days + (days === 1 ? " día" : " días");
   }
 
+  function cleanTitle(title){
+    return (title || "").replace(/\s+-\s+[^-]{2,40}$/, "").trim();
+  }
+
   function render(data){
     var items = (data.items || []).slice(0, 4);
     grid.innerHTML = "";
@@ -952,7 +955,7 @@
           '<span class="radar-source ' + badgeClass + '">' + (item.source || "Fuente") + '</span>' +
           '<span class="radar-date">' + fmtDate(item.date) + '</span>' +
         '</div>' +
-        '<h3>' + item.title + '</h3>' +
+        '<h3>' + cleanTitle(item.title) + '</h3>' +
         takeHtml +
         '<span class="radar-link">Leer fuente <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>';
 
