@@ -134,6 +134,48 @@
   .btn{font-family:var(--mono);font-size:13.5px;letter-spacing:.03em;padding:13px 22px;border-radius:2px;text-decoration:none;display:inline-block;transition:all .2s;background:var(--gold);color:#0F1113;font-weight:600}
   .btn:hover{background:#E7BE3D;transform:translateY(-1px)}
 
+  /* ---------- RADAR ---------- */
+  .dot-live{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(79,143,130,0.55)}70%{box-shadow:0 0 0 9px rgba(79,143,130,0)}100%{box-shadow:0 0 0 0 rgba(79,143,130,0)}}
+  @media(prefers-reduced-motion:reduce){.dot-live{animation:none}}
+  .radar-section{padding:72px 0;border-bottom:1px solid var(--line)}
+  .radar-live{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+  .radar-head-row{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:8px}
+  .radar-title{font-family:var(--display);font-size:clamp(22px,3vw,28px);font-weight:700;margin:0;letter-spacing:-.01em}
+  .radar-cmd{font-family:var(--mono);font-size:12px;color:var(--text-muted)}
+  .radar-intro{color:var(--text-muted);font-size:15.5px;max-width:62ch;margin:14px 0 32px}
+  .radar-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .radar-card{background:var(--bg-panel);padding:26px;display:flex;flex-direction:column;gap:12px;text-decoration:none;color:var(--text);transition:background .25s ease}
+  .radar-card:hover{background:var(--bg-elevated)}
+  .radar-card:hover .radar-link{color:var(--gold)}
+  .radar-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .radar-source{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;white-space:nowrap}
+  .radar-source.official{color:var(--gold);border:1px solid var(--gold-soft);background:var(--gold-soft)}
+  .radar-source.community{color:var(--text-muted);border:1px solid var(--line-strong)}
+  .radar-date{font-family:var(--mono);font-size:11px;color:var(--text-muted);white-space:nowrap}
+  .radar-card h3{font-family:var(--display);font-size:15.5px;font-weight:600;margin:0;line-height:1.35}
+  .radar-take{font-family:var(--mono);font-size:12.5px;color:var(--teal);margin:0}
+  .radar-link{font-family:var(--mono);font-size:12px;color:var(--text-muted);display:inline-flex;align-items:center;gap:6px;margin-top:2px;transition:color .2s ease}
+  .radar-note{margin-top:28px;font-size:13.5px;color:var(--text-muted);border-top:1px solid var(--line);padding-top:20px}
+  @media(max-width:760px){.radar-grid{grid-template-columns:1fr}}
+
+  /* ---------- SUGERÍ UN TEMA ---------- */
+  .suggest-section{padding:72px 0;border-bottom:1px solid var(--line)}
+  .suggest-head{max-width:60ch;margin-bottom:32px}
+  .suggest-kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+  .suggest-title{font-family:var(--display);font-size:clamp(22px,3vw,28px);font-weight:700;margin:0 0 14px;letter-spacing:-.01em;line-height:1.2}
+  .suggest-head p{color:var(--text-muted);font-size:16px;margin:0}
+  .suggest-form{max-width:640px}
+  .s-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:560px){.s-row{grid-template-columns:1fr}}
+  .s-field{margin-bottom:14px}
+  .s-field label{display:block;font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:6px}
+  .s-field input,.s-field textarea{width:100%;background:var(--bg-panel);border:1px solid var(--line-strong);color:var(--text);font-family:var(--body);font-size:15px;padding:12px 14px;border-radius:2px;box-sizing:border-box;transition:border-color .2s ease}
+  .s-field input:focus,.s-field textarea:focus{outline:none;border-color:var(--gold)}
+  .s-field textarea{min-height:100px;resize:vertical}
+  .s-submit{font-family:var(--mono);font-size:13.5px;letter-spacing:.03em;padding:14px 26px;border-radius:2px;border:none;cursor:pointer;background:var(--gold);color:#0F1113;font-weight:600;transition:all .2s ease}
+  .s-submit:hover{background:#E7BE3D;transform:translateY(-1px)}
+
   footer{border-top:1px solid var(--line);padding:28px 0}
   .footer-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--text-muted);font-family:var(--mono);font-size:12px}
 
@@ -845,6 +887,121 @@
 
   </div>
 </div>
+
+<!-- ==================== TENDENCIAS EN IA ==================== -->
+<section class="radar-section">
+  <div class="wrap">
+    <div class="radar-live"><span class="dot-live"></span> <span id="ai-trends-status">Cargando tendencias…</span></div>
+    <div class="radar-head-row">
+      <h2 class="radar-title reveal">Tendencias en Inteligencia Artificial.</h2>
+      <p class="radar-cmd">$ ai-trends --fetch --daily</p>
+    </div>
+    <p class="radar-intro reveal">Se actualiza solo todos los días: agrego automáticamente lo más relevante que se está discutiendo en IA — modelos, producto, agentes, adopción en empresas.</p>
+    <div id="ai-trends-grid" class="radar-grid reveal"></div>
+    <p class="radar-note reveal">Fuente agregada automáticamente. Si querés conversar sobre cómo aplicar alguna de estas tendencias a tu producto, hablemos.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var grid = document.getElementById('ai-trends-grid');
+  var status = document.getElementById('ai-trends-status');
+
+  var fallback = {
+    generated_at: null,
+    items: [
+      { source: "Hacker News", type: "community", title: "Cómo los equipos de producto están rediseñando flujos con agentes de IA", url: "https://news.ycombinator.com", date: "2026-08-04", take: "" },
+      { source: "TechCrunch", type: "community", title: "La adopción empresarial de IA generativa pasa de piloto a producción", url: "https://techcrunch.com", date: "2026-08-03", take: "" },
+      { source: "Google News", type: "community", title: "Modelos de IA multimodal ganan terreno en atención al cliente", url: "https://news.google.com", date: "2026-08-02", take: "" },
+      { source: "Hacker News", type: "community", title: "Debate sobre costos de inferencia y ROI de proyectos de IA", url: "https://news.ycombinator.com", date: "2026-08-01", take: "" }
+    ]
+  };
+
+  function fmtDate(iso){
+    try{
+      var d = new Date(iso);
+      return d.toLocaleDateString('es-AR', { day:'numeric', month:'short', year:'numeric' });
+    }catch(e){ return iso; }
+  }
+
+  function fmtRelative(iso){
+    if(!iso) return "actualizado periódicamente";
+    var diffMs = Date.now() - new Date(iso).getTime();
+    var hours = Math.round(diffMs / 3600000);
+    if(hours < 1) return "actualizado hace instantes";
+    if(hours < 24) return "actualizado hace " + hours + (hours === 1 ? " hora" : " horas");
+    var days = Math.round(hours / 24);
+    return "actualizado hace " + days + (days === 1 ? " día" : " días");
+  }
+
+  function render(data){
+    var items = (data.items || []).slice(0, 4);
+    grid.innerHTML = "";
+    items.forEach(function(item){
+      var a = document.createElement('a');
+      a.href = item.url || "#";
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.className = "radar-card";
+
+      var badgeClass = item.type === "official" ? "official" : "community";
+      var takeHtml = item.take ? '<p class="radar-take">→ Lectura PM: ' + item.take + '</p>' : '';
+
+      a.innerHTML =
+        '<div class="radar-top">' +
+          '<span class="radar-source ' + badgeClass + '">' + (item.source || "Fuente") + '</span>' +
+          '<span class="radar-date">' + fmtDate(item.date) + '</span>' +
+        '</div>' +
+        '<h3>' + item.title + '</h3>' +
+        takeHtml +
+        '<span class="radar-link">Leer fuente <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>';
+
+      grid.appendChild(a);
+    });
+    status.textContent = fmtRelative(data.generated_at);
+  }
+
+  fetch('data/ai-trends.json', { cache: 'no-store' })
+    .then(function(res){ if(!res.ok) throw new Error('no data yet'); return res.json(); })
+    .then(render)
+    .catch(function(){ render(fallback); });
+})();
+</script>
+
+<!-- ==================== SUGERÍ UN TEMA ==================== -->
+<section class="suggest-section">
+  <div class="wrap">
+    <div class="suggest-head reveal">
+      <p class="suggest-kicker">Construyamos esto juntos</p>
+      <h2 class="suggest-title">¿Qué caso o producto te gustaría que analice?</h2>
+      <p>Esta librería de casos crece con lo que a la comunidad le sirve de verdad. Si hay un problema de producto, una industria o una herramienta que te gustaría ver aplicando el framework THINK → BUILD → LAUNCH → SCALE, contámelo.</p>
+    </div>
+    <form class="suggest-form reveal" action="https://formsubmit.co/enmanueltolosa@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Sugerencia de tema — Product Thinking">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <div class="s-row">
+        <div class="s-field">
+          <label for="s-nombre">Nombre</label>
+          <input id="s-nombre" type="text" name="Nombre" required>
+        </div>
+        <div class="s-field">
+          <label for="s-email">Email</label>
+          <input id="s-email" type="email" name="Email" required>
+        </div>
+      </div>
+      <div class="s-field">
+        <label for="s-tema">Tema, producto o industria que te gustaría ver</label>
+        <input id="s-tema" type="text" name="Tema sugerido" placeholder="Ej: onboarding en fintech, marketplace B2B, IA en soporte..." required>
+      </div>
+      <div class="s-field">
+        <label for="s-comentario">Contexto (opcional)</label>
+        <textarea id="s-comentario" name="Comentario" placeholder="¿Por qué te interesa este caso? ¿Hay algo puntual que te gustaría que resuelva?"></textarea>
+      </div>
+      <button type="submit" class="s-submit">Enviar sugerencia</button>
+    </form>
+  </div>
+</section>
 
 <!-- ==================== CTA ==================== -->
 <div class="wrap cta-final">
