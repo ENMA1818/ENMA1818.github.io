@@ -1,0 +1,32 @@
+name: Update AI trends
+
+on:
+  schedule:
+    - cron: "0 11 * * *"   # 08:00 Buenos Aires (UTC-3)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-trends:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch AI trends
+        run: node scripts/fetch-ai-trends.mjs
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ai-trends.json
+          git diff --quiet --cached || git commit -m "chore: actualizar tendencias de IA"
+          git push
