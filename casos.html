@@ -6,7 +6,6 @@
 <title>Product Thinking — Enmanuel Tolosa</title>
 <meta name="description" content="Cómo pienso. Cómo tomo decisiones. Cómo construyo productos.">
 <link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -19,46 +18,47 @@
     --line:rgba(245,242,234,0.09);--line-strong:rgba(245,242,234,0.20);
     --display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--mono:'IBM Plex Mono',monospace;
   }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
-  a{color:inherit}
-  a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  a{color:inherit}a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
   .wrap{max-width:960px;margin:0 auto;padding:0 32px}
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in-view{opacity:1;transform:translateY(0)}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
-  /* NAV */
   header{position:sticky;top:0;z-index:30;background:rgba(15,17,19,0.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1120px;margin:0 auto}
-  .nav-brand{font-family:var(--mono);font-size:14px;letter-spacing:.08em;text-decoration:none;color:var(--text);display:inline-flex;align-items:center;gap:10px}
+  .nav-brand{font-family:var(--mono);font-size:14px;letter-spacing:.08em;text-decoration:none;color:var(--text);display:inline-flex;align-items:center;gap:10px;transition:opacity .2s}
+  .nav-brand:hover{opacity:.85}
   .nav-brand span{color:var(--gold)}
   .nav-logo{width:32px;height:32px;flex-shrink:0}
-  .nav-back{font-family:var(--mono);font-size:13px;color:var(--text-muted);text-decoration:none;transition:color .2s}
+  .nav-back{font-family:var(--mono);font-size:13px;color:var(--text-muted);text-decoration:none;transition:color .2s;position:relative}
   .nav-back:hover{color:var(--gold)}
+  .nav-back::after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+  .nav-back:hover::after{width:100%}
 
-  /* HERO */
-  .hero{padding:96px 0 64px;border-bottom:1px solid var(--line)}
-  .hero-num{font-family:var(--mono);font-size:13px;color:var(--teal);margin-bottom:8px}
+  .scroll-progress{position:fixed;top:0;left:0;z-index:50;width:0%;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .1s linear}
+  body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(rgba(245,242,234,0.04) 1px,transparent 1px);background-size:24px 24px}
+
+  .hero{padding:96px 0 64px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
   .hero-label{font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
   h1{font-family:var(--display);font-weight:700;font-size:clamp(32px,4.5vw,48px);line-height:1.1;letter-spacing:-.02em;margin:0 0 24px;max-width:22ch}
   h1 em{font-style:normal;color:var(--gold)}
   .hero-sub{color:var(--text-muted);font-size:17px;max-width:58ch;margin:0 0 16px}
   .hero-highlight{color:var(--text);font-size:18px;font-weight:600;margin:0 0 20px;max-width:58ch}
 
-  /* MANIFESTO */
-  .manifesto{padding:72px 0;border-bottom:1px solid var(--line)}
+  .manifesto{padding:72px 0;border-bottom:1px solid var(--line);position:relative;padding-left:24px}
+  .manifesto::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold),var(--teal),transparent)}
   .manifesto p{color:var(--text-muted);font-size:16.5px;max-width:62ch;margin:0 0 16px}
   .manifesto p:last-child{margin-bottom:0}
   .manifesto p strong{color:var(--text);font-weight:600}
-  .manifesto .closing{color:var(--gold);font-family:var(--display);font-size:17px;font-weight:600;margin-top:28px}
+  .manifesto .closing{color:var(--gold);font-family:var(--display);font-size:17px;font-weight:600;margin-top:28px;text-shadow:0 0 20px rgba(212,167,44,0.2)}
 
-  /* FRAMEWORK */
   .fw-section{padding:72px 0;border-bottom:1px solid var(--line)}
   .fw-title{font-family:var(--display);font-size:clamp(22px,3vw,28px);font-weight:700;margin:0 0 36px;letter-spacing:-.01em}
   .fw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-  .fw-card{background:var(--bg-panel);padding:28px 24px;display:flex;flex-direction:column;gap:14px}
+  .fw-card{background:var(--bg-panel);padding:28px 24px;display:flex;flex-direction:column;gap:14px;transition:background .25s,transform .25s,box-shadow .25s}
+  .fw-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
   .fw-card-label{font-family:var(--display);font-size:18px;font-weight:700;color:var(--gold)}
   .fw-card-title{font-family:var(--display);font-size:15px;font-weight:600;margin:0}
   .fw-card p{color:var(--text-muted);font-size:13.5px;margin:0}
@@ -66,22 +66,26 @@
   @media(max-width:760px){.fw-grid{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:480px){.fw-grid{grid-template-columns:1fr}}
 
-  /* LIBRARY INDEX */
+  .stagger>*{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+  .stagger.in-view>*:nth-child(1){transition-delay:.05s}.stagger.in-view>*:nth-child(2){transition-delay:.12s}
+  .stagger.in-view>*:nth-child(3){transition-delay:.19s}.stagger.in-view>*:nth-child(4){transition-delay:.26s}
+  .stagger.in-view>*{opacity:1;transform:translateY(0)}
+  @media(prefers-reduced-motion:reduce){.stagger>*{opacity:1;transform:none;transition:none}}
+
   .lib-section{padding:72px 0;border-bottom:1px solid var(--line)}
   .lib-title{font-family:var(--display);font-size:clamp(22px,3vw,28px);font-weight:700;margin:0 0 8px;letter-spacing:-.01em}
   .lib-subtitle{font-family:var(--mono);font-size:13px;color:var(--text-muted);margin:0 0 28px}
   .lib-intro-text{color:var(--text-muted);font-size:15px;max-width:58ch;margin:0 0 32px}
-  .lib-intro-text em{font-style:normal;color:var(--text);font-weight:600}
+  .lib-intro-text em2{font-style:normal;color:var(--text);font-weight:600}
+
   .case-index{display:flex;flex-direction:column;gap:0;background:var(--bg);border:1px solid var(--line)}
-  .case-expand{ border-bottom:1px solid var(--line); }
-  .case-expand:last-child{ border-bottom:none; }
-  .index-item{display:grid;grid-template-columns:auto auto 1fr auto;gap:20px;align-items:center;background:var(--bg-panel);padding:24px 28px;text-decoration:none;transition:background .25s;cursor:pointer;list-style:none}
+  .case-expand{border-bottom:1px solid var(--line)}.case-expand:last-child{border-bottom:none}
+  .index-item{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;background:var(--bg-panel);padding:24px 28px;text-decoration:none;transition:background .25s,transform .25s;cursor:pointer;list-style:none}
   .index-item::-webkit-details-marker{display:none}
   .index-item:hover{background:var(--bg-elevated)}
   .case-expand[open] .index-item{border-bottom:1px solid var(--line)}
   .case-expand[open] .index-arrow{color:var(--gold)}
   .case-content{padding:40px 28px;background:var(--bg)}
-  .case-content .case-header{margin-bottom:40px}
   .index-num{font-family:var(--mono);font-size:13px;color:var(--teal)}
   .index-title{font-family:var(--display);font-size:17px;font-weight:600}
   .index-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
@@ -91,27 +95,36 @@
   .index-item:hover .index-arrow{color:var(--gold);transform:translateX(4px)}
   @media(max-width:640px){.index-item{grid-template-columns:1fr;gap:8px}.index-arrow{display:none}}
 
-  /* CASO */
-  .case-article{padding:80px 0;border-bottom:1px solid var(--line)}
-  .case-header{margin-bottom:48px}
   .case-kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
   .case-title{font-family:var(--display);font-size:clamp(24px,3.4vw,34px);font-weight:700;line-height:1.18;letter-spacing:-.01em;margin:0 0 18px;max-width:30ch}
   .case-chips{display:flex;gap:8px;flex-wrap:wrap}
   .case-chips span{font-family:var(--mono);font-size:11.5px;padding:5px 11px;border:1px solid var(--line-strong);color:var(--text-muted)}
   .case-chips span.chip-real{color:var(--teal);border-color:rgba(79,143,130,0.4);background:var(--teal-soft)}
 
+  .company-badge{display:flex;align-items:center;gap:18px;padding:20px 24px;background:var(--bg-panel);border:1px solid var(--line);margin-bottom:32px;position:relative;transition:background .3s}
+  .company-badge::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--teal),var(--gold));background-size:200% 100%;animation:cb-border 5s linear infinite}
+  @keyframes cb-border{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+  .company-badge:hover{background:var(--bg-elevated)}
+  @media(prefers-reduced-motion:reduce){.company-badge::before{animation:none}}
+  .company-badge .cb-logo{width:64px;height:64px;overflow:hidden;border:1px solid var(--line-strong);flex-shrink:0}
+  .company-badge .cb-logo img{width:100%;height:100%;object-fit:cover}
+  .company-badge .cb-info{display:flex;flex-direction:column;gap:2px}
+  .company-badge .cb-name{font-family:var(--display);font-size:16px;font-weight:700}
+  .company-badge .cb-role{font-family:var(--mono);font-size:11px;color:var(--text-muted);letter-spacing:.04em}
+  .company-badge .cb-period{font-family:var(--mono);font-size:10px;color:var(--teal);letter-spacing:.04em}
+
   .phase{margin-bottom:40px}
-  .phase-tag{display:inline-block;font-family:var(--display);font-size:13px;font-weight:700;color:var(--gold);background:var(--gold-soft);padding:4px 10px;margin-bottom:14px;letter-spacing:.04em}
+  .phase-tag{display:inline-block;font-family:var(--display);font-size:13px;font-weight:700;color:var(--gold);background:var(--gold-soft);padding:4px 10px;margin-bottom:14px;letter-spacing:.04em;box-shadow:0 0 12px rgba(212,167,44,0.15)}
   .phase-label{font-family:var(--display);font-size:20px;font-weight:700;margin:0 0 16px}
   .phase p{margin:0 0 14px;color:var(--text-muted);font-size:16px;max-width:66ch}
   .phase p:last-child{margin-bottom:0}
   .phase p strong{color:var(--text);font-weight:600}
 
-  /* OPTIONS */
   .options{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:20px 0 8px}
   @media(max-width:760px){.options{grid-template-columns:1fr}}
-  .option{background:var(--bg-panel);padding:24px;display:flex;flex-direction:column;gap:10px;position:relative}
-  .option.chosen{background:var(--bg-elevated)}
+  .option{background:var(--bg-panel);padding:24px;display:flex;flex-direction:column;gap:10px;position:relative;transition:background .25s,transform .25s}
+  .option:hover{background:var(--bg-elevated);transform:translateY(-2px)}
+  .option.chosen{background:var(--bg-elevated);border:1px solid rgba(212,167,44,0.2);box-shadow:0 0 24px rgba(212,167,44,0.08)}
   .option.chosen::before{content:"ELEGIDA";position:absolute;top:14px;right:14px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--gold);border:1px solid var(--gold-soft);background:var(--gold-soft);padding:3px 8px}
   .option-name{font-family:var(--mono);font-size:12px;color:var(--gold)}
   .option h4{font-family:var(--display);font-size:15.5px;font-weight:600;margin:0;padding-right:64px}
@@ -119,36 +132,397 @@
   .option .tradeoff{font-size:12.5px}
   .option .tradeoff b{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);display:block;margin-bottom:3px;font-weight:500}
 
-  /* METRICS */
   .metrics-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-  .metrics-row em{font-style:normal;font-family:var(--mono);font-size:12.5px;color:var(--gold);border:1px solid var(--gold-soft);background:var(--gold-soft);padding:6px 12px}
+  .metrics-row em{font-style:normal;font-family:var(--mono);font-size:12.5px;color:var(--gold);border:1px solid var(--gold-soft);background:var(--gold-soft);padding:6px 12px;transition:box-shadow .3s,transform .3s}
+  .metrics-row em:hover{box-shadow:0 0 16px rgba(212,167,44,0.25);transform:translateY(-1px)}
 
-  /* SCALE LIST */
   .scale-list{list-style:none;padding:0;margin:14px 0 0}
-  .scale-list li{font-size:14.5px;color:var(--text-muted);padding:6px 0;padding-left:18px;position:relative}
+  .scale-list li{font-size:14.5px;color:var(--text-muted);padding:6px 0 6px 18px;position:relative}
   .scale-list li::before{content:"→";position:absolute;left:0;color:var(--gold);font-family:var(--mono);font-size:12px}
 
-  .case-closing{color:var(--gold);font-family:var(--display);font-size:17px;font-weight:600;margin-top:28px}
+  .case-closing{color:var(--gold);font-family:var(--display);font-size:17px;font-weight:600;margin-top:28px;text-shadow:0 0 20px rgba(212,167,44,0.2)}
 
-  /* CTA */
+  .case-cta{margin-top:48px;padding:36px;background:var(--bg-panel);border:1px solid var(--line);position:relative;overflow:hidden;transition:box-shadow .3s,transform .3s}
+  .case-cta:hover{box-shadow:0 8px 32px rgba(0,0,0,0.3);transform:translateY(-2px)}
+  .case-cta::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--teal))}
+  .case-cta-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .case-cta h4{font-family:var(--display);font-size:18px;font-weight:700;margin:0 0 6px}
+  .case-cta p{font-family:var(--mono);font-size:12.5px;color:var(--text-muted);margin:0}
+  .btn{font-family:var(--mono);font-size:13.5px;letter-spacing:.03em;padding:13px 22px;border-radius:2px;text-decoration:none;display:inline-block;transition:all .2s;background:var(--gold);color:#0F1113;font-weight:600;position:relative;overflow:hidden}
+  .btn:hover{background:#E7BE3D;transform:translateY(-1px)}
+
+  .lib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:32px}
+  .lib-card{background:var(--bg-panel);padding:30px 26px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:var(--text);transition:background .25s}
+  .lib-card:hover{background:var(--bg-elevated)}
+  .lib-card:hover .lib-cta{color:var(--gold)}
+  .lib-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .lib-index{font-family:var(--mono);font-size:12px;color:var(--teal)}
+  .lib-badge{font-family:var(--mono);font-size:11px;color:var(--gold);border:1px solid var(--gold-soft);background:var(--gold-soft);padding:3px 8px;white-space:nowrap}
+  .lib-card h3{font-family:var(--display);font-size:18.5px;font-weight:600;margin:0}
+  .lib-card p{color:var(--text-muted);font-size:13.5px;margin:0;flex-grow:1}
+  .lib-cta{font-family:var(--mono);font-size:12.5px;color:var(--text-muted);display:inline-flex;align-items:center;gap:6px;margin-top:4px;transition:color .2s}
+  .lib-note{margin-top:28px;font-size:13.5px;color:var(--text-muted);border-top:1px solid var(--line);padding-top:20px}
+  @media(max-width:860px){.lib-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.lib-grid{grid-template-columns:1fr}}
+
+  .suggest-section{padding:72px 0;border-bottom:1px solid var(--line)}
+  .suggest-kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+  .suggest-title{font-family:var(--display);font-size:clamp(22px,3vw,28px);font-weight:700;margin:0 0 14px;letter-spacing:-.01em;line-height:1.2}
+  .suggest-head p{color:var(--text-muted);font-size:16px;margin:0}
+  .suggest-form{max-width:640px}
+  .s-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:560px){.s-row{grid-template-columns:1fr}}
+  .s-field{margin-bottom:14px}
+  .s-field label{display:block;font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:6px}
+  .s-field input,.s-field textarea{width:100%;background:var(--bg-panel);border:1px solid var(--line-strong);color:var(--text);font-family:var(--body);font-size:15px;padding:12px 14px;border-radius:2px;box-sizing:border-box;transition:border-color .2s}
+  .s-field input:focus,.s-field textarea:focus{outline:none;border-color:var(--gold)}
+  .s-field textarea{min-height:100px;resize:vertical}
+  .s-submit{font-family:var(--mono);font-size:13.5px;letter-spacing:.03em;padding:14px 26px;border-radius:2px;border:none;cursor:pointer;background:var(--gold);color:#0F1113;font-weight:600;transition:all .2s}
+  .s-submit:hover{background:#E7BE3D;transform:translateY(-1px)}
+
   .cta-final{padding:80px 0 96px}
   .cta-final h2{font-family:var(--display);font-size:clamp(24px,3.4vw,36px);font-weight:700;letter-spacing:-.01em;margin:0 0 16px;max-width:22ch;line-height:1.15}
   .cta-final p{color:var(--text-muted);margin:0 0 28px;max-width:56ch}
-  .btn{font-family:var(--mono);font-size:13.5px;letter-spacing:.03em;padding:13px 22px;border-radius:2px;text-decoration:none;display:inline-block;transition:all .2s;background:var(--gold);color:#0F1113;font-weight:600}
-  .btn:hover{background:#E7BE3D;transform:translateY(-1px)}
 
-  /* ---------- RADAR ---------- */
-  .dot-live{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2.2s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(79,143,130,0.55)}70%{box-shadow:0 0 0 9px rgba(79,143,130,0)}100%{box-shadow:0 0 0 0 rgba(79,143,130,0)}}
-  @media(prefers-reduced-motion:reduce){.dot-live{animation:none}}
-  .radar-section{padding:72px 0;border-bottom:1px solid var(--line)}
-  .radar-live{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
-  .radar-head-row{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:8px}
-  .radar-title{font-family:var(--display);font-size:clamp(22px,3vw,28px);font-weight:700;margin:0;letter-spacing:-.01em}
-  .radar-cmd{font-family:var(--mono);font-size:12px;color:var(--text-muted)}
-  .radar-intro{color:var(--text-muted);font-size:15.5px;max-width:62ch;margin:14px 0 32px}
-  .radar-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-  .radar-card{background:var(--bg-panel);padding:26px;display:flex;flex-direction:column;gap:12px;text-decoration:none;color:var(--text);transition:background .25s ease}
+  footer{border-top:1px solid var(--line);padding:28px 0}
+  .footer-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--text-muted);font-family:var(--mono);font-size:12px}
+
+  .float-cta{position:fixed;bottom:24px;right:24px;z-index:40;background:var(--gold);color:#0F1113;font-family:var(--mono);font-size:13px;font-weight:600;padding:13px 22px;text-decoration:none;box-shadow:0 4px 20px rgba(212,167,44,0.3);transition:all .25s;opacity:0;pointer-events:none}
+  .float-cta.visible{opacity:1;pointer-events:auto}
+  .float-cta:hover{background:#E0B62E;transform:translateY(-2px)}
+  @media(max-width:640px){.float-cta{bottom:16px;right:16px;padding:10px 16px;font-size:12px}.wrap{padding:0 18px}}
+</style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollbar"></div>
+<header>
+  <nav class="nav">
+    <a href="index.html" class="nav-brand"><svg class="nav-logo" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg"><circle cx="110" cy="110" r="90" fill="none" stroke="#D4A72C" stroke-width="4"/><text x="110" y="136" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="82" fill="#F5F2EA">ET</text></svg>TOLOSA<span>.</span>PM</a>
+    <a href="index.html" class="nav-back">← Volver al inicio</a>
+  </nav>
+</header>
+
+<div class="wrap hero">
+  <p class="hero-label">THINK</p>
+  <h1>Product Thinking</h1>
+  <p class="hero-highlight">El proceso detrás de cada decisión, desde el problema hasta el impacto.</p>
+  <p class="hero-sub">Un buen PM no se mide solo por las métricas. Se mide por la calidad de sus decisiones cuando la información es incompleta y la presión es alta.</p>
+</div>
+
+<div class="wrap manifesto reveal">
+  <p>En esta sección comparto desafíos reales que lideré y análisis de productos que desarrollé por iniciativa propia. Todos tienen el mismo objetivo: mostrar <strong>cómo pienso, dónde me equivoqué, qué aprendí y cómo transformo problemas complejos en productos que generan impacto.</strong></p>
+  <p class="closing">Porque las métricas son el resultado. Lo interesante es el proceso que las hizo posibles.</p>
+</div>
+
+<div class="wrap fw-section reveal">
+  <h2 class="fw-title">Framework</h2>
+  <div class="fw-grid stagger">
+    <div class="fw-card"><span class="fw-card-label">THINK</span><h3 class="fw-card-title">Todo comienza entendiendo el negocio.</h3><p>Antes de hablar de funcionalidades, necesito entender qué problema estamos resolviendo y por qué importa.<em>Las mejores decisiones nacen de hacer las preguntas correctas.</em></p></div>
+    <div class="fw-card"><span class="fw-card-label">BUILD</span><h3 class="fw-card-title">Con el problema claro, llega el momento de construir.</h3><p>Defino la estrategia, priorizo el roadmap y convierto una visión en un plan de ejecución.<em>Normalmente gana la solución que entrega más valor con el menor costo de aprendizaje.</em></p></div>
+    <div class="fw-card"><span class="fw-card-label">LAUNCH</span><h3 class="fw-card-title">Un lanzamiento nunca es el final.</h3><p>Es el momento en que las hipótesis se enfrentan con la realidad.<em>Por eso trabajo cerca del negocio, del equipo comercial y de los clientes.</em></p></div>
+    <div class="fw-card"><span class="fw-card-label">SCALE</span><h3 class="fw-card-title">Después del lanzamiento, medir y aprender.</h3><p>Siempre hay una oportunidad para mejorar la experiencia, simplificar procesos o encontrar nuevas fuentes de crecimiento.</p></div>
+  </div>
+</div>
+
+<!-- ==================== PRODUCT LIBRARY ==================== -->
+<div class="wrap lib-section reveal" id="library-index">
+  <h2 class="lib-title">Product Library</h2>
+  <p class="lib-subtitle">Experiencias reales y Product Challenges</p>
+  <div class="case-index">
+    <!-- CASO 01 -->
+    <details class="case-expand" id="caso-01">
+      <summary class="index-item">
+        <span class="index-num">01</span>
+        <span><span class="index-title">Lanzar TV Digital en un mercado dominado por el cable — y lo que sacrifiqué para lograrlo</span><span class="index-meta"><span>Telecomunicaciones · B2B</span><span>Lanzamiento 0→1</span><span class="chip-real">Experiencia Real</span></span></span>
+        <span class="index-arrow">→</span>
+      </summary>
+      <div class="case-content">
+        <div class="case-header"><p class="case-kicker">Caso 01</p><h2 class="case-title">Lanzar un producto de TV Digital (IPTV/OTT) para empresas</h2><div class="case-chips"><span>Telecomunicaciones · B2B</span><span>Lanzamiento 0→1</span><span class="chip-real">Experiencia Real · Telefónica Argentina · 2018–2019</span></div></div>
+
+        <div class="company-badge">
+          <div class="cb-logo">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <rect width="64" height="64" fill="#0066FF"/>
+              <circle cx="32" cy="20" r="11" fill="none" stroke="#fff" stroke-width="3.5"/>
+              <circle cx="32" cy="20" r="4" fill="#fff"/>
+              <text x="32" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="11" fill="#fff" letter-spacing=".5">TELEFÓNICA</text>
+            </svg>
+          </div>
+          <div class="cb-info">
+            <span class="cb-name">Telefónica Argentina</span>
+            <span class="cb-role">Product Manager — Movistar TV / Play</span>
+            <span class="cb-period">2018 – 2019</span>
+          </div>
+        </div>
+
+        <div class="phase"><span class="phase-tag">THINK</span>
+          <p class="phase-label">El contexto</p>
+          <p>Telefónica ya tenía IPTV residencial. El desafío era llevar esa capacidad al segmento corporativo para completar la estrategia de <strong>Cuádruple Play.</strong> La TV no era el negocio principal — era la pieza que reducía churn y aumentaba el valor de cada cliente corporativo.</p>
+          <p>La infraestructura existía. La oportunidad consistía en adaptarla al segmento Empresas antes que la competencia.</p>
+        </div>
+
+        <div class="phase"><p class="phase-label">El verdadero problema</p>
+          <p>A simple vista parecía un proyecto tecnológico. <strong>Pero no lo era.</strong></p>
+          <p>El desafío era alinear áreas con prioridades opuestas. Ingeniería quería estabilidad. Marketing quería funcionalidades. Comercial necesitaba salir al mercado ya. BI necesitaba data para medir impacto.</p>
+          <p><strong>Mi trabajo fue lograr que todos dejaran de optimizar su propia área y empezaran a construir un mismo producto.</strong></p>
+        </div>
+
+        <div class="phase"><p class="phase-label">Las alternativas</p>
+          <div class="options">
+            <div class="option"><span class="option-name">Opción A</span><h4>Lanzamiento Full Feature</h4><p>Toda la plataforma lista antes de salir.</p><p class="tradeoff"><b>Trade-off</b>Propuesta completa, pero +2 años de desarrollo y alto riesgo de nunca lanzar.</p></div>
+            <div class="option chosen"><span class="option-name">Opción B</span><h4>MVP por fases</h4><p>Lanzar el núcleo e iterar con clientes reales.</p><p class="tradeoff"><b>Trade-off</b>Menos features en v1, pero time-to-market 14 meses más rápido y aprendizaje real.</p></div>
+            <div class="option"><span class="option-name">Opción C</span><h4>Marca Blanca</h4><p>Construir sobre una plataforma OTT existente.</p><p class="tradeoff"><b>Trade-off</b>Más velocidad, pero menor diferenciación y dependencia del partner.</p></div>
+          </div>
+        </div>
+
+        <div class="phase"><p class="phase-label">La decisión difícil</p>
+          <p><strong>Elegí MVP.</strong> Pero eso significó decirle cosas incómodas a cada área.</p>
+          <p>Al equipo comercial le dije que la v1 no iba a tener VOD ni personalización — dos features que ellos consideraban esenciales para competir contra el cable. La conversación fue tensa. Su argumento era válido: "sin eso, ¿cómo nos diferenciamos?" Mi respuesta: "nos diferenciamos siendo los primeros en llegar. Si esperamos a tener todo, el cable nos gana con inercia."</p>
+          <p>A Marketing le dije que no iba a haber dashboard de engagement en la v1. Iban a tener que medir con proxies manuales durante los primeros 3 meses. No les gustó, pero aceptaron cuando les mostré que la alternativa era no tener producto que medir.</p>
+          <p><strong>Elegir MVP no es elegir lo fácil. Es elegir qué dolor vas a aceptar para llegar antes.</strong></p>
+        </div>
+
+        <div class="phase"><span class="phase-tag">BUILD</span><p class="phase-label">Mi rol</p>
+          <p>Definí la visión del producto, prioricé el roadmap y backlog, coordiné 4 áreas simultáneamente y diseñé el onboarding para reducir carga operativa desde el día 1. Más que coordinar entregas, mi responsabilidad era mantener a todos enfocados en el mismo objetivo cuando cada uno tenía incentivos distintos.</p>
+        </div>
+
+        <div class="phase"><span class="phase-tag">LAUNCH</span><p class="phase-label">El resultado</p>
+          <div class="metrics-row"><em>Lanzamiento en 12 meses</em><em>+25% tasa de conversión de trial a contrato</em><em>+25% satisfacción del cliente corporativo</em></div>
+        </div>
+
+        <div class="phase"><span class="phase-tag">SCALE</span><p class="phase-label">Lo que haría diferente</p>
+          <p>Me equivoqué en una cosa: subestimé cuánto iba a costar la falta de dashboard de engagement en los primeros meses. El equipo comercial terminó pidiendo datos ad-hoc a BI constantemente, lo que generó fricción y retrasó decisiones. Si lo hiciera de nuevo, invertiría 2 sprints más en un dashboard mínimo antes de lanzar — no el dashboard ideal, pero sí uno que le diera autonomía al equipo comercial para responder preguntas básicas sin depender de BI.</p>
+          <p>También mediría churn de clientes 4P vs. 2P/3P desde el día 1 para validar la hipótesis central: que la TV reducía churn del bundle. Tardamos 6 meses en tener esa data, y para ese momento la decisión de invertir más ya se había tomado sin evidencia.</p>
+          <p class="case-closing">Lanzar un producto nunca es el final. Es el comienzo del aprendizaje.</p>
+        </div>
+
+        <div class="case-cta"><div class="case-cta-inner"><div><h4>¿Enfrentás un desafío similar?</h4><p>Lanzamiento de producto, coordinación de equipos, estrategia de plataforma — hablemos.</p></div><a href="mailto:enmanueltolosa@gmail.com?subject=Caso%2001%20—%20Lanzamiento%20TV%20Digital" class="btn">Hablemos →</a></div></div>
+      </div>
+    </details>
+
+    <!-- CASO 02 -->
+    <details class="case-expand" id="caso-02">
+      <summary class="index-item">
+        <span class="index-num">02</span>
+        <span><span class="index-title">Reducir congestión en bag drop sin confiar en métricas imperfectas</span><span class="index-meta"><span>Aviación · B2C</span><span>Optimización Operacional</span><span>Product Challenge</span></span></span>
+        <span class="index-arrow">→</span>
+      </summary>
+      <div class="case-content">
+        <div class="case-header"><p class="case-kicker">Caso 02</p><h2 class="case-title">Passenger Airport Experience: Day of Travel Self-Service</h2><div class="case-chips"><span>Aviación · B2C</span><span>Optimización Operacional</span><span>Product Challenge — Análisis por iniciativa propia basado en datos públicos y patrones de la industria</span></div></div>
+
+        <div class="company-badge">
+          <div class="cb-logo">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <rect width="64" height="64" fill="#1B0088"/>
+              <polygon points="10,38 32,18 54,38" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+              <text x="32" y="54" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="11" fill="#fff" letter-spacing="1.5">LATAM</text>
+            </svg>
+          </div>
+          <div class="cb-info">
+            <span class="cb-name">LATAM Airlines</span>
+            <span class="cb-role">Product Challenge — Análisis por iniciativa propia</span>
+            <span class="cb-period">2026</span>
+          </div>
+        </div>
+
+        <div class="phase"><span class="phase-tag">THINK</span><p class="phase-label">El contexto</p>
+          <p>LATAM impulsa "Day of Travel Self-Service" para reducir costo por pasajero. En SCL, el plan prioriza check-in digital y <strong>Self Bag Drop (SBD)</strong> — máquinas donde el pasajero etiqueta y despacha su equipaje sin agente.</p>
+          <p>En las últimas 8 semanas, en el banco doméstico de la mañana (06:00–09:00):</p>
+          <ul class="scale-list">
+            <li><strong>OTD cayó 3,0 puntos</strong> y OTP cayó 2,1 puntos vs. baseline del trimestre anterior.</li>
+            <li><strong>Queue Time de bag drop subió +35%</strong> (SBD + asistido).</li>
+            <li><strong>+18% de pasajeros requieren Manual Intervention</strong> en bag drop.</li>
+          </ul>
+        </div>
+
+        <div class="phase"><p class="phase-label">El verdadero problema</p>
+          <p>A primera vista parece un problema de filas. <strong>Pero no lo es.</strong></p>
+          <p>La presión ejecutiva es "arreglar filas ya." Pero Data advierte que <strong>la medición de Queue Time está inestable</strong> — sensores con caídas y muestreos inconsistentes. Algunos días con alta fila no muestran caída de OTP, y viceversa.</p>
+          <p>Cada área tiene una lectura distinta: Ops quiere volver a counters asistidos (mata la estrategia de self-service). CX cree que es un problema de información. Tech dice que cambios en SBD requieren coordinación compleja con el proveedor.</p>
+          <p><strong>Mi desafío: decidir dónde enfocarme sin confiar ciegamente en métricas imperfectas. Me piden un plan de 30 días con impacto medible.</strong></p>
+        </div>
+
+        <div class="phase"><p class="phase-label">Las alternativas</p>
+          <div class="options">
+            <div class="option"><span class="option-name">Opción A</span><h4>Revertir a counters asistidos</h4><p>Más agentes en peak, menos dependencia de SBD.</p><p class="tradeoff"><b>Trade-off</b>Alivia filas inmediatamente, pero mata la estrategia de self-service y sube costos.</p></div>
+            <div class="option chosen"><span class="option-name">Opción B</span><h4>Fix & Measure en 3 capas</h4><p>Semana 1: observación en campo. Semana 2-3: fix de UX + agente de triaje pre-SBD. Semana 4: medir con instrumentación controlada.</p><p class="tradeoff"><b>Trade-off</b>Requiere presencia en campo, pero genera evidencia real sin esperar sensores perfectos.</p></div>
+            <div class="option"><span class="option-name">Opción C</span><h4>Instrumentar primero</h4><p>Arreglar sensores antes de actuar.</p><p class="tradeoff"><b>Trade-off</b>Datos confiables, pero 6-8 semanas sin acción. Políticamente insostenible.</p></div>
+          </div>
+        </div>
+
+        <div class="phase"><p class="phase-label">La decisión</p>
+          <p><strong>Opción B.</strong> Si +18% de pasajeros necesitan intervención manual en SBD, el problema no está en la fila — está antes de la fila. Los pasajeros llegan sin entender qué necesitan. Eso es un problema de <strong>preparación del pasajero</strong>, no de capacidad de máquinas.</p>
+          <p>Reencuadro el problema en el comité: <strong>"No tenemos un problema de filas. Tenemos un problema de preparación del pasajero que se manifiesta como fila."</strong></p>
+        </div>
+
+        <div class="phase"><span class="phase-tag">BUILD</span><p class="phase-label">Plan de 30 días</p>
+          <p><strong>Semana 1:</strong> 3 mañanas en la zona SBD durante peak registrando cada manual intervention. ¿Documentación? ¿Equipaje fuera de medida? ¿Error de interfaz? Sin sensores perfectos, los ojos son la mejor instrumentación.</p>
+          <p><strong>Semana 2-3:</strong> Push notification 2h antes con checklist. Pantalla de pre-validación en kiosco. Agente de triaje temporal en la entrada de SBD — no para operar, para filtrar y redirigir.</p>
+          <p><strong>Semana 4:</strong> Comparar % de manual intervention y OTD pre vs. post intervención. No Queue Time — esa métrica no es confiable todavía.</p>
+        </div>
+
+        <div class="phase"><span class="phase-tag">LAUNCH</span><p class="phase-label">Resultado esperado</p>
+          <p>El plan no promete sensores arreglados ni filas eliminadas. Promete:</p>
+          <div class="metrics-row"><em>Reducir Manual Intervention en SBD</em><em>Proteger OTD del banco AM</em><em>Diagnóstico de causa raíz verificado en campo</em></div>
+          <p style="margin-top:16px">Si la intervención funciona (baja manual intervention y se estabiliza OTD), la hipótesis se valida y se puede escalar. Si no funciona, tenemos datos de campo reales para cambiar de approach — no opiniones de sala de reuniones.</p>
+        </div>
+
+        <div class="phase"><span class="phase-tag">SCALE</span><p class="phase-label">Lo que haría diferente</p>
+          <p>Este caso me dejó un aprendizaje que aplico siempre: <strong>la urgencia de actuar no justifica actuar sobre métricas que no confiás.</strong> La tentación es enorme — tenés presión ejecutiva, tenés un número que parece explicar todo, y alguien te dice "arreglá eso." Pero si el número está mal, tu solución también va a estar mal.</p>
+          <p>Si tuviera que repetirlo, empezaría por el campo desde el día 0, antes de mirar cualquier dashboard. 4 horas observando pasajeros reales me hubieran dado más claridad que 4 semanas analizando datos de sensores rotos.</p>
+          <p class="case-closing">A veces la mejor decisión no es tener mejores datos. Es actuar con los que tenés mientras construís los que necesitás.</p>
+        </div>
+
+        <div class="case-cta"><div class="case-cta-inner"><div><h4>¿Te interesa este tipo de análisis?</h4><p>Si enfrentás un desafío operacional complejo o de optimización de producto, conversemos.</p></div><a href="mailto:enmanueltolosa@gmail.com?subject=Caso%2002%20—%20Airport%20Self-Service" class="btn">Hablemos →</a></div></div>
+      </div>
+    </details>
+
+    <!-- CASO 03 -->
+    <details class="case-expand" id="caso-03">
+      <summary class="index-item">
+        <span class="index-num">03</span>
+        <span><span class="index-title">Cómo multiplicar la adopción de Ads entre sellers que nunca hicieron publicidad</span><span class="index-meta"><span>eCommerce · B2B</span><span>Adopción &amp; Activación</span><span class="chip-real">Experiencia Real</span></span></span>
+        <span class="index-arrow">→</span>
+      </summary>
+      <div class="case-content">
+        <div class="case-header"><p class="case-kicker">Caso 03</p><h2 class="case-title">Incrementar la adopción de Mercado Ads entre sellers SMB</h2><div class="case-chips"><span>eCommerce · B2B</span><span>Adopción &amp; Activación</span><span class="chip-real">Experiencia Real · MercadoLibre Argentina · 2021–2022</span></div></div>
+
+        <div class="company-badge">
+          <div class="cb-logo">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <rect width="64" height="64" fill="#FFE600"/>
+              <path d="M32 14C22 14 14 22 14 32s8 18 18 18 18-8 18-18S42 14 32 14zm0 4c2.5 0 4.8.7 6.8 1.8C37.5 22 35 25 35 28.5c0 2-.8 3.8-2 5.2-.4-.8-1.2-1.5-2-1.8.7-.8 1-1.8 1-3 0-2.8-2.2-5-5-5h-3c-2.8 0-5 2.2-5 5 0 1.2.4 2.2 1 3-.8.3-1.6 1-2 1.8-1.2-1.3-2-3.2-2-5.2 0-3.5 2.5-6.5 6-8.5-2-.8-4.2-1.3-5-1.5C20.2 19.5 18 25.5 18 32c0 7.7 6.3 14 14 14s14-6.3 14-14c0-6.5-4.5-12-10.5-13.5-.8.2-2 .7-3.5 1.5z" fill="#2D3277"/>
+            </svg>
+          </div>
+          <div class="cb-info">
+            <span class="cb-name">MercadoLibre</span>
+            <span class="cb-role">Product Manager — Mercado Ads</span>
+            <span class="cb-period">2021 – 2022</span>
+          </div>
+        </div>
+
+        <div class="phase"><span class="phase-tag">THINK</span><p class="phase-label">El contexto</p>
+          <p><strong>Mercado Ads</strong> permite a los sellers pagar para posicionar productos en los resultados de búsqueda del marketplace. Funcionaba bien con sellers grandes — operaciones profesionales con equipos de marketing. Pero la oportunidad de crecimiento estaba en el segmento <strong>SMB</strong>: miles de vendedores que representaban enorme volumen de transacciones pero apenas usaban Ads.</p>
+          <p>No porque no quisieran vender más. Sino porque <strong>nunca habían hecho publicidad en su vida.</strong></p>
+        </div>
+
+        <div class="phase"><p class="phase-label">El verdadero problema</p>
+          <p>La lectura inicial del negocio era "faltan más features: mejor segmentación, dashboards más completos, más formatos." La lógica: "si el producto es mejor, lo van a usar más."</p>
+          <p><strong>Pero eso no era lo que decían los datos.</strong></p>
+          <p>Cuando crucé comportamiento de uso por vertical y tamaño de seller, encontré un patrón claro: los sellers SMB sí entraban a Ads. Muchos creaban su primera campaña. Pero <strong>el 62% abandonaba en los primeros 7 días</strong> o nunca volvía después del primer intento. El drop-off más fuerte estaba en el paso 3 del wizard de creación — donde el seller tenía que definir "puja por keyword." Un vendedor de zapatillas en Córdoba no sabe qué es un CPC.</p>
+          <p>El segundo hallazgo fue por vertical: <strong>Electrónica tenía 3x mejor retención que Indumentaria</strong>, porque los sellers de electrónica ya tenían experiencia con márgenes y comparación de precios — les era más natural pensar en "inversión vs. retorno." Los de indumentaria operaban por intuición.</p>
+          <p><strong>No era un problema de producto. Era un problema de activación. Y no era uniforme — variaba radicalmente por vertical.</strong></p>
+        </div>
+
+        <div class="phase"><p class="phase-label">Las alternativas</p>
+          <div class="options">
+            <div class="option"><span class="option-name">Opción A</span><h4>Más features, más sofisticación</h4><p>Segmentación avanzada, nuevos formatos, dashboards de performance.</p><p class="tradeoff"><b>Trade-off</b>Fortalece para sellers grandes, pero complejiza aún más para SMBs que ya no entienden el producto actual.</p></div>
+            <div class="option chosen"><span class="option-name">Opción B</span><h4>Simplificar y activar</h4><p>Rediseñar el journey de primer uso, simplificar creación de campaña, focalizar en activación y habitualidad.</p><p class="tradeoff"><b>Trade-off</b>No agrega valor inmediato para sellers avanzados, pero desbloquea el segmento de mayor volumen.</p></div>
+            <div class="option"><span class="option-name">Opción C</span><h4>Campaña masiva de educación</h4><p>Contenido, tutoriales, webinars para enseñar a usar Ads.</p><p class="tradeoff"><b>Trade-off</b>Genera awareness, pero sin cambiar el producto la activación real no se mueve.</p></div>
+          </div>
+        </div>
+
+        <div class="phase"><p class="phase-label">La decisión</p>
+          <p><strong>Opción B: simplificar y activar.</strong></p>
+          <p>El dato que cambió la conversación internamente fue el 62% de abandono en 7 días cruzado con el drop-off en "puja por keyword." Cuando se lo mostré al equipo, la reacción fue inmediata: estábamos pidiendo a vendedores que aprendieran un idioma nuevo para poder usar el producto. Eso no se arregla con un tutorial — se arregla eliminando la necesidad de aprender.</p>
+          <p>Para los SMB, el crecimiento de Ads no iba a venir de cobrarle más a pocos sellers grandes. Iba a venir de <strong>activar la cola larga</strong> — miles de sellers pequeños que, con inversión modesta pero constante, generan volumen agregado enorme.</p>
+        </div>
+
+        <div class="phase"><span class="phase-tag">BUILD</span><p class="phase-label">Mi rol</p>
+          <p><strong>1. Rediseño del journey de activación:</strong> trabajé con UX y Data para simplificar la creación de la primera campaña. El cambio más impactante: reemplazar "definí tu puja por keyword" por "¿cuánto querés invertir por día?" con valores sugeridos por vertical. El seller configuraba su campaña en 3 minutos sin saber qué es un CPC.</p>
+          <p><strong>2. Estrategias de retención por cohorte y vertical:</strong> diseñé campañas diferenciadas. Para Electrónica (alta retención natural): push hacia presupuestos más altos mostrando ROI real. Para Indumentaria (baja retención): onboarding más guiado con ejemplos visuales de resultados de sellers similares.</p>
+          <p><strong>3. Análisis de rentabilidad:</strong> colaboré con Finanzas para identificar qué verticales tenían mejor unit economics en Ads y propuse ajustes de pricing para maximizar margen del canal. El resultado: Electrónica y Hogar financiaban la adquisición subsidiada de verticales con mayor potencial de crecimiento.</p>
+        </div>
+
+        <div class="phase"><span class="phase-tag">LAUNCH</span><p class="phase-label">El resultado</p>
+          <div class="metrics-row"><em>+40% base de usuarios activos</em><em>+25% tasa de conversión</em><em>+18% activación mensual de nuevos sellers</em><em>+12% ticket promedio por cuenta en 6 meses</em></div>
+          <p style="margin-top:20px">El +40% de usuarios activos vino principalmente del rediseño del journey (eliminó la barrera de entrada) y las estrategias de retención por cohorte (convirtió usuarios de un solo uso en recurrentes). El +25% de conversión fue resultado directo de simplificar el wizard de creación.</p>
+        </div>
+
+        <div class="phase"><span class="phase-tag">SCALE</span><p class="phase-label">Lo que haría diferente</p>
+          <p>Mi error fue no medir <strong>time-to-value</strong> desde el principio: ¿cuántos días tarda un seller nuevo en ver su primera venta atribuida a Ads? Teníamos activación, teníamos retención, pero no sabíamos cuánto tardaba el seller en sentir que Ads "le servía." Ese número debería haber sido el north star metric, porque la habitualidad de inversión depende directamente de cuán rápido el seller ve resultados concretos.</p>
+          <p>Si tuviera que escalar esto hoy, agregaría dos cosas que no llegamos a implementar:</p>
+          <ul class="scale-list">
+            <li><strong>Modo piloto automático:</strong> el seller define cuánto invertir y el sistema optimiza campañas automáticamente. Elimina la necesidad de aprender sobre pujas y keywords.</li>
+            <li><strong>Onboarding por vertical:</strong> en vez de un journey genérico, recomendaciones adaptadas al tipo de negocio ("Vendés electrónica? Promocioná X con presupuesto Y").</li>
+          </ul>
+          <p class="case-closing">El mejor producto de publicidad para un seller que nunca hizo publicidad es uno donde no siente que está haciendo publicidad. Solo que está vendiendo más.</p>
+        </div>
+
+        <div class="case-cta"><div class="case-cta-inner"><div><h4>¿Tenés un desafío de adopción o activación?</h4><p>Si tu producto tiene usuarios que entran pero no vuelven, hablemos.</p></div><a href="mailto:enmanueltolosa@gmail.com?subject=Caso%2003%20—%20Mercado%20Ads" class="btn">Hablemos →</a></div></div>
+      </div>
+    </details>
+
+  </div><!-- .case-index -->
+</div><!-- .lib-section -->
+
+<!-- ==================== RECURSOS GRATUITOS ==================== -->
+<section id="recursos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="suggest-kicker">Recursos gratuitos</p>
+      <h2 class="lib-title">Aprender es parte de construir.</h2>
+    </div>
+    <div class="reveal" style="max-width:62ch;margin-bottom:36px;">
+      <p style="color:var(--text-muted);font-size:16px;margin:0 0 14px;">Cada producto que lancé, cada decisión que tomé y cada estrategia que definí fue influenciada por personas que dedicaron años a investigar y compartir su conocimiento.</p>
+      <p style="color:var(--text-muted);font-size:16px;margin:0 0 14px;">Esta biblioteca reúne los libros que más influyeron en mi forma de pensar sobre producto, negocios, liderazgo y crecimiento personal. Si alguno aporta valor a tu camino, habrá cumplido su propósito.</p>
+      <p style="color:var(--gold);font-family:var(--display);font-size:17px;font-weight:600;margin:0;">Porque el conocimiento solo cobra sentido cuando se comparte.</p>
+    </div>
+    <div class="lib-grid reveal">
+      <a href="#" class="lib-card">
+        <div class="lib-top"><span class="lib-index">01</span><span class="lib-badge">21 libros</span></div>
+        <h3>Product Leadership</h3>
+        <p>Estrategia de producto, liderazgo, gestión de equipos y toma de decisiones.</p>
+        <span class="lib-cta">Explorar colección <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#" class="lib-card">
+        <div class="lib-top"><span class="lib-index">02</span><span class="lib-badge">36 libros</span></div>
+        <h3>Business &amp; Strategy</h3>
+        <p>Modelos de negocio, emprendimiento, innovación y pensamiento estratégico.</p>
+        <span class="lib-cta">Explorar colección <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#" class="lib-card">
+        <div class="lib-top"><span class="lib-index">03</span><span class="lib-badge">8 libros</span></div>
+        <h3>Marketing &amp; Growth</h3>
+        <p>Posicionamiento, branding, comportamiento del consumidor y estrategias de crecimiento.</p>
+        <span class="lib-cta">Explorar colección <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#" class="lib-card">
+        <div class="lib-top"><span class="lib-index">04</span><span class="lib-badge">10 libros</span></div>
+        <h3>Emotional Intelligence</h3>
+        <p>Autoconocimiento, liderazgo consciente y desarrollo de habilidades personales.</p>
+        <span class="lib-cta">Explorar colección <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#" class="lib-card">
+        <div class="lib-top"><span class="lib-index">05</span><span class="lib-badge">15 libros</span></div>
+        <h3>Finance &amp; Investing</h3>
+        <p>Educación financiera, inversión y construcción de patrimonio a largo plazo.</p>
+        <span class="lib-cta">Explorar colección <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#" class="lib-card">
+        <div class="lib-top"><span class="lib-index">06</span><span class="lib-badge">31 libros</span></div>
+        <h3>High Performance</h3>
+        <p>Hábitos, productividad, disciplina y alto rendimiento sostenible.</p>
+        <span class="lib-cta">Explorar colección <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+    <p class="lib-note reveal">Cada libro de esta biblioteca influyó en cómo lidero productos y tomo decisiones. Si buscás una recomendación, escribime.</p>
+  </div>
+</section>
+
+<!-- ==================== TENDENCIAS EN IA ==================== -->
+<section style="padding:72px 0;border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div style="display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:14px"><span class="dot-live" style="width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2.2s infinite"></span> <span id="ai-trends-status">Cargando tendencias…</span></div>
+    <h2 class="lib-title reveal">Tendencias en Inteligencia Artificial.</h2>
+    <p class="reveal" style="color:var(--text-muted);font-size:15.5px;max-width:62ch;margin:14px 0 32px">Se actualiza solo todos los días: agrego automáticamente lo más relevante que se está discutiendo en IA: modelos, producto, agentes, adopción en empresas.</p>
+    <div id="ai-trends-grid" class="reveal" style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)"></div>
+    <p class="reveal" style="margin-top:28px;font-size:13.5px;color:var(--text-muted);border-top:1px solid var(--line);padding-top:20px">Fuente agregada automáticamente. Si querés conversar sobre cómo aplicar alguna de estas tendencias a tu producto, hablemos.</p>
+  </div>
+</section>
+
+<style>
+  .radar-card{background:var(--bg-panel);padding:26px;display:flex;flex-direction:column;gap:12px;text-decoration:none;color:var(--text);transition:background .25s}
   .radar-card:hover{background:var(--bg-elevated)}
   .radar-card:hover .radar-link{color:var(--gold)}
   .radar-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
@@ -158,887 +532,96 @@
   .radar-date{font-family:var(--mono);font-size:11px;color:var(--text-muted);white-space:nowrap}
   .radar-card h3{font-family:var(--display);font-size:15.5px;font-weight:600;margin:0;line-height:1.35}
   .radar-take{font-family:var(--mono);font-size:12.5px;color:var(--teal);margin:0}
-  .radar-link{font-family:var(--mono);font-size:12px;color:var(--text-muted);display:inline-flex;align-items:center;gap:6px;margin-top:2px;transition:color .2s ease}
-  .radar-note{margin-top:28px;font-size:13.5px;color:var(--text-muted);border-top:1px solid var(--line);padding-top:20px}
-  @media(max-width:760px){.radar-grid{grid-template-columns:1fr}}
-
-  /* ---------- SUGERÍ UN TEMA ---------- */
-  .suggest-section{padding:72px 0;border-bottom:1px solid var(--line)}
-  .suggest-head{max-width:60ch;margin-bottom:32px}
-  .suggest-kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
-  .suggest-title{font-family:var(--display);font-size:clamp(22px,3vw,28px);font-weight:700;margin:0 0 14px;letter-spacing:-.01em;line-height:1.2}
-  .suggest-head p{color:var(--text-muted);font-size:16px;margin:0}
-  .suggest-form{max-width:640px}
-  .s-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  @media(max-width:560px){.s-row{grid-template-columns:1fr}}
-  .s-field{margin-bottom:14px}
-  .s-field label{display:block;font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:6px}
-  .s-field input,.s-field textarea{width:100%;background:var(--bg-panel);border:1px solid var(--line-strong);color:var(--text);font-family:var(--body);font-size:15px;padding:12px 14px;border-radius:2px;box-sizing:border-box;transition:border-color .2s ease}
-  .s-field input:focus,.s-field textarea:focus{outline:none;border-color:var(--gold)}
-  .s-field textarea{min-height:100px;resize:vertical}
-  .s-submit{font-family:var(--mono);font-size:13.5px;letter-spacing:.03em;padding:14px 26px;border-radius:2px;border:none;cursor:pointer;background:var(--gold);color:#0F1113;font-weight:600;transition:all .2s ease}
-  .s-submit:hover{background:#E7BE3D;transform:translateY(-1px)}
-
-  footer{border-top:1px solid var(--line);padding:28px 0}
-  .footer-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--text-muted);font-family:var(--mono);font-size:12px}
-
-  /* ---------- SCROLL PROGRESS ---------- */
-  .scroll-progress{
-    position:fixed; top:0; left:0; z-index:50;
-    width:0%; height:3px;
-    background:linear-gradient(90deg, var(--teal), var(--gold));
-    transition:width .1s linear;
-  }
-
-  /* ---------- DOT GRID BG ---------- */
-  body::before{
-    content:"";
-    position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background-image:radial-gradient(rgba(245,242,234,0.04) 1px, transparent 1px);
-    background-size:24px 24px;
-  }
-
-  /* ---------- HERO GLOW ---------- */
-  .hero{ position:relative; overflow:hidden; }
-  .hero-glow{
-    position:absolute; width:400px; height:400px; border-radius:50%;
-    background:radial-gradient(circle, rgba(212,167,44,0.08) 0%, transparent 70%);
-    pointer-events:none; z-index:0;
-    transform:translate(-50%,-50%);
-    transition:left .3s ease, top .3s ease;
-    display:none; opacity:0;
-  }
-  @media(hover:hover){ .hero-glow{ display:block; } }
-
-  /* ---------- SHINE SWEEP ON CTA ---------- */
-  .btn{
-    position:relative; overflow:hidden;
-  }
-  .btn::after{
-    content:""; position:absolute;
-    top:0; left:-100%; width:60%; height:100%;
-    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    animation:shine-sweep 4s ease-in-out infinite;
-  }
-  @keyframes shine-sweep{
-    0%,100%{ left:-100%; }
-    50%{ left:150%; }
-  }
-  @media(prefers-reduced-motion:reduce){ .btn::after{ animation:none; display:none; } }
-
-  /* ---------- NAV ANIMATED UNDERLINE ---------- */
-  .nav-back{
-    position:relative;
-  }
-  .nav-back::after{
-    content:""; position:absolute; bottom:-4px; left:0;
-    width:0; height:1px;
-    background:var(--gold);
-    transition:width .3s ease;
-  }
-  .nav-back:hover::after{ width:100%; }
-
-  /* ---------- CARD ELEVATION ---------- */
-  .fw-card, .option, .index-item{
-    transition:background .25s ease, transform .25s ease, box-shadow .25s ease;
-  }
-  .fw-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 8px 32px rgba(0,0,0,0.3);
-  }
-  .option:hover{
-    background:var(--bg-elevated);
-    transform:translateY(-2px);
-    box-shadow:0 6px 24px rgba(0,0,0,0.25);
-  }
-
-  /* ---------- OPTION GLOW ON CHOSEN ---------- */
-  .option.chosen{
-    border:1px solid rgba(212,167,44,0.2);
-    box-shadow:0 0 24px rgba(212,167,44,0.08);
-  }
-
-  /* ---------- PHASE TAG GLOW ---------- */
-  .phase-tag{
-    box-shadow:0 0 12px rgba(212,167,44,0.15);
-    transition:box-shadow .3s ease;
-  }
-
-  /* ---------- METRICS GLOW ---------- */
-  .metrics-row em{
-    transition:box-shadow .3s ease, transform .3s ease;
-  }
-  .metrics-row em:hover{
-    box-shadow:0 0 16px rgba(212,167,44,0.25);
-    transform:translateY(-1px);
-  }
-
-  /* ---------- SCALE LIST STAGGER ---------- */
-  .scale-list li{
-    opacity:0; transform:translateX(-10px);
-    transition:opacity .4s ease, transform .4s ease;
-  }
-  .in-view .scale-list li{ opacity:1; transform:translateX(0); }
-  .in-view .scale-list li:nth-child(1){ transition-delay:.05s; }
-  .in-view .scale-list li:nth-child(2){ transition-delay:.1s; }
-  .in-view .scale-list li:nth-child(3){ transition-delay:.15s; }
-  .in-view .scale-list li:nth-child(4){ transition-delay:.2s; }
-  .in-view .scale-list li:nth-child(5){ transition-delay:.25s; }
-  .in-view .scale-list li:nth-child(6){ transition-delay:.3s; }
-  @media(prefers-reduced-motion:reduce){
-    .scale-list li{ opacity:1; transform:none; transition:none; }
-  }
-
-  /* ---------- STAGGER GRID ---------- */
-  .stagger > *{ opacity:0; transform:translateY(18px); transition:opacity .5s ease, transform .5s ease; }
-  .stagger.in-view > *:nth-child(1){ transition-delay:.05s; }
-  .stagger.in-view > *:nth-child(2){ transition-delay:.12s; }
-  .stagger.in-view > *:nth-child(3){ transition-delay:.19s; }
-  .stagger.in-view > *:nth-child(4){ transition-delay:.26s; }
-  .stagger.in-view > *{ opacity:1; transform:translateY(0); }
-  @media(prefers-reduced-motion:reduce){
-    .stagger > *{ opacity:1; transform:none; transition:none; }
-  }
-
-  /* ---------- MANIFESTO QUOTE LINE ---------- */
-  .manifesto{
-    position:relative;
-    padding-left:24px;
-  }
-  .manifesto::before{
-    content:""; position:absolute; left:0; top:0; bottom:0;
-    width:2px;
-    background:linear-gradient(180deg, var(--gold), var(--teal), transparent);
-  }
-
-  /* ---------- CLOSING GLOW ---------- */
-  .closing, .case-closing{
-    text-shadow:0 0 20px rgba(212,167,44,0.2);
-  }
-
-
-  /* ---------- CASE COMPANY BADGE ---------- */
-  .company-badge{
-    display:flex;align-items:center;gap:18px;
-    padding:20px 24px;background:var(--bg-panel);
-    border:1px solid var(--line);margin-bottom:32px;
-    position:relative;
-    transition:background .3s ease;
-  }
-  .company-badge::before{
-    content:"";position:absolute;top:0;left:0;right:0;height:2px;
-    background:linear-gradient(90deg,var(--gold),var(--teal),var(--gold));
-    background-size:200% 100%;
-    animation:cb-border 5s linear infinite;
-  }
-  @keyframes cb-border{0%{background-position:0% 50%}100%{background-position:200% 50%}}
-  .company-badge:hover{background:var(--bg-elevated)}
-  @media(prefers-reduced-motion:reduce){.company-badge::before{animation:none}}
-  .company-badge .cb-logo{
-    width:64px;height:64px;overflow:hidden;
-    border:1px solid var(--line-strong);flex-shrink:0;
-    box-shadow:0 0 20px rgba(212,167,44,0.1);
-    transition:box-shadow .3s ease;
-  }
-  .company-badge:hover .cb-logo{
-    box-shadow:0 0 28px rgba(212,167,44,0.25);
-  }
-  .company-badge .cb-logo img{width:100%;height:100%;object-fit:cover}
-  .company-badge .cb-mono{
-    width:48px;height:48px;display:flex;align-items:center;justify-content:center;
-    border:1px solid var(--line-strong);font-family:var(--mono);
-    font-size:16px;font-weight:700;color:var(--gold);flex-shrink:0;
-  }
-  .company-badge .cb-info{display:flex;flex-direction:column;gap:2px}
-  .company-badge .cb-name{font-family:var(--display);font-size:16px;font-weight:700}
-  .company-badge .cb-role{font-family:var(--mono);font-size:11px;color:var(--text-muted);letter-spacing:.04em}
-  .company-badge .cb-period{font-family:var(--mono);font-size:10px;color:var(--teal);letter-spacing:.04em}
-
-  /* ---------- CASE CTA BANNER ---------- */
-  .case-cta{
-    margin-top:48px;padding:36px;
-    background:var(--bg-panel);border:1px solid var(--line);
-    position:relative;overflow:hidden;
-    transition:box-shadow .3s ease,transform .3s ease;
-  }
-  .case-cta:hover{
-    box-shadow:0 8px 32px rgba(0,0,0,0.3);
-    transform:translateY(-2px);
-  }
-  .case-cta::before{
-    content:"";position:absolute;top:0;left:0;right:0;height:2px;
-    background:linear-gradient(90deg,var(--gold),var(--teal));
-  }
-  .case-cta-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-  .case-cta h4{font-family:var(--display);font-size:18px;font-weight:700;margin:0 0 6px}
-  .case-cta p{font-family:var(--mono);font-size:12.5px;color:var(--text-muted);margin:0}
-  .case-cta .btn{white-space:nowrap;position:relative;overflow:hidden}
-  .case-cta .btn::after{
-    content:"";position:absolute;top:0;left:-100%;width:60%;height:100%;
-    background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
-    animation:shine 4s ease infinite;
-  }
-  @keyframes shine{0%,100%{left:-100%}50%{left:150%}}
-  @media(prefers-reduced-motion:reduce){.case-cta .btn::after{animation:none;display:none}}
-
-  /* ---------- CASE INDEX LOGO ---------- */
-  .index-logo{width:48px;height:48px;overflow:hidden;border:1px solid var(--line-strong);flex-shrink:0;transition:transform .3s ease,box-shadow .3s ease}
-  .index-logo img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
-  .index-item:hover .index-logo{box-shadow:0 0 16px rgba(212,167,44,0.25);transform:scale(1.08)}
-  .index-item:hover .index-logo img{transform:scale(1.1)}
-  
-
-
-  .float-cta{position:fixed;bottom:24px;right:24px;z-index:40;background:var(--gold);color:#0F1113;font-family:var(--mono);font-size:13px;font-weight:600;padding:13px 22px;text-decoration:none;box-shadow:0 4px 20px rgba(212,167,44,0.3);transition:all .25s;animation:fp 3s ease infinite}
-  .float-cta:hover{background:#E0B62E;transform:translateY(-2px)}
-  @keyframes fp{0%,100%{box-shadow:0 4px 20px rgba(212,167,44,0.3)}50%{box-shadow:0 4px 28px rgba(212,167,44,0.5)}}
-  @media(max-width:640px){.float-cta{bottom:16px;right:16px;padding:10px 16px;font-size:12px}}
-
+  .radar-link{font-family:var(--mono);font-size:12px;color:var(--text-muted);display:inline-flex;align-items:center;gap:6px;margin-top:2px;transition:color .2s}
+  @media(max-width:760px){#ai-trends-grid{grid-template-columns:1fr !important}}
 </style>
-</head>
-<body>
-
-<div class="scroll-progress" id="scrollbar"></div>
-<header>
-  <nav class="nav">
-    <a href="index.html" class="nav-brand"><svg class="nav-logo" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg"><circle cx="110" cy="110" r="90" fill="none" stroke="#D4A72C" stroke-width="4"/><text x="110" y="136" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="82" fill="#F5F2EA">ET</text></svg>TOLOSA<span>.</span>PM</a>
-    <a href="index.html" class="nav-back">← Volver al inicio</a>
-  </nav>
-</header>
-
-<!-- ==================== HERO ==================== -->
-<div class="wrap hero">
-  <div class="hero-glow" id="heroGlow"></div>
-  <p class="hero-num">06</p>
-  <p class="hero-label">THINK</p>
-  <h1>Product Thinking</h1>
-  <p class="hero-highlight">El proceso detrás de cada decisión, desde el problema hasta el impacto generado.</p>
-  <p class="hero-sub">Un buen Product Manager no se mide solo por los resultados, sino por la calidad de sus decisiones.</p>
-  <p class="hero-sub" style="margin-bottom:0">Las métricas son el resultado. Estos casos revelan el proceso que las hizo posibles.</p>
-</div>
-
-<!-- ==================== MANIFESTO ==================== -->
-<div class="wrap manifesto reveal">
-  <p>Detrás de cada producto hay conversaciones difíciles, decisiones incómodas y muchas hipótesis que poner a prueba. Eso es justamente lo que más disfruto de mi trabajo.</p>
-  <p>En esta sección comparto algunos de los desafíos que tuve la oportunidad de liderar, junto con análisis de productos y problemas de negocio que me resultan especialmente interesantes.</p>
-  <p>Algunos casos nacen de mi experiencia profesional. Otros son Product Challenges desarrollados por iniciativa propia.</p>
-  <p>Todos tienen el mismo objetivo: mostrar <strong>cómo pienso, cómo tomo decisiones y cómo transformo problemas complejos en productos que generan impacto.</strong></p>
-  <p class="closing">Porque, al final, eso es lo que más disfruto construir.</p>
-</div>
-
-<!-- ==================== MI FORMA DE TRABAJAR ==================== -->
-<div class="wrap fw-section reveal">
-  <h2 class="fw-title">Framework</h2>
-  <div class="fw-grid stagger">
-    <div class="fw-card">
-      <span class="fw-card-label">THINK</span>
-      <h3 class="fw-card-title">Todo comienza entendiendo el negocio.</h3>
-      <p>Antes de hablar de funcionalidades, necesito entender qué problema estamos resolviendo, por qué es importante y qué impacto tendría resolverlo.<em>Las mejores decisiones casi siempre nacen de hacer las preguntas correctas.</em></p>
-    </div>
-    <div class="fw-card">
-      <span class="fw-card-label">BUILD</span>
-      <h3 class="fw-card-title">Con el problema claro, llega el momento de construir.</h3>
-      <p>Defino la estrategia, priorizo el roadmap, alineo a los equipos y convierto una visión en un plan de ejecución.<em>No siempre gana la solución más grande. Normalmente gana la que entrega más valor con el menor costo de aprendizaje.</em></p>
-    </div>
-    <div class="fw-card">
-      <span class="fw-card-label">LAUNCH</span>
-      <h3 class="fw-card-title">Un lanzamiento nunca representa el final del proyecto.</h3>
-      <p>Es el momento en que las hipótesis empiezan a enfrentarse con la realidad.<em>Por eso me gusta trabajar cerca del negocio, del equipo comercial y, sobre todo, de los clientes.</em></p>
-    </div>
-    <div class="fw-card">
-      <span class="fw-card-label">SCALE</span>
-      <h3 class="fw-card-title">Después del lanzamiento comienza una nueva etapa.</h3>
-      <p>Medir, aprender y optimizar. Los productos evolucionan constantemente, y siempre existe una oportunidad para mejorar la experiencia, simplificar procesos o encontrar nuevas fuentes de crecimiento.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== PRODUCT LIBRARY ==================== -->
-<div class="wrap lib-section reveal">
-  <h2 class="lib-title">Product Library</h2>
-  <p class="lib-subtitle">Experiencias reales y Product Challenges</p>
-  <p class="lib-intro-text">Cada caso aborda un problema distinto. <em>Lo interesante no es la industria. Lo interesante es el razonamiento detrás de cada decisión.</em></p>
-  <div class="case-index">
-    <details class="case-expand" id="caso-01">
-      <summary class="index-item">
-        <span class="index-num">01</span>
-        <span class="index-logo"><img src="data:image/jpeg;base64,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" alt="Movistar"></span>
-        <span>
-          <span class="index-title">Lanzar TV Digital B2B en un mercado dominado por el cable</span>
-          <span class="index-meta"><span>Telecomunicaciones · B2B</span><span>Lanzamiento 0→1</span><span class="chip-real">Experiencia Real</span><span>5 min de lectura</span></span>
-        </span>
-        <span class="index-arrow">→ Ver caso</span>
-      </summary>
-      <div class="case-content">
-
-  <div class="case-header">
-    <p class="case-kicker">Caso 01</p>
-    <h2 class="case-title">Lanzar un producto de TV Digital (IPTV/OTT) para empresas</h2>
-    <div class="case-chips">
-      <span>Telecomunicaciones · B2B</span>
-      <span>Lanzamiento 0→1</span>
-      <span class="chip-real">Experiencia Real · Telefónica Argentina · 2018–2019</span>
-    </div>
-  </div>
-
-  <div class="company-badge">
-    <div class="cb-logo"><img src="data:image/jpeg;base64,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" alt="Movistar"></div>
-    <div class="cb-info">
-      <span class="cb-name">Telefónica Argentina — Movistar TV/Play</span>
-      <span class="cb-role">Product Owner · IPTV &amp; OTT</span>
-      <span class="cb-period">Septiembre 2018 — Agosto 2019</span>
-    </div>
-  </div>
-
-  <!-- THINK -->
-  <div class="phase">
-    <span class="phase-tag">THINK</span>
-    <p class="phase-label">El contexto</p>
-    <p>Cuando llegué al proyecto, Telefónica ya contaba con una plataforma IPTV para clientes residenciales.</p>
-    <p>El desafío era diferente: llevar esa capacidad al segmento corporativo y completar la estrategia de <strong>Cuádruple Play.</strong></p>
-    <p>La televisión no era el negocio principal. Era la pieza que fortalecía toda la propuesta de valor, ayudaba a reducir el churn y aumentaba el valor de cada cliente dentro del ecosistema de servicios.</p>
-    <p>La infraestructura ya existía. La oportunidad consistía en adaptarla al segmento Empresas antes que la competencia.</p>
-  </div>
-
-  <div class="phase">
-    <p class="phase-label">El verdadero problema</p>
-    <p>A simple vista parecía un proyecto tecnológico. <strong>Pero no lo era.</strong></p>
-    <p>El desafío consistía en alinear áreas con prioridades muy diferentes.</p>
-    <p>Ingeniería buscaba estabilidad. Marketing quería funcionalidades. Comercial necesitaba salir al mercado cuanto antes. BI necesitaba información para medir el impacto.</p>
-    <p><strong>Mi trabajo fue lograr que todos dejaran de optimizar su propia área y comenzaran a construir un mismo producto.</strong></p>
-  </div>
-
-  <div class="phase">
-    <p class="phase-label">Las alternativas</p>
-    <div class="options">
-      <div class="option">
-        <span class="option-name">Opción A</span>
-        <h4>Lanzamiento Full Feature</h4>
-        <p>Construir toda la plataforma antes de salir al mercado.</p>
-        <p class="tradeoff"><b>Trade-off</b>Una propuesta mucho más completa, pero con más de dos años de desarrollo y un riesgo muy alto de retrasar el lanzamiento.</p>
-      </div>
-      <div class="option chosen">
-        <span class="option-name">Opción B</span>
-        <h4>MVP por fases</h4>
-        <p>Lanzar el núcleo del producto e iterar junto a clientes reales.</p>
-        <p class="tradeoff"><b>Trade-off</b>Menos funcionalidades en la primera versión, pero un Time-to-Market mucho más competitivo y aprendizaje continuo.</p>
-      </div>
-      <div class="option">
-        <span class="option-name">Opción C</span>
-        <h4>Marca Blanca</h4>
-        <p>Construir la oferta sobre una plataforma OTT existente mediante un partnership.</p>
-        <p class="tradeoff"><b>Trade-off</b>Mayor velocidad de salida, aunque con menor diferenciación y menor capacidad de evolución.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="phase">
-    <p class="phase-label">La decisión</p>
-    <p><strong>Elegimos construir un MVP.</strong></p>
-    <p>No porque fuera la alternativa más sencilla. Sino porque era la que mejor respondía al objetivo del negocio.</p>
-    <p>En un producto B2B entendí que el éxito no depende de tener más funcionalidades. Depende de darle al equipo comercial una solución confiable para comenzar a vender, aprender del mercado y evolucionar el producto con evidencia en lugar de suposiciones.</p>
-  </div>
-
-  <!-- BUILD -->
-  <div class="phase">
-    <span class="phase-tag">BUILD</span>
-    <p class="phase-label">Mi rol</p>
-    <p>Lideré la estrategia y la construcción del producto desde la perspectiva de negocio.</p>
-    <p>Trabajé en la definición de la visión, la priorización del roadmap y backlog, la coordinación entre Producto, Tecnología, Marketing, BI y Comercial, además del diseño del proceso de onboarding para reducir la carga operativa desde el primer día.</p>
-    <p><strong>Más que coordinar entregas, mi responsabilidad era mantener a todos enfocados en el mismo objetivo.</strong></p>
-  </div>
-
-  <!-- LAUNCH -->
-  <div class="phase">
-    <span class="phase-tag">LAUNCH</span>
-    <p class="phase-label">El resultado</p>
-    <div class="metrics-row">
-      <em>Lanzamiento del producto en 12 meses</em>
-      <em>+25% en tasa de conversión</em>
-      <em>+25% en satisfacción del cliente corporativo</em>
-    </div>
-    <p style="margin-top:20px">Más allá de las métricas, el mayor aprendizaje fue confirmar que <strong>una estrategia bien priorizada puede generar más valor que una solución perfecta entregada demasiado tarde.</strong></p>
-  </div>
-
-  <!-- SCALE -->
-  <div class="phase">
-    <span class="phase-tag">SCALE</span>
-    <p class="phase-label">Si tuviera que construir este producto nuevamente</p>
-    <p>Mantendría la estrategia general, pero ampliaría la forma de medir el éxito.</p>
-    <p>Además de las métricas del lanzamiento, pondría especial atención en indicadores que validaran el impacto del negocio a largo plazo:</p>
-    <ul class="scale-list">
-      <li>Churn de clientes 4P frente a clientes 2P y 3P.</li>
-      <li>Activación durante los primeros 30 días.</li>
-      <li>Adopción por cuenta corporativa.</li>
-      <li>Tickets de soporte por cliente.</li>
-      <li>Revenue incremental generado por clientes existentes.</li>
-      <li>Valor aportado por la estrategia de convergencia.</li>
-    </ul>
-    <p class="case-closing">Porque lanzar un producto nunca representa el final del trabajo. Es el comienzo del aprendizaje.</p>
-
-    <div class="case-cta">
-      <div class="case-cta-inner">
-        <div>
-          <h4>¿Te interesa este caso?</h4>
-          <p>Si estás enfrentando un desafío similar — lanzamiento de producto, coordinación de equipos o estrategia de plataforma — podemos conversarlo.</p>
-        </div>
-        <a href="mailto:enmanueltolosa@gmail.com?subject=Caso%2001%20—%20Lanzamiento%20TV%20Digital&body=Hola%20Enmanuel%2C%0A%0AMe%20interesó%20tu%20caso%20sobre%20el%20lanzamiento%20de%20Movistar%20TV.%20Me%20gustaría%20conversar%20sobre..." class="btn">Hablemos sobre este caso →</a>
-      </div>
-    </div>
-  </div>
-
-      </div><!-- .case-content -->
-    </details>
-
-    <!-- ============================================================
-         CASO 02 — LATAM Airport Self-Service
-         ============================================================ -->
-    <details class="case-expand" id="caso-02">
-      <summary class="index-item">
-        <span class="index-num">02</span>
-        <span class="index-logo"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCABgAGADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5zooor9XGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFXtDs0v9WtrWRrVUlbYTdTiGMZB+854X6mvcvD/AMHtG1ZSdS1N9cEKfPHpEIeOEgdHv22xDHf7xrzcbmMcLJKUW15f1+djuw2Fp1ablOqovon19ey+/rsfP9Fd74W+H0nirwR4l1DS9Lv9R1bT761ht4rQNKRE/mbyVUfN90c10Pw5+D9lquj3Nz4sWTT57y8fTLFZruO1a2kRW8ydkkIMirJ5cZReclvStqmOpU1Jyezt59zg5jyGivVdJ0HwrY+EvE1zr/g68Or+F5bW1uVGrSRrPJJI8bEgIdmNmcDOc1oXnwas/wDhBZJYoWi8Tiy/tj7P9vjZliLFvsvkZ8zesOJN+3npUPMKcXaSa1t09e+1mvvFzHjVFez6b8OvAUHhvSbjXNQktNUtrCLW9Tie7CG7tpUnZIYVP/LT5IOn/PSvP/iR4ctPC/i+8sdNMjabIkV3ZNI24tBLGsic98BsZ9q0o4yFWbpxTuNO5zFFFFdYwooooAD0P0Nel/FzxbNexad4df8AtfzLKGJ5Xu9SWZHDRKVRYYsRRhR6Zb1PFeaUVjOjGc4zfS4mjoPDeh6hqVjqF1Z3/wBk+zqPLj83YbmTBbYvzDJ2hjxnnaP4qk03w22rNbi41PYjWDXy7ivy/vjHsBkdVBJ+bJI6+tc3RRKnNttS/ALG/qmgX1pBfXC3U15DDfyWc8io+3KbcO5PTJbAz6VftvB1xd3d4U1lBd215cW3zZDyJFGWeRWzzxj5c5xnGcEVyW5sEZOD1560lJ052spfgKx0V34YZNI0XU5b6WT+0yqcwswhG5kA3ZO4jbnaBVTxRo8uhaobKSeW4VY0aOSQbSUI4+XJKjg8HB9hWTubbtycdcZ4oJLEkkknuaqMJp3b79P62GkJRRRWowooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="LATAM Airlines"></span>
-        <span>
-          <span class="index-title">Reducir la congestión en bag drop sin confiar en métricas imperfectas</span>
-          <span class="index-meta"><span>Aviación · B2C</span><span>Optimización Operacional</span><span>Product Challenge</span><span>8 min de lectura</span></span>
-        </span>
-        <span class="index-arrow">→ Ver caso</span>
-      </summary>
-      <div class="case-content">
-
-  <div class="case-header">
-    <p class="case-kicker">Caso 02</p>
-    <h2 class="case-title">Passenger Airport Experience: Day of Travel Self-Service</h2>
-    <div class="case-chips">
-      <span>Aviación · B2C</span>
-      <span>Optimización Operacional</span>
-      <span>Product Challenge</span>
-    </div>
-  </div>
-
-  <div class="company-badge">
-    <div class="cb-logo"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCABgAGADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5zooor9XGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFXtDs0v9WtrWRrVUlbYTdTiGMZB+854X6mvcvD/AMHtG1ZSdS1N9cEKfPHpEIeOEgdHv22xDHf7xrzcbmMcLJKUW15f1+djuw2Fp1ablOqovon19ey+/rsfP9Fd74W+H0nirwR4l1DS9Lv9R1bT761ht4rQNKRE/mbyVUfN90c10Pw5+D9lquj3Nz4sWTT57y8fTLFZruO1a2kRW8ydkkIMirJ5cZReclvStqmOpU1Jyezt59zg5jyGivVdJ0HwrY+EvE1zr/g68Or+F5bW1uVGrSRrPJJI8bEgIdmNmcDOc1oXnwas/wDhBZJYoWi8Tiy/tj7P9vjZliLFvsvkZ8zesOJN+3npUPMKcXaSa1t09e+1mvvFzHjVFez6b8OvAUHhvSbjXNQktNUtrCLW9Tie7CG7tpUnZIYVP/LT5IOn/PSvP/iR4ctPC/i+8sdNMjabIkV3ZNI24tBLGsic98BsZ9q0o4yFWbpxTuNO5zFFFFdYwooooAD0P0Nel/FzxbNexad4df8AtfzLKGJ5Xu9SWZHDRKVRYYsRRhR6Zb1PFeaUVjOjGc4zfS4mjoPDeh6hqVjqF1Z3/wBk+zqPLj83YbmTBbYvzDJ2hjxnnaP4qk03w22rNbi41PYjWDXy7ivy/vjHsBkdVBJ+bJI6+tc3RRKnNttS/ALG/qmgX1pBfXC3U15DDfyWc8io+3KbcO5PTJbAz6VftvB1xd3d4U1lBd215cW3zZDyJFGWeRWzzxj5c5xnGcEVyW5sEZOD1560lJ052spfgKx0V34YZNI0XU5b6WT+0yqcwswhG5kA3ZO4jbnaBVTxRo8uhaobKSeW4VY0aOSQbSUI4+XJKjg8HB9hWTubbtycdcZ4oJLEkkknuaqMJp3b79P62GkJRRRWowooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" alt="LATAM Airlines"></div>
-    <div class="cb-info">
-      <span class="cb-name">LATAM Airlines — SCL Hub</span>
-      <span class="cb-role">PM · Airport Flow: Check-in &amp; Bag Drop</span>
-      <span class="cb-period">Product Challenge · Análisis por iniciativa propia</span>
-    </div>
-  </div>
-
-  <!-- THINK -->
-  <div class="phase">
-    <span class="phase-tag">THINK</span>
-    <p class="phase-label">El contexto</p>
-    <p>LATAM está impulsando una estrategia de "Day of Travel Self-Service" para reducir el costo por pasajero y sostener el crecimiento sin aumentar dotación en aeropuertos.</p>
-    <p>En SCL y LIM, el plan prioriza subir la adopción de check-in digital y aumentar el uso de <strong>Self Bag Drop (SBD)</strong> — máquinas donde el pasajero etiqueta y despacha su equipaje sin agente.</p>
-    <p>El journey del pasajero es "phygital": arranca en la app/web, pasa por kioscos, SBD, counters asistidos, seguridad y puerta de embarque. Cualquier fricción en un punto se traslada al siguiente y puede terminar afectando la puntualidad de los vuelos (OTP).</p>
-  </div>
-
-  <div class="phase">
-    <p class="phase-label">El verdadero problema</p>
-    <p>En las últimas 8 semanas, en el banco doméstico de la mañana en SCL (06:00–09:00), se observa:</p>
-    <ul class="scale-list">
-      <li><strong>OTD cayó 3,0 puntos</strong> (salida en puerta) y OTP cayó 2,1 puntos vs. baseline del trimestre anterior.</li>
-      <li><strong>Queue Time de bag drop subió +35%</strong> (SBD + asistido).</li>
-      <li><strong>+18% de pasajeros requieren Manual Intervention</strong> en bag drop: un agente tiene que destrabar un caso que debía ser self-service.</li>
-    </ul>
-    <p style="margin-top:16px">A primera vista parece un problema de filas. <strong>Pero no lo es.</strong></p>
-    <p>Operaciones reporta que en los peores días, el volumen de pasajeros que llega a gate fuera de la ventana de embarque por congestión en bag drop extiende el cierre de embarque y genera demora en puerta.</p>
-    <p>La presión ejecutiva es "arreglar filas ya" porque está pegando directo en demora de salida y en NPS del día de viaje. Pero el equipo de Data advierte algo importante: <strong>la medición de Queue Time está inestable</strong> — sensores con caídas, cambios de layout y muestreos manuales inconsistentes.</p>
-    <p>Algunos días con alta fila no muestran caída equivalente de OTP, y viceversa. Los datos no cierran.</p>
-  </div>
-
-  <div class="phase">
-    <p class="phase-label">Las tensiones reales</p>
-    <p>Como PM del squad "Airport Flow: Check-in & Bag Drop", soy responsable de la experiencia y performance de check-in digital, kioscos, SBD, integración con DCS y señalización en app/kiosco.</p>
-    <p>Cada área tiene una lectura distinta del problema:</p>
-    <ul class="scale-list">
-      <li><strong>Airport Ops</strong> insiste en que "la cola es por uso incorrecto del SBD" y pide volver a más counters asistidos en peak. Solución rápida, pero mata la estrategia de self-service.</li>
-      <li><strong>CX</strong> cree que el problema es claridad: los pasajeros no entienden restricciones, documentos y pasos. Pide mejorar información antes de tocar operación.</li>
-      <li><strong>Tech</strong> dice que cualquier cambio profundo en SBD requiere coordinación con proveedor y ventanas operacionales limitadas.</li>
-    </ul>
-    <p style="margin-top:16px"><strong>Mi desafío:</strong> decidir dónde enfocarme y qué mover primero sin confiar ciegamente en métricas imperfectas. Mañana hay comité con Operaciones y CX — me piden un plan de 30 días con "impacto medible" en OTP y reducción de filas, pero no puedo prometer instrumentación perfecta en ese período.</p>
-  </div>
-
-  <div class="phase">
-    <p class="phase-label">Las alternativas</p>
-    <div class="options">
-      <div class="option">
-        <span class="option-name">Opción A</span>
-        <h4>Revertir a counters asistidos en peak</h4>
-        <p>Aumentar agentes en los mostradores de 06:00 a 09:00, reducir dependencia de SBD en la franja crítica.</p>
-        <p class="tradeoff"><b>Trade-off</b>Alivia filas de forma inmediata, pero contradice la estrategia de self-service, aumenta costo operativo y no resuelve la causa raíz.</p>
-      </div>
-      <div class="option chosen">
-        <span class="option-name">Opción B</span>
-        <h4>Fix & Measure: intervención quirúrgica en 3 capas</h4>
-        <p>Semana 1: observación en campo + triaje de errores SBD. Semana 2-3: fix rápido en UX de kiosco/app + agente de triaje pre-SBD. Semana 4: medir con instrumentación manual controlada.</p>
-        <p class="tradeoff"><b>Trade-off</b>Requiere presencia en campo y un agente de triaje temporal, pero genera evidencia real sin esperar sensores perfectos y protege la estrategia de self-service.</p>
-      </div>
-      <div class="option">
-        <span class="option-name">Opción C</span>
-        <h4>Instrumentar primero, decidir después</h4>
-        <p>Priorizar la corrección de sensores y medición de Queue Time antes de tomar cualquier acción operativa.</p>
-        <p class="tradeoff"><b>Trade-off</b>Datos confiables para decisiones futuras, pero 6-8 semanas sin acción visible. Políticamente insostenible con OTD cayendo.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="phase">
-    <p class="phase-label">La decisión</p>
-    <p><strong>Opción B: Fix & Measure en 3 capas.</strong></p>
-    <p>La razón: no puedo esperar instrumentación perfecta mientras OTD sigue cayendo, pero tampoco puedo "arreglar filas" destruyendo la estrategia de self-service. La salida es actuar quirúrgicamente donde la evidencia cualitativa (observación en campo) complementa los datos cuantitativos imperfectos.</p>
-    <p>El insight clave: si +18% de pasajeros necesitan intervención manual en SBD, el problema no está en la fila — está antes de la fila. Pasajeros llegan al SBD sin entender qué necesitan (documentación, tamaño de equipaje, etiquetado). Eso es un problema de <strong>preparación del pasajero</strong>, no de capacidad de máquinas.</p>
-  </div>
-
-  <!-- BUILD -->
-  <div class="phase">
-    <span class="phase-tag">BUILD</span>
-    <p class="phase-label">Plan de 30 días</p>
-    <p><strong>Semana 1 — Observación y triaje:</strong> ir al aeropuerto. Parar 3 mañanas en la zona SBD durante peak y registrar las causas de cada manual intervention. Clasificar: ¿documentación? ¿equipaje fuera de medida? ¿error de interfaz? ¿pasajero que no hizo check-in online? Sin sensores perfectos, los ojos son la mejor instrumentación disponible.</p>
-    <p><strong>Semana 2-3 — Intervención quirúrgica:</strong> basado en lo observado, ejecutar fixes rápidos. Si la causa principal es preparación del pasajero: push notification en la app 2 horas antes con checklist claro ("Tu equipaje debe tener X, llevá Y documento, hacé check-in antes de llegar"). Pantalla de pre-validación en kiosco antes de derivar a SBD. Agente de triaje temporal en la entrada de la zona SBD (no para operar — para filtrar y redirigir).</p>
-    <p><strong>Semana 4 — Medir con lo que hay:</strong> comparar % de manual intervention (métrica robusta, viene del sistema) y OTD (métrica clara) pre vs. post intervención. No Queue Time — esa métrica no es confiable todavía.</p>
-  </div>
-
-  <!-- LAUNCH -->
-  <div class="phase">
-    <span class="phase-tag">LAUNCH</span>
-    <p class="phase-label">Lo que presento en el comité</p>
-    <p>Reencuadrar el problema: <strong>"No tenemos un problema de filas. Tenemos un problema de preparación del pasajero que se manifiesta como fila."</strong></p>
-    <p>El plan de 30 días no promete sensores arreglados ni filas eliminadas. Promete:</p>
-    <div class="metrics-row">
-      <em>Reducir Manual Intervention en SBD</em>
-      <em>Proteger OTD del banco doméstico AM</em>
-      <em>Diagnóstico de causa raíz verificado en campo</em>
-    </div>
-    <p style="margin-top:16px">Y un compromiso: <strong>en 30 días vamos a saber exactamente por qué falla el SBD en peak, vamos a tener un fix desplegado, y vamos a poder medir si funcionó — sin depender de sensores rotos.</strong></p>
-  </div>
-
-  <!-- SCALE -->
-  <div class="phase">
-    <span class="phase-tag">SCALE</span>
-    <p class="phase-label">Qué viene después de los 30 días</p>
-    <p>Si la intervención funciona (baja manual intervention y se estabiliza OTD), el siguiente paso es escalar:</p>
-    <ul class="scale-list">
-      <li>Automatizar la lógica de triaje en la app (pre-validación inteligente antes de llegar al aeropuerto).</li>
-      <li>Trabajar con Tech para mejorar la UX del SBD en los puntos de error más frecuentes.</li>
-      <li>Priorizar con Data la corrección de instrumentación de Queue Time como proyecto paralelo — ahora sí con tiempo y sin presión de OTD.</li>
-      <li>Replicar el modelo de observación + fix rápido en LIM antes de escalar a toda la red.</li>
-      <li>Medir: throughput de SBD (pasajeros/minuto), % de manual intervention por tipo de error, OTD por franja horaria, y NPS del día de viaje segmentado por canal (self-service vs. asistido).</li>
-    </ul>
-    <p class="case-closing">A veces la mejor decisión no es tener mejores datos. Es actuar con los que tenés mientras construís los que necesitás.</p>
-  </div>
-
-      </div><!-- .case-content -->
-    </details>
-
-    <!-- ============================================================
-         CASO 03 — MercadoLibre Ads
-         ============================================================ -->
-    <details class="case-expand" id="caso-03">
-      <summary class="index-item">
-        <span class="index-num">03</span>
-        <span class="index-logo"><img src="data:image/jpeg;base64,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" alt="MercadoLibre"></span>
-        <span>
-          <span class="index-title">Cómo multiplicar la adopción de un producto de Ads entre sellers que nunca hicieron publicidad</span>
-          <span class="index-meta"><span>eCommerce · B2B</span><span>Adopción &amp; Activación</span><span class="chip-real">Experiencia Real</span><span>7 min de lectura</span></span>
-        </span>
-        <span class="index-arrow">→ Ver caso</span>
-      </summary>
-      <div class="case-content">
-
-  <div class="case-header">
-    <p class="case-kicker">Caso 03</p>
-    <h2 class="case-title">Incrementar la adopción de Mercado Ads entre sellers SMB que nunca habían invertido en publicidad</h2>
-    <div class="case-chips">
-      <span>eCommerce · B2B</span>
-      <span>Adopción &amp; Activación</span>
-      <span class="chip-real">Experiencia Real · MercadoLibre Argentina · 2021–2022</span>
-    </div>
-  </div>
-
-  <div class="company-badge">
-    <div class="cb-logo"><img src="data:image/jpeg;base64,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" alt="MercadoLibre"></div>
-    <div class="cb-info">
-      <span class="cb-name">MercadoLibre Argentina — Mercado Ads</span>
-      <span class="cb-role">Product Commerce Supervisor · Ads SMB/B2B</span>
-      <span class="cb-period">Julio 2021 — Mayo 2022</span>
-    </div>
-  </div>
-
-  <!-- THINK -->
-  <div class="phase">
-    <span class="phase-tag">THINK</span>
-    <p class="phase-label">El contexto</p>
-    <p>MercadoLibre es el marketplace más grande de Latinoamérica. <strong>Mercado Ads</strong> es su producto de publicidad interna: permite a los sellers pagar para posicionar sus productos dentro de los resultados de búsqueda de la plataforma.</p>
-    <p>El producto funcionaba bien con sellers grandes — operaciones profesionales con equipos de marketing que entendían campañas, pujas y segmentación. Pero la oportunidad de crecimiento no estaba ahí.</p>
-    <p>Estaba en el segmento <strong>SMB</strong>: miles de vendedores pequeños y medianos que representaban un enorme volumen de transacciones, pero que apenas usaban Ads. No porque no quisieran vender más. Sino porque <strong>nunca habían hecho publicidad en su vida</strong>.</p>
-  </div>
-
-  <div class="phase">
-    <p class="phase-label">El verdadero problema</p>
-    <p>La lectura inicial del negocio era que hacían falta más features: mejores opciones de segmentación, dashboards más completos, más formatos de anuncio. La lógica era "si el producto es mejor, lo van a usar más".</p>
-    <p><strong>Pero eso no era lo que decían los datos.</strong></p>
-    <p>Cuando analicé el comportamiento de usuarios por vertical y por tamaño de seller, el patrón fue claro: los sellers SMB sí entraban a Ads. Muchos creaban su primera campaña. Pero una proporción altísima abandonaba en los primeros días o nunca volvía a invertir después del primer intento.</p>
-    <p>El problema no era que el producto no tuviera suficientes features. Era que el journey desde "quiero vender más" hasta "tengo una campaña que funciona" tenía demasiados pasos, demasiada jerga técnica y cero acompañamiento para alguien que nunca gestionó un presupuesto publicitario.</p>
-    <p><strong>No era un problema de producto. Era un problema de activación.</strong></p>
-  </div>
-
-  <div class="phase">
-    <p class="phase-label">Las tensiones</p>
-    <ul class="scale-list">
-      <li><strong>Negocio</strong> quería más revenue de Ads rápido. La presión era subir inversión por seller y ampliar la base activa.</li>
-      <li><strong>Producto</strong> proponía nuevas funcionalidades para competir con la sofisticación de Google y Meta Ads.</li>
-      <li><strong>UX/Data</strong> señalaba que antes de agregar más features había que entender por qué los sellers existentes no volvían después del primer uso.</li>
-      <li><strong>Branding y Content</strong> quería campañas educativas masivas, pero sin un journey simplificado la educación sola no iba a mover la aguja.</li>
-    </ul>
-  </div>
-
-  <div class="phase">
-    <p class="phase-label">Las alternativas</p>
-    <div class="options">
-      <div class="option">
-        <span class="option-name">Opción A</span>
-        <h4>Más features, más sofisticación</h4>
-        <p>Agregar segmentación avanzada, nuevos formatos de anuncio y dashboards de performance.</p>
-        <p class="tradeoff"><b>Trade-off</b>Fortalece la propuesta para sellers grandes, pero complejiza aún más el producto para SMBs que ya no entienden el actual.</p>
-      </div>
-      <div class="option chosen">
-        <span class="option-name">Opción B</span>
-        <h4>Simplificar y activar</h4>
-        <p>Rediseñar el journey de primer uso, simplificar la creación de campaña para SMBs y focalizar en activación y habitualidad.</p>
-        <p class="tradeoff"><b>Trade-off</b>No agrega valor inmediato para sellers avanzados, pero desbloquea el segmento de mayor volumen y potencial de crecimiento.</p>
-      </div>
-      <div class="option">
-        <span class="option-name">Opción C</span>
-        <h4>Campaña masiva de educación</h4>
-        <p>Invertir en contenido educativo, tutoriales y webinars para enseñar a los sellers a usar Ads.</p>
-        <p class="tradeoff"><b>Trade-off</b>Genera awareness, pero sin cambiar el producto la tasa de activación real no se mueve — entender cómo funciona algo complejo no es lo mismo que usarlo fácilmente.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="phase">
-    <p class="phase-label">La decisión</p>
-    <p><strong>Opción B: simplificar y activar.</strong></p>
-    <p>El razonamiento: en un marketplace con miles de sellers SMB, el crecimiento de Ads no iba a venir de cobrarle más a pocos sellers grandes. Iba a venir de <strong>activar la cola larga</strong> — miles de sellers pequeños que, con una inversión modesta pero constante, generan un volumen agregado enorme.</p>
-    <p>Para eso, el producto tenía que ser tan simple que un vendedor de zapatillas en Córdoba pudiera crear su primera campaña en 3 minutos sin saber qué es un CPC.</p>
-  </div>
-
-  <!-- BUILD -->
-  <div class="phase">
-    <span class="phase-tag">BUILD</span>
-    <p class="phase-label">Mi rol</p>
-    <p>Lideré la estrategia de producto para el segmento SMB con foco en tres ejes:</p>
-    <p><strong>1. Diagnóstico por vertical:</strong> analicé la performance de Ads cruzando comportamiento de uso, vertical del seller, tamaño de operación y rentabilidad por segmento. Esto permitió identificar qué verticales tenían mayor potencial de activación y cuáles necesitaban un approach distinto.</p>
-    <p><strong>2. Rediseño del journey de activación:</strong> trabajé con UX y Data para simplificar la creación de la primera campaña. Menos pasos, lenguaje más directo, valores por defecto inteligentes. La idea: que el seller configure su primera campaña casi sin darse cuenta, y que vea resultados rápido para generar el hábito de inversión.</p>
-    <p><strong>3. Estrategias de retención por cohorte:</strong> diseñé campañas segmentadas de activación y retención para incrementar la habitualidad de uso y el ticket promedio por cuenta. Coordiné con Ventas, Operaciones, Marketing y Comercial para asegurar una propuesta de valor consistente en todos los puntos de contacto.</p>
-    <p>También colaboré con Finanzas en el análisis de rentabilidad por vertical y propuse ajustes de pricing para maximizar el margen del canal.</p>
-  </div>
-
-  <!-- LAUNCH -->
-  <div class="phase">
-    <span class="phase-tag">LAUNCH</span>
-    <p class="phase-label">El resultado</p>
-    <div class="metrics-row">
-      <em>+40% base de usuarios activos</em>
-      <em>+25% tasa de conversión</em>
-      <em>+18% activación mensual de nuevos sellers</em>
-      <em>+12% ticket promedio por cuenta en 6 meses</em>
-    </div>
-    <p style="margin-top:20px">El aprendizaje más importante: <strong>a veces "mejorar el producto" no significa agregarle más cosas. Significa quitarle todo lo que impide que la gente lo use.</strong></p>
-    <p>Los sellers SMB no necesitaban un producto de Ads más sofisticado. Necesitaban uno que los tratara como lo que eran: vendedores que quieren vender más, no profesionales de marketing digital.</p>
-  </div>
-
-  <!-- SCALE -->
-  <div class="phase">
-    <span class="phase-tag">SCALE</span>
-    <p class="phase-label">Si tuviera que escalar este producto nuevamente</p>
-    <p>Mantendría la estrategia de simplificación, pero agregaría dos capas que en ese momento no llegamos a implementar:</p>
-    <ul class="scale-list">
-      <li><strong>Automatización inteligente:</strong> un modo "piloto automático" donde el seller solo define cuánto quiere invertir y el sistema optimiza campañas automáticamente. Elimina la necesidad de que el SMB aprenda sobre pujas y keywords.</li>
-      <li><strong>Onboarding personalizado por vertical:</strong> en vez de un journey genérico, adaptar las recomendaciones al tipo de negocio del seller ("Vendés electrónica? Te conviene promocionar X con presupuesto Y").</li>
-      <li><strong>Cohorte analysis más granular:</strong> medir no solo activación sino time-to-value — ¿cuántos días tarda un seller nuevo en ver su primera venta atribuida a Ads? Reducir ese número debería ser el north star.</li>
-      <li><strong>Loop de retroalimentación con Comercial:</strong> usar los insights de producto para armar el pitch del equipo de ventas. Si sabemos qué vertical tiene mejor ROI en Ads, el canal comercial puede prospectar con data.</li>
-    </ul>
-    <p class="case-closing">El mejor producto de publicidad para un seller que nunca hizo publicidad es uno donde no siente que está haciendo publicidad. Solo que está vendiendo más.</p>
-  </div>
-
-      </div><!-- .case-content -->
-    </details>
-
-  </div>
-</div>
-
-<!-- ==================== TENDENCIAS EN IA ==================== -->
-<section class="radar-section">
-  <div class="wrap">
-    <div class="radar-live"><span class="dot-live"></span> <span id="ai-trends-status">Cargando tendencias…</span></div>
-    <div class="radar-head-row">
-      <h2 class="radar-title reveal">Tendencias en Inteligencia Artificial.</h2>
-    </div>
-    <p class="radar-intro reveal">Se actualiza solo todos los días: agrego automáticamente lo más relevante que se está discutiendo en IA: modelos, producto, agentes, adopción en empresas.</p>
-    <div id="ai-trends-grid" class="radar-grid reveal"></div>
-    <p class="radar-note reveal">Fuente agregada automáticamente. Si querés conversar sobre cómo aplicar alguna de estas tendencias a tu producto, hablemos.</p>
-  </div>
-</section>
 
 <script>
 (function(){
-  var grid = document.getElementById('ai-trends-grid');
-  var status = document.getElementById('ai-trends-status');
-
-  var fallback = {
-    generated_at: null,
-    items: [
-      { source: "Hacker News", type: "community", title: "Cómo los equipos de producto están rediseñando flujos con agentes de IA", url: "https://news.ycombinator.com", date: "2026-08-04", take: "" },
-      { source: "TechCrunch", type: "community", title: "La adopción empresarial de IA generativa pasa de piloto a producción", url: "https://techcrunch.com", date: "2026-08-03", take: "" },
-      { source: "VentureBeat", type: "community", title: "Modelos de IA multimodal ganan terreno en atención al cliente", url: "https://venturebeat.com", date: "2026-08-02", take: "" },
-      { source: "Hacker News", type: "community", title: "Debate sobre costos de inferencia y ROI de proyectos de IA", url: "https://news.ycombinator.com", date: "2026-08-01", take: "" }
-    ]
-  };
-
-  function fmtDate(iso){
-    try{
-      var d = new Date(iso);
-      return d.toLocaleDateString('es-AR', { day:'numeric', month:'short', year:'numeric' });
-    }catch(e){ return iso; }
-  }
-
-  function fmtRelative(iso){
-    if(!iso) return "actualizado periódicamente";
-    var diffMs = Date.now() - new Date(iso).getTime();
-    var hours = Math.round(diffMs / 3600000);
-    if(hours < 1) return "actualizado hace instantes";
-    if(hours < 24) return "actualizado hace " + hours + (hours === 1 ? " hora" : " horas");
-    var days = Math.round(hours / 24);
-    return "actualizado hace " + days + (days === 1 ? " día" : " días");
-  }
-
-  function cleanTitle(title){
-    return (title || "").replace(/\s+-\s+[^-]{2,40}$/, "").trim();
-  }
-
+  var grid=document.getElementById('ai-trends-grid');
+  var status=document.getElementById('ai-trends-status');
+  var fallback={generated_at:null,items:[
+    {source:"Hacker News",type:"community",title:"Cómo los equipos de producto están rediseñando flujos con agentes de IA",url:"https://news.ycombinator.com",date:"2026-08-04",take:""},
+    {source:"TechCrunch",type:"community",title:"La adopción empresarial de IA generativa pasa de piloto a producción",url:"https://techcrunch.com",date:"2026-08-03",take:""},
+    {source:"VentureBeat",type:"community",title:"Modelos de IA multimodal ganan terreno en atención al cliente",url:"https://venturebeat.com",date:"2026-08-02",take:""},
+    {source:"Hacker News",type:"community",title:"Debate sobre costos de inferencia y ROI de proyectos de IA",url:"https://news.ycombinator.com",date:"2026-08-01",take:""}
+  ]};
+  function fmtDate(iso){try{return new Date(iso).toLocaleDateString('es-AR',{day:'numeric',month:'short',year:'numeric'})}catch(e){return iso}}
+  function fmtRelative(iso){if(!iso)return"actualizado periódicamente";var h=Math.round((Date.now()-new Date(iso).getTime())/3600000);if(h<1)return"actualizado hace instantes";if(h<24)return"actualizado hace "+h+(h===1?" hora":" horas");var d=Math.round(h/24);return"actualizado hace "+d+(d===1?" día":" días")}
+  function cleanTitle(t){return(t||"").replace(/\s+-\s+[^-]{2,40}$/,"").trim()}
   function render(data){
-    var items = (data.items || []).slice(0, 4);
-    grid.innerHTML = "";
+    var items=(data.items||[]).slice(0,4);grid.innerHTML="";
     items.forEach(function(item){
-      var a = document.createElement('a');
-      a.href = item.url || "#";
-      a.target = "_blank";
-      a.rel = "noopener";
-      a.className = "radar-card";
-
-      var badgeClass = item.type === "official" ? "official" : "community";
-      var takeHtml = item.take ? '<p class="radar-take">→ Lectura PM: ' + item.take + '</p>' : '';
-
-      a.innerHTML =
-        '<div class="radar-top">' +
-          '<span class="radar-source ' + badgeClass + '">' + (item.source || "Fuente") + '</span>' +
-          '<span class="radar-date">' + fmtDate(item.date) + '</span>' +
-        '</div>' +
-        '<h3>' + cleanTitle(item.title) + '</h3>' +
-        takeHtml +
-        '<span class="radar-link">Leer fuente <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>';
-
+      var a=document.createElement('a');a.href=item.url||"#";a.target="_blank";a.rel="noopener";a.className="radar-card";
+      var bc=item.type==="official"?"official":"community";
+      var tk=item.take?'<p class="radar-take">→ Lectura PM: '+item.take+'</p>':"";
+      a.innerHTML='<div class="radar-top"><span class="radar-source '+bc+'">'+(item.source||"Fuente")+'</span><span class="radar-date">'+fmtDate(item.date)+'</span></div><h3>'+cleanTitle(item.title)+'</h3>'+tk+'<span class="radar-link">Leer fuente <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>';
       grid.appendChild(a);
     });
-    status.textContent = fmtRelative(data.generated_at);
+    status.textContent=fmtRelative(data.generated_at);
   }
-
-  fetch('data/ai-trends.json', { cache: 'no-store' })
-    .then(function(res){ if(!res.ok) throw new Error('no data yet'); return res.json(); })
-    .then(render)
-    .catch(function(){ render(fallback); });
+  fetch('data/ai-trends.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error;return r.json()}).then(render).catch(function(){render(fallback)});
 })();
 </script>
 
 <!-- ==================== SUGERÍ UN TEMA ==================== -->
 <section class="suggest-section">
   <div class="wrap">
-    <div class="suggest-head reveal">
+    <div class="suggest-head reveal" style="max-width:60ch;margin-bottom:32px">
       <p class="suggest-kicker">Construyamos esto juntos</p>
       <h2 class="suggest-title">¿Qué caso o producto te gustaría que analice?</h2>
-      <p>Esta librería de casos crece con lo que a la comunidad le sirve de verdad. Si hay un problema de producto, una industria o una herramienta que te gustaría ver aplicando el framework THINK → BUILD → LAUNCH → SCALE, contámelo.</p>
+      <p>Si hay un problema de producto, una industria o una herramienta que te gustaría ver aplicando el framework THINK → BUILD → LAUNCH → SCALE, contámelo.</p>
     </div>
     <form class="suggest-form reveal" action="https://formsubmit.co/enmanueltolosa@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="Sugerencia de tema — Product Thinking">
       <input type="hidden" name="_template" value="table">
       <input type="text" name="_honey" style="display:none">
       <div class="s-row">
-        <div class="s-field">
-          <label for="s-nombre">Nombre</label>
-          <input id="s-nombre" type="text" name="Nombre" required>
-        </div>
-        <div class="s-field">
-          <label for="s-email">Email</label>
-          <input id="s-email" type="email" name="Email" required>
-        </div>
+        <div class="s-field"><label for="s-nombre">Nombre</label><input id="s-nombre" type="text" name="Nombre" required></div>
+        <div class="s-field"><label for="s-email">Email</label><input id="s-email" type="email" name="Email" required></div>
       </div>
-      <div class="s-field">
-        <label for="s-tema">Tema, producto o industria que te gustaría ver</label>
-        <input id="s-tema" type="text" name="Tema sugerido" placeholder="Ej: onboarding en fintech, marketplace B2B, IA en soporte..." required>
-      </div>
-      <div class="s-field">
-        <label for="s-comentario">Contexto (opcional)</label>
-        <textarea id="s-comentario" name="Comentario" placeholder="¿Por qué te interesa este caso? ¿Hay algo puntual que te gustaría que resuelva?"></textarea>
-      </div>
+      <div class="s-field"><label for="s-tema">Tema, producto o industria</label><input id="s-tema" type="text" name="Tema sugerido" placeholder="Ej: onboarding en fintech, marketplace B2B, IA en soporte..." required></div>
+      <div class="s-field"><label for="s-comentario">Contexto (opcional)</label><textarea id="s-comentario" name="Comentario" placeholder="¿Por qué te interesa? ¿Hay algo puntual que te gustaría que resuelva?"></textarea></div>
       <button type="submit" class="s-submit">Enviar sugerencia</button>
     </form>
   </div>
 </section>
 
-<!-- ==================== CTA ==================== -->
+<!-- ==================== CTA FINAL ==================== -->
 <div class="wrap cta-final">
   <h2>¿Tenés un problema de producto parecido?</h2>
-  <p>Estos casos se actualizan seguido con nuevos problemas que analizo. Si alguno se parece al que tenés en tu equipo, hablemos.</p>
-  <a href="index.html#contacto" class="btn">Escribime</a>
+  <p>Si alguno de estos casos se parece a lo que enfrentás en tu equipo, hablemos.</p>
+  <a href="index.html#agendar" class="btn">Agendar conversación</a>
 </div>
 
 <footer>
   <div class="wrap footer-row">
-    <span>Headquarter Buenos Aires, Argentina — remoto LATAM / USA / Europa</span>
+    <span>Buenos Aires, Argentina — remoto LATAM / USA / Europa</span>
     <span>© 2026 Enmanuel Tolosa</span>
   </div>
 </footer>
 
+<a href="index.html#agendar" class="float-cta" id="floatCta">Contactame →</a>
+
 <script>
+  // Reveal on scroll
   if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
     const io=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('in-view');io.unobserve(el.target)}})},{threshold:.12});
     document.querySelectorAll('.reveal,.stagger').forEach(el=>io.observe(el));
   }else{document.querySelectorAll('.reveal,.stagger').forEach(el=>el.classList.add('in-view'))}
+
+  // Scroll progress bar
+  const bar=document.getElementById('scrollbar');
+  window.addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%'});
+
+  // Float CTA - only show after first case is scrolled past
+  const floatCta=document.getElementById('floatCta');
+  const firstCase=document.getElementById('caso-01');
+  if(floatCta&&firstCase){
+    const fio=new IntersectionObserver(e=>{e.forEach(el=>{if(!el.isIntersecting&&el.boundingClientRect.top<0){floatCta.classList.add('visible')}})},{threshold:0});
+    fio.observe(firstCase);
+    window.addEventListener('scroll',()=>{if(window.scrollY<400)floatCta.classList.remove('visible')});
+  }
 </script>
-
-<script>
-// Scroll progress bar
-const bar = document.getElementById('scrollbar');
-window.addEventListener('scroll', ()=>{
-  const h = document.documentElement;
-  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-  bar.style.width = pct + '%';
-});
-
-// Mouse-follow glow on hero
-const heroEl = document.querySelector('.hero');
-const glow = document.getElementById('heroGlow');
-if(heroEl && glow && window.matchMedia('(hover:hover)').matches){
-  heroEl.addEventListener('mousemove', (e)=>{
-    const rect = heroEl.getBoundingClientRect();
-    glow.style.left = (e.clientX - rect.left) + 'px';
-    glow.style.top = (e.clientY - rect.top) + 'px';
-  });
-  heroEl.addEventListener('mouseenter', ()=>{ glow.style.opacity='1'; });
-  heroEl.addEventListener('mouseleave', ()=>{ glow.style.opacity='0'; });
-}
-
-// Add in-view to scale list parent on scroll
-const scalePhase = document.querySelector('.scale-list')?.closest('.phase');
-if(scalePhase){
-  const sio = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in-view'); sio.unobserve(e.target); }});
-  },{threshold:0.2});
-  sio.observe(scalePhase);
-}
-</script>
-<a href="index.html#contacto" class="float-cta">Contactame →</a>
 </body>
 </html>
