@@ -621,5 +621,102 @@
   }else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in-view'))}
 </script>
 
+<!-- PostHog Analytics -->
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing identify alias people.set people.set_once set_config start_session_recording stop_session_recording sessionRecordingStarted".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+
+  posthog.init('phc_x9XNE4oMfUmRXizYuvC8N4bhFp5DsTmGe3kJvU5TB7t2', {
+    api_host: 'https://us.i.posthog.com',
+    person_profiles: 'identified_only',
+    autocapture: true,
+    capture_pageview: true,
+    capture_pageleave: true,
+    session_recording: { recordCrossOriginIframes: true }
+  });
+
+  // --- Eventos custom ---
+
+  // Track clicks en CTAs principales
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a, button');
+    if (!el) return;
+
+    var href = el.getAttribute('href') || '';
+    var text = (el.textContent || '').trim().substring(0, 60);
+
+    // CTA: Agendar llamada / Hablemos
+    if (href.includes('calendly') || href.includes('cal.com') || text.toLowerCase().includes('hablemos') || text.toLowerCase().includes('agendar')) {
+      posthog.capture('cta_clicked', { cta_type: 'agendar_llamada', cta_text: text, page: location.pathname });
+    }
+
+    // CTA: WhatsApp
+    if (href.includes('wa.me')) {
+      posthog.capture('cta_clicked', { cta_type: 'whatsapp', page: location.pathname });
+    }
+
+    // CTA: LinkedIn
+    if (href.includes('linkedin.com')) {
+      posthog.capture('cta_clicked', { cta_type: 'linkedin', page: location.pathname });
+    }
+
+    // CTA: Email / mailto
+    if (href.includes('mailto:')) {
+      posthog.capture('cta_clicked', { cta_type: 'email', page: location.pathname });
+    }
+
+    // CTA: Ver casos / Product Thinking
+    if (href.includes('casos.html') || text.toLowerCase().includes('product thinking')) {
+      posthog.capture('cta_clicked', { cta_type: 'ver_casos', page: location.pathname });
+    }
+
+    // CTA: CV / Resume
+    if (href.includes('.pdf') || text.toLowerCase().includes('cv') || text.toLowerCase().includes('resume')) {
+      posthog.capture('cta_clicked', { cta_type: 'descargar_cv', page: location.pathname });
+    }
+  });
+
+  // Track formulario de contacto
+  document.addEventListener('submit', function(e) {
+    posthog.capture('form_submitted', { form_id: e.target.id || 'contact_form', page: location.pathname });
+  });
+
+  // Track scroll depth
+  (function() {
+    var milestones = [25, 50, 75, 100];
+    var reached = {};
+    window.addEventListener('scroll', function() {
+      var pct = Math.round((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100);
+      milestones.forEach(function(m) {
+        if (pct >= m && !reached[m]) {
+          reached[m] = true;
+          posthog.capture('scroll_depth', { depth: m, page: location.pathname });
+        }
+      });
+    });
+  })();
+
+  // Track tiempo en página
+  (function() {
+    var start = Date.now();
+    window.addEventListener('beforeunload', function() {
+      var seconds = Math.round((Date.now() - start) / 1000);
+      posthog.capture('time_on_page', { seconds: seconds, page: location.pathname });
+    });
+  })();
+
+  // Track UTM params
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var utms = {};
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k) {
+      if (params.get(k)) utms[k] = params.get(k);
+    });
+    if (Object.keys(utms).length > 0) {
+      posthog.capture('utm_visit', utms);
+      posthog.register(utms);
+    }
+  })();
+</script>
+
 </body>
 </html>
