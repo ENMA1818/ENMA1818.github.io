@@ -1,11 +1,35 @@
 {
-  "generated_at": "2026-09-06T13:55:20.189Z",
+  "generated_at": "2026-09-07T16:16:29.904Z",
   "items": [
+    {
+      "source": "Google News",
+      "type": "community",
+      "title": "3° Jornada Pedagógica; “Diálogos necesarios para acompañar la escuela: Inteligencia Artificial (IA)” - Unión de Educadores de la Provincia de Córdoba",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxObTdNOG1DYy1IZjFwRm5GZnoyemIyWDFaekZwemVCSWk3NmlYZ2h1T3gwUXpUUDlvU0JGWTlpcEhZaGlCMU84UHptLTBOYVo1MUtfR1RXQkd2S1BHX2FqZjY1eVZwdkFKQmljTG1ZMlFHckJrc1ljc2diUE1JNHhVZExtdEM4bnNLckxXYkVHWktWQ3ZjODJFNzFYNTgzZ25Mc0JOSW80ek94VHFwbEpZQXN2MmY5aTBsWnN1a0hRUDBINW8?oc=5",
+      "date": "2026-09-07",
+      "take": ""
+    },
+    {
+      "source": "Google News",
+      "type": "community",
+      "title": "La ONU llamó a un esfuerzo internacional para evitar que la Inteligencia Artificial se vuelva incontrolable - Clarin.com",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQT2pUUzZHQjlrSWh0aVpJaGtCaGtTZ2VCMmNGVFdWZXo4RjkyZER6Q2NkZmtVQTkxQkJwZUJzY2JDWnZzNU1ZUUFqT1QyRi1YaEdxY1RDZ0M2b0dZaEJlcEp1Z0JteVpzdzFieUt3UVo0Wll3LU9aNEgtNWlHckdfVEVvWmVvNVpGOGU3R2VJaC11SGFkOHZDSXJONHptX1BtOU5SVXozd2tLQkg4OUw5STZDOWdtSllod2pJR0NUN3h1eXBqOTlZbVl1cDFFeENoZWxaRTFR0gHbAUFVX3lxTE10SUJNeFBseXBUN09oYnlWWEVNY29EelhnekJHZTRLWFN2Nl9naV9FSUVyUEh2dV9rdWVXMloyUVNCWDBrSGhFQkxYWUtzWjBmY3BKNFloLVJjRkZpUGdGUGw4SE13VldDU195V2tvcy04WDdtR2RxMkpvXzY4WlpxQ1dQeEppdlZRYkhBWWJOU2t4T25iMVFqeTdRTWFPWGY4WmVuRURaQWpBcEJ0eGRYUUJocGtxRGEtQzh3YmVRaWlXYTNiUTJHMlZZVlJia01RU2NTSl92TGZOTQ?oc=5",
+      "date": "2026-09-07",
+      "take": ""
+    },
     {
       "source": "Google News",
       "type": "community",
       "title": "Las 7 habilidades laborales que la inteligencia artificial no podrá reemplazar - Diario Norte",
       "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNSmtJUm45ZjYyMDZkUWRPNEtfMXlkZ1U4YXpuQ3RIX2JEbmkyV0JYbXFfaE4yZ1FSY1VMckx1d0o0dmdqMlo5M0lCWktyLWVVWWNneVljbEVBVk52QkQ1MDlienlqZllQSXhHaG9xampsWmcwZDBXc3NTck5OTThMZ0Z4ZjhOQjF1Z0Rid3YtZFBnaU9sUjRXZ0tsdFRPZVZqMkRsWEJ5dlhpa3VFMi1FMnNXQQ?oc=5",
+      "date": "2026-09-06",
+      "take": ""
+    },
+    {
+      "source": "Google News",
+      "type": "community",
+      "title": "Informe especial: las siete habilidades humanas que la inteligencia artificial no podrá reemplazar - El Esquiu",
+      "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNaURFRnk2Z0pwMkdsbFEzeWprOXdwUVZzdDRWT0ZxZEZLcEZRNmhnMUsySDZseGNQX2EyV0diY2kwVldqWlh4V2tUMDdKU3ZIMjBEc053eU05bjdyWWR4NldhSHV2M19vMWVqYTk0SnlPZVZtdVpaYWNJQVp1R0hRMy1uMGtWZFE5cFlmTnRVdmN4UHJwWlZ5aTFqaDJ0NEFTdllsRjBhRktDZWZXRzZlYTRfTXllcjFuMmdFNDdaQ00zWWJqc0thWDNnYVhFMTBJSXVrWk9NOHpsak91cXQ4enhKUGkwTm9Lenc?oc=5",
       "date": "2026-09-06",
       "take": ""
     },
@@ -20,32 +44,8 @@
     {
       "source": "Google News",
       "type": "community",
-      "title": "Siete habilidades humanas que la inteligencia artificial no podrá reemplazar - diariocronica.com.ar",
-      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOUzVZVVlSVkRxRU90bzRzUGltWE1NOGJSajgwLTZoRF95Q2Z5V1BzT1ZRSU9oLTI2WHBLU05IS0RaSWtybkpsREp1TkhLeUpaOXJ0RERjUXRJU0VkQVlHYmdfdGJKZ3BzVnJSNlMxV04tX3Q3Wk96d1lHc0p5Q011dC0tWEE5QTAxVFlianpIa3FPNVlOXy02TXZrRHUzc1lxNlU4WnRVb3ZnNW5EN0NLVW1MTGFBQWdVeFlnVXhaRkg1UzFVb0xmR0dlQTc4dXMwVXfSAdcBQVVfeXFMTTlxOVhWZ2FobjQ1OTJ5UmlObXgxYV9iZWVRdExoV2JrQ0xnSGUxMlFkQnNCS0w5US12dm9PWlI0UGhuOFVOQ0E0ajVaSnBCWTROMVRyZUl1MG1jdkZEeExPOUlGbUhOU1BqWV91QUdldE9KY0hrWnRSRGhsdUl3dnNoZ1RKSFhkVWdLbXNWRU5mQnBNWXp5bUtFeDJFYWRVcW9ZMTVVYko4VVNLVW9kUVZ6M1o0a1Yxd01UOHd0OFphMjRVdGt3ZmR3RUowUEV6SGlwUkVsWGs?oc=5",
-      "date": "2026-09-05",
-      "take": ""
-    },
-    {
-      "source": "Google News",
-      "type": "community",
-      "title": "Catequistas de Mercedes-Luján se reunieron para pensar la fe en tiempos de inteligencia artificial - La Verdad Junín",
-      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPd3pLQ25JYnBuVVB2OUROWTJJS3kxc1JHb0R4NW9fcWR5c2tNTW9VbTc5TGFlZXR6c0lBUFNrNTluZU1qYVJFVG9WdXJyVzdNZzFlZmFpUjRHUzB3bmVjX0Z2bmNiM044a0c0TXR6RnJGSElGWXp5ejZkOTc0WFZkVzdSQ19sZjE1Mno2NVZxOU1jX29OeE5YMlBSbHppNVcyMVhzN01QTEllOXFCcVhiaGFJNEFUUEFKaVNIdnpuQk9GYnl2?oc=5",
-      "date": "2026-09-05",
-      "take": ""
-    },
-    {
-      "source": "Google News",
-      "type": "community",
-      "title": "¿Quién enseña a pensar la inteligencia artificial? - Clarin.com",
-      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPeTcyNmJMb2lTakdUczZrRWRIY29SdkhGX3p2eUZMZ2VZWFl0VFNxSG9vaFlUcVFHNXJEWl84djRLT2lTVlE1XzVqY1htU2ozZGJ1bGo3M2pzZEpNbTdTTEx4Umo5NEhzc0JlZ3lyZkZRUlhVOG80cVhKUko5RDNhRUdsQi1vdk94cFNPMHlKbw?oc=5",
-      "date": "2026-09-05",
-      "take": ""
-    },
-    {
-      "source": "Google News",
-      "type": "community",
-      "title": "Si la inteligencia artificial puede aprobar la universidad, ¿qué estamos enseñando? - Infobae",
-      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOSUdISzl1RTZfcE9uc0JGTXFxNkN2Y3ptSkhfYW9maDJqMGF1SmdYRkRwVmk1aVVpeVVBaDZLNTU1cVpfM2V0NmRqb0JVRy1YR0tTNVMtS09ZcGFhWEJSaV9TV0tMUnRSTGJkQk1QRHZ2cDBBOGNJdFpYcGlvdklOel9KQ015VjBKazMyTUUtdDJPZlR3WGNzd2EyTWhvd3hzQWpvUFBiS2dCSnNHSURPWWNFMk5LMWxQM2lkV1lIVjFQd9IB3AFBVV95cUxQYXZCY3o4RGxaTDNFRjRLZ1M4VFl4cVRabmxBR1YwRHExQ2t6VmVKbXhvTURQR0E0dDhvbWo3bl95eFFkYkRVNVd2blFlSFBOeHR1OWprZnVmSWRYR0wyMmJ4RkVjTVRIZE9LMGhrUmNUZE1RSENNeGhad2lSdmhtSW0wNENKbVU4OTVicFhlejlfV2ZIZGVxV1c3dTFKOGZwMVpzSEgtQ0lkOW4yZmdPU2F1WnpleTNSeTBrQ3ZLdWtOVm9SQjV4VWRMUDZidFdXSHdOckJtMTQ0RGN2?oc=5",
+      "title": "Inteligencia artificial innegociable - perfil.com",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOWmNNQUcwTkF4U1pRdDhGNHdocnF1bFFwLWgzd095YkhLTnB5T3NVNXJaN2djb0FkMk1uc0pOdEhHNmJkVTItaEF6QjU0Nlh1RFd4MG9FRGNKNlc1d05BRzQ3SWtBS1I4bkZUY2E1MUd5MkU4Sm9HMmo3eWpncGY4YnNpa25NNHA4STVJYWhxWdIBlAFBVV95cUxPNFNTWTRPMURaLUVNZUh6aUlaQURXYVg3ZUtBZ2psbElqelJSNE9xdUlvRDRsMUthLVAxRUdUdHdHVzNQLV9JdzdWWEg1S0xBVVlJU2RJSi1CRkd1UHUxcFpKeUNmdkpsY2FSZWpKelZ6NExRd2xmdk55c0JxZC1rQ2Y0M1R6ZGFzMlBBcFJVOHNVVzRC?oc=5",
       "date": "2026-09-04",
       "take": ""
     }
