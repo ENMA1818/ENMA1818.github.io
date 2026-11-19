@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Flujo Comercial Accusys — Cliente Nuevo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Operational board — compact swimlanes, tool-chip color language, teal accent */
+:root {
+  --bg: #f8f9fa; --bg2: #ffffff; --fg: #1a1d23; --fg2: #5a6070;
+  --accent: #0e6e68; --accent-fg: #fff;
+  --lane-pm: #3b82f6; --lane-comercial: #10b981; --lane-gestion: #8b5cf6; --lane-soporte: #64748b;
+  --tool-apollo: #d97706; --tool-lead: #2563eb; --tool-negocio: #059669;
+  --tool-ticket: #7c3aed; --tool-empresa: #475569; --tool-manual: #9f1239;
+  --border: #e2e5ea; --shadow: rgba(0,0,0,.08);
+  --node-bg: #ffffff; --node-border: #d1d5db;
+  --panel-bg: #f1f3f5; --danger: #dc2626;
+  --ff-display: 'Archivo', system-ui, sans-serif;
+  --ff-body: 'Public Sans', system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111318; --bg2: #1a1d24; --fg: #e8eaed; --fg2: #8b90a0;
+    --border: #2a2e38; --shadow: rgba(0,0,0,.3);
+    --node-bg: #1e2128; --node-border: #3a3f4a;
+    --panel-bg: #16181e; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111318; --bg2: #1a1d24; --fg: #e8eaed; --fg2: #8b90a0;
+  --border: #2a2e38; --shadow: rgba(0,0,0,.3);
+  --node-bg: #1e2128; --node-border: #3a3f4a;
+  --panel-bg: #16181e; color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; }
+html, body { height: 100%; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--ff-body); font-size: 14px; line-height: 1.5;
+  overflow: hidden;
+}
+
+/* Header */
+.header {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 12px 16px; border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.header h1 {
+  font-family: var(--ff-display); font-size: 18px; font-weight: 700;
+  letter-spacing: -0.02em; white-space: nowrap;
+}
+.status-badge {
+  font-size: 11px; padding: 3px 8px; border-radius: 10px;
+  background: var(--panel-bg); color: var(--fg2); white-space: nowrap;
+  margin-left: auto;
+}
+
+/* Board */
+.board-wrap {
+  flex: 1; overflow: auto; position: relative;
+  background: var(--bg);
+  height: calc(100% - 53px);
+}
+.board {
+  position: relative; min-width: 1600px; min-height: 600px;
+}
+.lane {
+  position: relative; border-bottom: 1px solid var(--border);
+  min-height: 140px; display: flex; align-items: flex-start;
+}
+.lane-label {
+  position: sticky; left: 0; z-index: 5;
+  width: 160px; min-width: 160px; padding: 10px 12px;
+  font-family: var(--ff-display); font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  display: flex; align-items: center; gap: 6px;
+  background: var(--bg);
+}
+.lane-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.lane-body {
+  flex: 1; position: relative; min-height: 140px; padding: 8px;
+}
+
+/* Nodes */
+.node {
+  position: absolute; width: 180px;
+  background: var(--node-bg); border: 1.5px solid var(--node-border);
+  border-radius: 8px; padding: 8px 10px;
+  box-shadow: 0 1px 3px var(--shadow); z-index: 10;
+  transition: box-shadow .15s;
+  user-select: none;
+}
+.node:hover { box-shadow: 0 3px 12px var(--shadow); }
+.node-title {
+  font-family: var(--ff-display); font-size: 13px; font-weight: 600;
+  margin-bottom: 4px; line-height: 1.3;
+}
+.node-text { font-size: 11px; color: var(--fg2); line-height: 1.4; margin-bottom: 6px; }
+.node-meta { display: flex; gap: 4px; flex-wrap: wrap; }
+.tool-chip {
+  font-size: 10px; font-weight: 600; padding: 1px 6px;
+  border-radius: 3px; color: #fff; white-space: nowrap;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+.stage-chip {
+  font-size: 10px; padding: 1px 6px; border-radius: 3px;
+  background: var(--panel-bg); color: var(--fg2); white-space: nowrap;
+}
+
+/* SVG arrows */
+.arrows-svg {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 8;
+}
+.arrows-svg path {
+  fill: none; stroke: var(--fg2); stroke-width: 1.5;
+  marker-end: url(#arrowhead);
+}
+.arrows-svg text {
+  font-family: var(--ff-body); font-size: 10px; fill: var(--fg2);
+}
+
+/* App layout */
+.app { display: flex; flex-direction: column; height: 100%; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <div class="header">
+    <h1>Flujo Comercial Accusys — Cliente Nuevo</h1>
+    <span class="status-badge">Confidencial · Octubre 2026</span>
+  </div>
+  <div class="board-wrap" id="boardWrap">
+    <div id="boardContainer"></div>
+  </div>
+</div>
+
+<script>
+const TOOL_COLORS = {
+  apollo:'var(--tool-apollo)', lead:'var(--tool-lead)', negocio:'var(--tool-negocio)',
+  ticket:'var(--tool-ticket)', empresa:'var(--tool-empresa)', manual:'var(--tool-manual)'
+};
+const LANE_COLORS = {pm:'var(--lane-pm)',comercial:'var(--lane-comercial)',gestion:'var(--lane-gestion)',soporte:'var(--lane-soporte)'};
+
+const BOARD = {
+  "lanes": [
+    { "id": "pm", "name": "PM · Enmanuel · Ivette" },
+    { "id": "comercial", "name": "Comercial - Ventas (Adriana - Nico)" },
+    { "id": "soporte", "name": "Preventa / Aprobadores / Adm-PMO" },
+    { "id": "gestion", "name": "Gestión de Clientes" }
+  ],
+  "nodes": [
+    { "id": "n1", "lane": "pm", "x": 40, "y": 20, "title": "Campaña Outbound", "text": "Apollo · LinkedIn · Referidos", "tool": "apollo", "stage": "Prospección" },
+    { "id": "n0", "lane": "comercial", "x": 40, "y": 20, "title": "Creación Lead", "text": "Cartera propia de Comercial", "tool": "lead", "stage": "—" },
+    { "id": "n2", "lane": "pm", "x": 260, "y": 20, "title": "Contacto → Approaching", "text": "Primer contacto registrado en HubSpot", "tool": "lead", "stage": "1·Contactado → 2·Approaching" },
+    { "id": "n3b", "lane": "comercial", "x": 480, "y": 20, "title": "Recontacto → Approaching", "text": "2do contacto al prospecto", "tool": "manual", "stage": "Approaching" },
+    { "id": "n3", "lane": "pm", "x": 700, "y": 20, "title": "Calificación MQL", "text": "Evalúa fit: industria, tamaño, necesidad", "tool": "lead", "stage": "3·MQL → 4·En calificación" },
+    { "id": "n4", "lane": "pm", "x": 920, "y": 20, "title": "SQL — Demo agendada", "text": "Cierra Lead, crea Negocio, copia Note. Handoff a Ventas (24h)", "tool": "lead", "stage": "5·SQL" },
+    { "id": "n5", "lane": "comercial", "x": 1140, "y": 20, "title": "Crear Negocio + Demo", "text": "New Business stage 1. Demo técnica con el prospecto", "tool": "negocio", "stage": "1·Prospecto → 2·Demo" },
+    { "id": "n6", "lane": "comercial", "x": 1360, "y": 20, "title": "Análisis y Estimación", "text": "Relevar requerimiento, POC opcional, estimar esfuerzo", "tool": "negocio", "stage": "3·Análisis → 5·Estimación" },
+    { "id": "n7", "lane": "comercial", "x": 1580, "y": 20, "title": "Propuesta y Valorización", "text": "Propuesta comercial. Valor obligatorio desde aquí", "tool": "negocio", "stage": "6·Propuesta → 7·Valorización" },
+    { "id": "n12", "lane": "soporte", "x": 1800, "y": 20, "title": "Aprobaciones", "text": "Dir. Comercial (2d) → Adm. y Finanzas (2d) → Legal (3d)", "tool": "negocio", "stage": "8→9→10" },
+    { "id": "n8", "lane": "comercial", "x": 2020, "y": 20, "title": "Envío → Negociación", "text": "Enviar propuesta al cliente, negociar", "tool": "negocio", "stage": "11·Envío → 14·Negociación" },
+    { "id": "n9", "lane": "comercial", "x": 2240, "y": 20, "title": "Contrato → Closed Won", "text": "Firma de contrato, cierre exitoso", "tool": "negocio", "stage": "15·Contrato → CW" },
+    { "id": "n10", "lane": "comercial", "x": 2460, "y": 20, "title": "Alta de Cliente", "text": "Solo cliente nuevo. Alta en sistemas internos", "tool": "ticket", "stage": "T1·Alta de Cliente" },
+    { "id": "n11", "lane": "comercial", "x": 2680, "y": 20, "title": "Facturación y Cobranza", "text": "Enviar datos a Facturación", "tool": "ticket", "stage": "T2·Facturación" },
+    { "id": "n13", "lane": "soporte", "x": 2900, "y": 20, "title": "Alta Proyecto + Demanda", "text": "PMO crea proyecto y carga demanda", "tool": "ticket", "stage": "T3→T4" },
+    { "id": "n14", "lane": "gestion", "x": 3120, "y": 20, "title": "Puesta en Producción", "text": "Traspaso formal a Gestión de Clientes", "tool": "ticket", "stage": "T5·Puesta en Producción" },
+    { "id": "n15", "lane": "gestion", "x": 3340, "y": 20, "title": "Cliente Activo", "text": "Onboarding, gestión continua, soporte", "tool": "empresa", "stage": "Cliente activo" }
+  ],
+  "edges": [
+    { "id": "e1", "from": "n1", "to": "n2", "label": "Respuesta / Contacto" },
+    { "id": "e2", "from": "n0", "to": "n3b", "label": "" },
+    { "id": "e3", "from": "n2", "to": "n3b", "label": "2do contacto" },
+    { "id": "e4", "from": "n3b", "to": "n3", "label": "Interés confirmado" },
+    { "id": "e5", "from": "n3", "to": "n4", "label": "Califica" },
+    { "id": "e6", "from": "n4", "to": "n5", "label": "Handoff 24h → Ventas" },
+    { "id": "e7", "from": "n5", "to": "n6", "label": "" },
+    { "id": "e8", "from": "n6", "to": "n7", "label": "" },
+    { "id": "e9", "from": "n7", "to": "n12", "label": "Aprobación interna" },
+    { "id": "e10", "from": "n12", "to": "n8", "label": "Aprobado" },
+    { "id": "e11", "from": "n8", "to": "n9", "label": "Acepta" },
+    { "id": "e12", "from": "n9", "to": "n10", "label": "CW" },
+    { "id": "e13", "from": "n10", "to": "n11", "label": "" },
+    { "id": "e14", "from": "n11", "to": "n13", "label": "PMO" },
+    { "id": "e15", "from": "n13", "to": "n14", "label": "WF-16" },
+    { "id": "e16", "from": "n14", "to": "n15", "label": "" }
+  ]
+};
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+function renderBoard() {
+  const container = document.getElementById('boardContainer');
+  const data = BOARD;
+  const lanes = data.lanes || [];
+  const nodes = data.nodes || [];
+  const edges = data.edges || [];
+
+  const laneH = 150;
+  const totalH = Math.max(lanes.length * laneH, 400);
+  const boardW = Math.max(1600, ...nodes.map(n => (n.x || 0) + 240));
+
+  let html = `<div class="board" style="width:${boardW}px;height:${totalH}px;">`;
+
+  html += `<svg class="arrows-svg" width="${boardW}" height="${totalH}">
+    <defs><marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="var(--fg2)" /></marker></defs>`;
+
+  edges.forEach(edge => {
+    const fromN = nodes.find(n => n.id === edge.from);
+    const toN = nodes.find(n => n.id === edge.to);
+    if (!fromN || !toN) return;
+    const fromLI = lanes.findIndex(l => l.id === fromN.lane);
+    const toLI = lanes.findIndex(l => l.id === toN.lane);
+    const x1 = 160 + (fromN.x || 0) + 90;
+    const y1 = fromLI * laneH + (fromN.y || 0) + 30;
+    const x2 = 160 + (toN.x || 0) + 90;
+    const y2 = toLI * laneH + (toN.y || 0) + 30;
+    const mx = (x1+x2)/2, my = (y1+y2)/2;
+    const dx = x2-x1, dy = y2-y1;
+    const len = Math.sqrt(dx*dx+dy*dy) || 1;
+    const ex = x2 - (dx/len)*8, ey = y2 - (dy/len)*8;
+    const cx = mx + (y1-y2)*0.15, cy = my + (x2-x1)*0.15;
+    const pathD = `M${x1},${y1} Q${cx},${cy} ${ex},${ey}`;
+    html += `<path d="${pathD}" />`;
+    if (edge.label) {
+      html += `<text x="${cx}" y="${cy-6}" text-anchor="middle">${esc(edge.label)}</text>`;
+    }
+  });
+  html += '</svg>';
+
+  lanes.forEach((lane) => {
+    const lc = LANE_COLORS[lane.id] || 'var(--fg2)';
+    html += `<div class="lane" style="height:${laneH}px;">
+      <div class="lane-label"><span class="lane-dot" style="background:${lc}"></span>${esc(lane.name)}</div>
+      <div class="lane-body">`;
+
+    nodes.filter(n => n.lane === lane.id).forEach(n => {
+      const tc = n.tool ? TOOL_COLORS[n.tool] || 'var(--fg2)' : '';
+      html += `<div class="node" style="left:${n.x||0}px;top:${n.y||0}px">
+        <div class="node-title">${esc(n.title||'Sin título')}</div>
+        ${n.text ? `<div class="node-text">${esc(n.text)}</div>` : ''}
+        <div class="node-meta">
+          ${n.tool ? `<span class="tool-chip" style="background:${tc}">${esc(n.tool)}</span>` : ''}
+          ${n.stage ? `<span class="stage-chip">${esc(n.stage)}</span>` : ''}
+        </div>
+      </div>`;
+    });
+
+    html += '</div></div>';
+  });
+
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+renderBoard();
+</script>
+</body>
+</html>
